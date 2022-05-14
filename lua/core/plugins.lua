@@ -78,11 +78,13 @@ return require("packer").startup({
         use({
             "max397574/neorg-kanban",
             after = "neorg",
+            event = "InsertEnter",
         })
 
         use({
             "nvim-neorg/neorg-telescope",
             after = "neorg",
+            event = "InsertEnter",
         })
 
         -- Explorer menu
@@ -102,7 +104,6 @@ return require("packer").startup({
             "nvim-treesitter/nvim-treesitter",
             event = { "BufRead", "BufNewFile" },
             module = "nvim-treesitter",
-            -- commit = "bca65c068b92f19174dbba15d538315e8c89a5d6",
             disable = false,
             run = ":TSUpdate",
             config = function()
@@ -212,12 +213,20 @@ return require("packer").startup({
         })
 
         -- Formatting
-        use({
+        --[[ use({
             "Jose-elias-alvarez/null-ls.nvim",
             event = { "BufRead", "InsertEnter" },
             disable = false,
             config = function()
                 require("modules.lang.null-ls")
+            end,
+        } )]]
+
+        use({
+            "mhartington/formatter.nvim",
+            event = { "BufRead", "InsertEnter" },
+            config = function()
+                require("modules.lang.formatter")
             end,
         })
 
@@ -389,7 +398,6 @@ return require("packer").startup({
             cmd = "PP",
             opt = true,
             disable = false,
-            -- disable = true,
         })
 
         -- Faster movement
@@ -414,6 +422,7 @@ return require("packer").startup({
         use({
             "j-hui/fidget.nvim",
             disable = false,
+            event = "Bufenter",
             config = function()
                 require("modules.tools.fidget")
             end,

@@ -1,0 +1,17 @@
+-- Utilities for creating configurations
+local util = require("formatter.util")
+
+require("formatter").setup({
+    -- All formatter configurations are opt-in
+    filetype = {
+        cpp = {
+            require("formatter.filetypes.cpp").clangformat,
+        },
+        lua = {
+            require("formatter.filetypes.lua").stylua,
+        },
+        rust = {
+            require("formatter.filetypes.rust").rustfmt,
+        },
+    },
+})

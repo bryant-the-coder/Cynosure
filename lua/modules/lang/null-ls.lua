@@ -6,22 +6,23 @@ local formatting = null_ls.builtins.formatting
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
-    debug = false,
-    sources = {
-        -- formatting.prettier.with({
-        --     extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-        -- }),
-        formatting.stylua,
-        formatting.rustfmt,
-    },
+  debug = false,
+  sources = {
+    -- formatting.prettier.with({
+    --     extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+    -- }),
+    -- formatting.stylua,
+    -- formatting.rustfmt,
+    -- formatting.clang_format,
+  },
 
-    -- Format on save (laggy)
-    on_attach = function(client, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format()
-            end,
-        })
-    end,
+  -- Format on save (laggy)
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end,
 })
