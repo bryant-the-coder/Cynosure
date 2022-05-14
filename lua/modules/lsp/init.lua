@@ -34,6 +34,13 @@ local function on_attach(client, bufnr)
 	lsp_highlight_document(client, bufnr)
 end
 
+local function on_attach16(client, bufnr)
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.document_range_formatting = false
+	client.offset_encoding = "utf-16"
+	lsp_highlight_document(client, bufnr)
+end
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local completion = capabilities.textDocument.completion.completionItem
@@ -100,3 +107,13 @@ if use_lua_dev then
 else
 	lspconfig.sumneko_lua.setup(sumneko)
 end
+
+-- JSON
+lspconfig.jsonls.setup({
+	on_attach = on_attach,
+})
+
+lspconfig.clangd.setup({
+	on_attach = on_attach16,
+	capabilities = capabilities,
+})
