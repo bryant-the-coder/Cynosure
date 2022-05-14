@@ -4,26 +4,26 @@ if not present then
 end
 
 toggleterm.setup({
-    size = 20,
+    size = 16,
     open_mapping = [[<c-\>]],
     shade_filetypes = {},
     shade_terminals = false,
     start_in_insert = true,
     insert_mappings = true,
     persist_size = true,
-    direction = "float",
+    direction = "horizontal",
     close_on_exit = true,
     float_opts = {
         -- border = "shadow",
         border = {
-           "╭",
-           "─",
-           "╮",
-           "│",
-           "╯",
-           "─",
-           "╰",
-           "│",
+            "╭",
+            "─",
+            "╮",
+            "│",
+            "╯",
+            "─",
+            "╰",
+            "│",
         },
         winblend = 0,
         highlights = {
