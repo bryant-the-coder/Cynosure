@@ -2,13 +2,14 @@ local cmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 local create_command = vim.api.nvim_create_user_command
 
--- Disable autocommenting
+-- Disable autocommenting {{{
 cmd("BufEnter", {
     desc = "Disable autocommenting in new lines",
     command = "set fp-=c fo-=r fo-=o",
 })
+-- }}}
 
--- Terminal
+-- Terminal {{{
 augroup("_terminal", {})
 cmd("TermOpen", {
     desc = "Terminal settings",
@@ -20,9 +21,10 @@ cmd("TermOpen", {
     group = "_terminal",
     command = "setlocal nonumber norelativenumber",
 })
+-- }}}
 
 augroup("_buffer", {})
--- Trim whitespace
+-- Trim whitespace {{{
 local NoWhitespace = vim.api.nvim_exec(
     [[
     function! NoWhitespace()
@@ -40,8 +42,9 @@ cmd("BufWritePre", {
     group = "_buffer",
     command = [[call NoWhitespace()]],
 })
+-- }}}
 
--- Cursor position
+-- Cursor position {{{
 cmd("BufReadPost", {
     desc = "Restore cursor position upon reopening the file",
     group = "_buffer",
@@ -49,8 +52,9 @@ cmd("BufReadPost", {
        if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
     ]],
 })
+-- }}}
 
--- Highlight while yanking
+-- Highlight while yanking {{{
 cmd("TextYankPost", {
     pattern = "*",
     desc = "Highlight while yanking",
@@ -59,8 +63,9 @@ cmd("TextYankPost", {
         vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
     end,
 })
+-- }}}
 
--- q as escape key
+-- q as escape key {{{
 cmd("FileType", {
     desc = "Quit with q in this filetypes",
     group = "_buffer",
@@ -69,15 +74,17 @@ cmd("FileType", {
         vim.keymap.set("n", "q", "<CMD>close<CR>")
     end,
 })
+-- }}}
 
--- Custom dashboard display
--- cmd({ "VimEnter" }, {
---     callback = function()
---         require("custom.dashboard").display()
---     end,
--- })
+-- Custom dashboard display {{{
+cmd({ "VimEnter" }, {
+    callback = function()
+        require("custom.dashboard").display()
+    end,
+})
+-- }}}
 
--- Nofity when file changes
+-- Nofity when file changes {{{
 augroup("_auto_reload_file", {})
 cmd("FileChangedShellPost", {
     desc = "Actions when the file is changed outside of Neovim",
@@ -92,17 +99,19 @@ cmd({ "FocusGained", "CursorHold" }, {
     group = "_auto_reload_file",
     command = [[if getcmdwintype() == '' | checktime | endif]],
 })
+-- }}}
 
 augroup("_lsp", {})
--- Open float when there are diagnostics
--- cmd({ "CursorHold" }, {
---     desc = "Open float when there is diagnostics",
---     group = "_lsp",
---     callback = vim.diagnostic.open_float,
--- })
+-- Open float when there are diagnostics {{{
+cmd({ "CursorHold" }, {
+    desc = "Open float when there is diagnostics",
+    group = "_lsp",
+    callback = vim.diagnostic.open_float,
+})
+--}}}
 
 augroup("git_repo_check", {})
--- Custom event
+-- Custom event {{{
 cmd({ "VimEnter", "DirChanged" }, {
     group = "git_repo_check",
     callback = function()
@@ -115,5 +124,6 @@ cmd({ "VimEnter", "DirChanged" }, {
         end
     end,
 })
+-- }}}
 
 create_command("Sync", ":PackerSync", { desc = "PackerSync" })
