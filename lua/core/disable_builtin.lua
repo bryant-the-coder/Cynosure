@@ -1,4 +1,4 @@
--- disable builtin plugins for faster startuptime
+-- Disable builtin plugins for faster startuptime
 vim.g.loaded_python3_provider = 1
 vim.g.loaded_python_provider = 1
 vim.g.loaded_node_provider = 1
