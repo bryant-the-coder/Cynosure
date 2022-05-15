@@ -89,6 +89,7 @@ local mid_night = {
 local quotes = {
     "",
     "'Fight for what's right. No matter if it means standing all ALONE'",
+    "",
 }
 
 function M.display()
