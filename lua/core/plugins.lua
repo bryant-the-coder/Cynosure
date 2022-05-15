@@ -208,7 +208,7 @@ return require("packer").startup({
         use({
             "p00f/clangd_extensions.nvim",
             module = "clangd_extensions",
-            disable = true,
+            disable = false,
             ft = { "cpp", "c" },
         })
 
@@ -434,7 +434,7 @@ return require("packer").startup({
             threshold = 0.0001,
         },
         display = {
-            title = "Downloading / Updating", -- Packer, Installing
+            title = "Packer", -- Packer, Installing
             done_sym = "",
             error_syn = "×",
             -- open_fn = function()
