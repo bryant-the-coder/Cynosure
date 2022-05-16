@@ -103,4 +103,3 @@
    - Snippets dir
 ** `lang/`
    - Users can test the lsp,highlights, formatter, cmp, snippets in this dir
-
