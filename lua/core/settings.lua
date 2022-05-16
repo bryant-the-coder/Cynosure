@@ -74,7 +74,7 @@ o.fillchars = {
     vertleft = "╣",
     vertright = "╠",
     verthoriz = "╬",
- }
+}
 
 -- Backups / Undo
 o.backup = false -- Don't backup files
@@ -83,37 +83,11 @@ o.undofile = false -- Don't write undofile
 o.swapfile = false -- Don't write swapfile
 
 -- Terminal
-if vim.fn.has "win32" == 1 then
+if vim.fn.has("win32") == 1 then
     o.shell = "pwsh.exe -nol"
     o.shellcmdflag = "-nop -c"
     o.shellquote = '"'
     o.shellxquote = ""
     o.shellpipe = "| Out-File -Encoding UTF8 %s"
     o.shellredir = "| Out-File -Encoding UTF8 %s"
- end
-
--- Builtin plugins
-g.loaded_gzip = 1
-g.loaded_zip = 1
-g.loaded_zipPlugin = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_matchit = 1
-g.loaded_man = 1
-g.loaded_remote_plugins = 1
-g.loaded_getscript = 1
-g.loaded_getscriptPlugin = 1
-g.loaded_vimball = 1
-g.loaded_vimballPlugin = 1
-g.loaded_2html_plugin = 1
-g.loaded_logiPat = 1
-g.loaded_rrhelper = 1
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.loaded_netrwSettings = 1
-g.loaded_netrwFileHandlers = 1
-g.loaded_matchparen = 1
-g.loaded_logiPat = 1
-g.loaded_rrhelper = 1
-g.did_load_filetypes = 0
-g.do_filetype_lua = 1
+end
