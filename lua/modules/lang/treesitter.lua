@@ -80,6 +80,7 @@ require("treesitter-context").setup({
     throttle = true, -- Throttles plugin updates (may improve performance)
     max_lines = 4, -- How many lines the window should span. Values <= 0 mean no limit.
 })
+
 local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
     return

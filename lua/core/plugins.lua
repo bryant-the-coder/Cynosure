@@ -42,7 +42,7 @@ return require("packer").startup({
         })
         use({
             "kyazdani42/nvim-web-devicons",
-            after = "nvim-base16.lua",
+            module = "nvim-web-devicons",
             disable = false,
         })
 
@@ -55,8 +55,19 @@ return require("packer").startup({
         -- Bufferline
         use({
             "akinsho/bufferline.nvim",
-            after = "nvim-web-devicons",
-            event = { "BufUnload", "BufLeave", "BufHidden", "BufDelete" },
+            opt = true,
+            setup = function()
+                vim.api.nvim_create_autocmd({ "BufAdd", "TabEnter" }, {
+                    pattern = "*",
+                    group = vim.api.nvim_create_augroup("BufferLineLazyLoading", {}),
+                    callback = function()
+                        local count = #vim.fn.getbufinfo({ buflisted = 1 })
+                        if count >= 2 then
+                            vim.cmd([[PackerLoad bufferline.nvim]])
+                        end
+                    end,
+                })
+            end,
             disable = false,
             config = function()
                 require("modules.ui.bufferline")
@@ -68,7 +79,6 @@ return require("packer").startup({
         use({
             "nvim-neorg/neorg",
             ft = "norg",
-            after = "nvim-treesitter",
             disable = false,
             config = function()
                 require("modules.editor.neorg")
@@ -78,13 +88,11 @@ return require("packer").startup({
         use({
             "max397574/neorg-kanban",
             after = "neorg",
-            event = "InsertEnter",
         })
 
         use({
             "nvim-neorg/neorg-telescope",
             after = "neorg",
-            event = "InsertEnter",
         })
 
         -- Explorer menu
@@ -102,10 +110,9 @@ return require("packer").startup({
         -- Treesitter
         use({
             "nvim-treesitter/nvim-treesitter",
-            event = { "BufRead", "BufNewFile" },
-            module = "nvim-treesitter",
             disable = false,
             run = ":TSUpdate",
+            event = { "BufRead", "BufNewFile" },
             config = function()
                 require("modules.lang.treesitter")
             end,
@@ -115,7 +122,6 @@ return require("packer").startup({
         use({
             "p00f/nvim-ts-rainbow",
             after = "nvim-treesitter",
-            event = "InsertEnter",
             opt = true,
             disable = false,
         })
@@ -132,8 +138,13 @@ return require("packer").startup({
         -- Complete pairs automatically
         use({
             "windwp/nvim-autopairs",
+            event = {
+                "InsertEnter",
+                -- for working with cmp
+                "CmdLineEnter",
+            },
+            -- TODO: uncomment this
             after = "nvim-cmp",
-            event = "InsertEnter",
             opt = true,
             disable = false,
             config = function()
@@ -144,7 +155,6 @@ return require("packer").startup({
         use({
             "nvim-treesitter/playground",
             cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
-            after = "nvim-treesitter",
             opt = true,
             event = { "CursorMoved", "CursorMovedI" },
             disable = false,
@@ -153,7 +163,6 @@ return require("packer").startup({
         use({
             "lewis6991/nvim-treesitter-context",
             after = "nvim-treesitter",
-            event = "CursorMoved",
             cmd = { "TSContextEnable", "TSContextDisable", "TSContextToggle" },
         })
 
@@ -174,18 +183,20 @@ return require("packer").startup({
         -- })
         use({
             "neovim/nvim-lspconfig",
-            module = "lspconfig",
             opt = true,
             tag = "v0.1.3",
-            setup = function()
-                vim.defer_fn(function()
-                    require("packer").loader("nvim-lspconfig")
-                    require("packer").loader("lua-dev.nvim")
-                    if vim.bo.ft ~= "packer" then
-                        vim.cmd("silent! e %")
-                    end
-                end, 0)
-            end,
+            ft = {
+                "lua",
+                "rust",
+                "c",
+                "cpp",
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "tex",
+                "json",
+            },
             config = function()
                 require("modules.lsp.init")
                 require("modules.lsp.installer")
@@ -200,7 +211,6 @@ return require("packer").startup({
 
         use({
             "max397574/lua-dev.nvim",
-            module = "lua-dev",
             after = "nvim-lspconfig",
             disable = false,
         })
@@ -234,8 +244,7 @@ return require("packer").startup({
         -- Completion
         use({
             "hrsh7th/nvim-cmp",
-            module = "cmp",
-            event = { "InsertEnter", "CmdLineEnter", "InsertCharPre" }, -- InsertCharPre Due to luasnip
+            event = { "InsertEnter", "CmdLineEnter" }, -- InsertCharPre Due to luasnip
             after = { "LuaSnip" },
             disable = false,
             requires = {
@@ -258,6 +267,7 @@ return require("packer").startup({
             requires = {
                 "bryant-the-coder/friendly-snippets",
                 event = "InsertEnter",
+                after = "LuaSnip",
             },
             module = "luasnip",
             event = "InsertEnter",
@@ -401,8 +411,7 @@ return require("packer").startup({
         -- Faster movement
         use({
             "ggandor/lightspeed.nvim",
-            event = "BufEnter",
-            opt = true,
+            keys = { "S", "s", "f", "F", "t", "T" },
             disable = false,
         })
 

@@ -3,9 +3,10 @@ if not status_ok then
     return
 end
 
+require("packer").loader("lua-dev.nvim")
+
 require("modules.lsp.installer")
 require("modules.lsp.config")
-
 local function lsp_highlight_document(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
