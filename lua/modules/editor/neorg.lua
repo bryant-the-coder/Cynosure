@@ -53,6 +53,10 @@ neorg.setup({
                     },
                     todo = {
                         enable = true,
+                        recurring = {
+                            -- icon="ﯩ",
+                            icon = "",
+                        },
                         pending = {
                             -- icon = ""
                             icon = "",
