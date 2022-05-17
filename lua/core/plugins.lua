@@ -56,7 +56,7 @@ return require("packer").startup({
         use({
             "akinsho/bufferline.nvim",
             after = "nvim-web-devicons",
-            event = "BufEnter",
+            event = { "BufUnload", "BufLeave", "BufHidden", "BufDelete" },
             disable = false,
             config = function()
                 require("modules.ui.bufferline")
@@ -129,14 +129,6 @@ return require("packer").startup({
             disable = true,
         })
 
-        use({
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            after = "nvim-treesitter",
-            event = "InsertEnter",
-            opt = true,
-            disable = false,
-        })
-
         -- Complete pairs automatically
         use({
             "windwp/nvim-autopairs",
@@ -161,7 +153,7 @@ return require("packer").startup({
         use({
             "lewis6991/nvim-treesitter-context",
             after = "nvim-treesitter",
-            event = "InsertEnter",
+            event = "CursorMoved",
             cmd = { "TSContextEnable", "TSContextDisable", "TSContextToggle" },
         })
 
@@ -183,9 +175,17 @@ return require("packer").startup({
         use({
             "neovim/nvim-lspconfig",
             module = "lspconfig",
-            event = "BufRead",
-            disable = false,
+            opt = true,
             tag = "v0.1.3",
+            setup = function()
+                vim.defer_fn(function()
+                    require("packer").loader("nvim-lspconfig")
+                    require("packer").loader("lua-dev.nvim")
+                    if vim.bo.ft ~= "packer" then
+                        vim.cmd("silent! e %")
+                    end
+                end, 0)
+            end,
             config = function()
                 require("modules.lsp.init")
                 require("modules.lsp.installer")
@@ -225,6 +225,7 @@ return require("packer").startup({
         use({
             "mhartington/formatter.nvim",
             event = { "BufRead", "InsertEnter" },
+            ft = { "cpp", "lua", "rust", "html", "css", "js" },
             config = function()
                 require("modules.lang.formatter")
             end,
@@ -333,7 +334,7 @@ return require("packer").startup({
         -- Terminal
         use({
             "akinsho/toggleterm.nvim",
-            event = "InsertEnter",
+            keys = "<c->",
             tag = "v1.*",
             config = function()
                 require("modules.tools.toggleterm")
@@ -363,7 +364,6 @@ return require("packer").startup({
                 "TroubleToggle",
             },
             opt = true,
-            event = { "InsertEnter" },
             disable = false,
             config = function()
                 require("modules.lang.trouble")
@@ -373,8 +373,8 @@ return require("packer").startup({
         -- Neogen
         use({
             "danymat/neogen",
-            after = "LuaSnip",
             disable = false,
+            command = "Neogen",
             config = function()
                 require("modules.lang.neogen")
             end,
@@ -394,9 +394,7 @@ return require("packer").startup({
         -- Share code
         use({
             "rktjmp/paperplanes.nvim",
-            event = "BufEnter",
             cmd = "PP",
-            opt = true,
             disable = false,
         })
 

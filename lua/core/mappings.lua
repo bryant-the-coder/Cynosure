@@ -163,6 +163,7 @@ map("n", "<leader>pi", "<cmd>PackerInstall<CR>")
 map("n", "<leader>pu", "<cmd>PackerUpdate<CR>")
 map("n", "<leader>pc", "<cmd>PackerClean<CR>")
 map("n", "<leader>ps", "<cmd>PackerSync<CR>")
+map("n", "<leader>pp", "<cmd>PackerStatus<CR>")
 
 -- LSP
 map("n", "<leader>lr", vim.lsp.buf.rename)
