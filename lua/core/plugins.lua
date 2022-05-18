@@ -477,7 +477,6 @@ return require("packer").startup({
         use({
             "j-hui/fidget.nvim",
             disable = false,
-            after = "lspconfig",
             config = function()
                 require("modules.tools.fidget")
             end,
