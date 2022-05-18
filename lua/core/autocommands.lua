@@ -111,13 +111,12 @@ cmd({ "CursorHold" }, {
 --}}}
 
 -- Autoformat on save {{{
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = "_lsp",
-    callback = function()
-        vim.cmd([[FormatWrite]])
-    end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+--     group = "_lsp",
+--     callback = function()
+--         vim.cmd([[FormatWrite]])
+--     end,
+-- })
 -- }}}
 
 augroup("git_repo_check", {})

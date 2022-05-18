@@ -5,7 +5,7 @@ end
 
 toggleterm.setup({
     size = 16,
-    open_mapping = [[<c-\>]],
+    open_mapping = [[<c-b>]],
     shade_filetypes = {},
     shade_terminals = false,
     start_in_insert = true,

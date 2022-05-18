@@ -240,7 +240,6 @@ return require("packer").startup({
 
         use({
             "p00f/clangd_extensions.nvim",
-            module = "clangd_extensions",
             disable = false,
             ft = { "cpp", "c" },
         })
@@ -257,8 +256,16 @@ return require("packer").startup({
 
         use({
             "mhartington/formatter.nvim",
-            event = { "BufRead", "InsertEnter" },
-            ft = { "cpp", "lua", "rust", "html", "css", "js" },
+            cmd = "FormatWrite",
+            setup = function()
+                local group = vim.api.nvim_create_augroup("Formatter", {})
+                vim.api.nvim_create_autocmd("BufWritePost", {
+                    callback = function()
+                        vim.cmd([[FormatWrite]])
+                    end,
+                    group = group,
+                })
+            end,
             config = function()
                 require("modules.lang.formatter")
             end,
@@ -267,7 +274,7 @@ return require("packer").startup({
         -- Completion
         use({
             "hrsh7th/nvim-cmp",
-            event = { "InsertEnter", "CmdLineEnter" }, -- InsertCharPre Due to luasnip
+            event = { "InsertEnter", "CmdLineEnter" },
             after = { "LuaSnip" },
             disable = false,
             requires = {
@@ -292,7 +299,6 @@ return require("packer").startup({
                 event = "InsertEnter",
                 after = "LuaSnip",
             },
-            module = "luasnip",
             event = "InsertEnter",
             disable = false,
             config = function()
@@ -367,8 +373,8 @@ return require("packer").startup({
         -- Terminal
         use({
             "akinsho/toggleterm.nvim",
-            keys = "<c->",
-            tag = "v1.*",
+            keys = "<c-b>",
+            module = { "toggleterm" },
             config = function()
                 require("modules.tools.toggleterm")
             end,
@@ -406,8 +412,8 @@ return require("packer").startup({
         -- Neogen
         use({
             "danymat/neogen",
+            after = { "LuaSnip" },
             disable = false,
-            command = "Neogen",
             config = function()
                 require("modules.lang.neogen")
             end,
