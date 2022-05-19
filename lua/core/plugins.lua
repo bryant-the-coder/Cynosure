@@ -294,16 +294,15 @@ return require("packer").startup({
         -- Snippet
         use({
             "L3MON4D3/LuaSnip",
-            requires = {
-                "bryant-the-coder/friendly-snippets",
-                event = "InsertEnter",
-                after = "LuaSnip",
-            },
             event = "InsertEnter",
             disable = false,
             config = function()
                 require("modules.completion.snippets")
             end,
+        })
+        use({
+            "bryant-the-coder/friendly-snippets",
+            event = "InsertEnter",
         })
 
         -- Telescope
@@ -329,7 +328,6 @@ return require("packer").startup({
         use({
             "norcalli/nvim-colorizer.lua",
             disable = false,
-            module = "colorizer",
             ft = { "lua", "css", "scss", "html", "js", "jsx" },
             opt = true,
             config = function()
