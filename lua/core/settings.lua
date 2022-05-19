@@ -59,6 +59,7 @@ o.smartcase = true -- Don't ignore when uppercase search
 
 -- Statusline
 o.laststatus = 3
+o.winbar = "%{%v:lua.require'custom.winbar'.eval()%}"
 
 -- Conceal
 o.conceallevel = 2
