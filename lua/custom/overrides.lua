@@ -140,6 +140,8 @@ fg("WinSeparator", blue)
 fg("StatuslineNC", one_bg3)
 fg("NvimInternalError", red)
 fg("VertSplit", one_bg2)
+fg("WinBarSeparator", grey)
+fg_bg("WinBarContent", green, grey)
 
 -- Visual mode highlighting
 fg("Visual", blue)
