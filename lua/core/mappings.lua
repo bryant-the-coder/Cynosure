@@ -43,19 +43,9 @@ map("v", "d", '"_d"')
 -- Don't yank text on cut
 map("n", "x", '"_x')
 
--- Swap booleans
-map("n", "<leader>sb", function()
-    require("core.utils").swap_boolean()
-end)
-
 -- ESC to clear all highlights
 map({ "n", "i", "v" }, "<ESC>", "<cmd>noh<CR>")
 -- map({ "n", "v" }, "<CR>", [[{-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()]], { silent = true, expr = true })
-
--- Rename (easy way)
-map("n", "<A-r>", function()
-    require("core.utils").rename()
-end)
 
 -- Saving the traditional way
 map({ "n", "i" }, "<C-s>", "<cmd>w<CR>")
@@ -66,12 +56,6 @@ map("n", "<leader>sf", "<cmd>source % <CR>")
 -- k = gk
 map({ "n", "v" }, "j", "gj")
 map({ "n", "v" }, "k", "gk")
-map("n", "l", function()
-    require("core.utils").l_motion()
-end)
-map("n", "h", function()
-    require("core.utils").h_motion()
-end)
 
 -- Indenting
 map("v", ">", ">gv")
@@ -85,16 +69,6 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 --[[ map({ "n", "v" }, "j", "jzzzv")
 map({ "n", "v" }, "k", "kzzzv") ]]
-
--- Go to url
--- Windows user
-map("n", "<leader>tu", function()
-    require("core.utils").url("start")
-end)
--- Mac or linux user
---[[ map("n", "<leader>tu", function()
-	require("core.utils").go_to_url()
-end) ]]
 
 -- Disable arrow keys
 map({ "n", "v" }, "<Up>", "<nop>")
@@ -138,6 +112,41 @@ map("n", "<CR>", "o<ESC>", { desc = "Empty line below" })
 map("n", "<leader>lb", "i<CR><ESC>", { desc = "Line break at cursor" })
 map("n", "<leader>il", "i <ESC>l", { desc = "Space before" })
 map("n", "<leader>ih", "a <ESC>h", { desc = "Space after" })
+
+-----------------------------------
+--           Utils               --
+-----------------------------------
+map("n", "<leader>sb", function()
+    require("core.utils").swap_boolean()
+end)
+
+map("n", "<A-r>", function()
+    require("core.utils").rename()
+end)
+
+map("n", "l", function()
+    require("core.utils").l_motion()
+end)
+map("n", "h", function()
+    require("core.utils").h_motion()
+end)
+
+-- Go to url
+-- Windows user
+map("n", "<leader>tu", function()
+    require("core.utils").url("start")
+end)
+-- Mac or linux user
+--[[ map("n", "<leader>tu", function()
+	require("core.utils").go_to_url()
+end) ]]
+
+map("n", "<leader>,", function()
+    require("core.utils").insert_comma()
+end)
+map("n", "<leader>;", function()
+    require("core.utils").insert_semicolon()
+end)
 
 -----------------------------------
 --           Plugins             --
@@ -193,7 +202,7 @@ map("n", "<A-1>", function()
     require("harpoon.ui").nav_file(1)
 end)
 map("n", "<A-2>", function()
-    require("harpoon.ui").nav_file(1)
+    require("harpoon.ui").nav_file(2)
 end)
 map("n", "<A-3>", function()
     require("harpoon.ui").nav_file(3)

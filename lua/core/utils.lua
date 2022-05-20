@@ -175,4 +175,23 @@ M.border = function()
     }
 end
 
+--- Inserts a "," add the end of line
+M.insert_comma = function()
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    -- append ,
+    vim.cmd([[normal A,]])
+    -- restore cursor position
+    vim.api.nvim_win_set_cursor(0, cursor)
+end
+
+--- Inserts a ";" add the end of line
+M.insert_semicolon = function()
+    -- save cursor position
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    -- append ,
+    vim.cmd([[normal A;]])
+    -- restore cursor position
+    vim.api.nvim_win_set_cursor(0, cursor)
+end
+
 return M
