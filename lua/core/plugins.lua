@@ -48,7 +48,7 @@ return require("packer").startup({
 
         -- Theme
         use({
-            "bryant-the-coder/nvim-base16.lua",
+            "bryant-the-coder/base16",
             disable = false,
         })
 
@@ -79,6 +79,7 @@ return require("packer").startup({
         use({
             "nvim-neorg/neorg",
             ft = "norg",
+            after = "nvim-treesitter", -- You may want to specify Telescope here as well
             disable = false,
             config = function()
                 require("modules.editor.neorg")
