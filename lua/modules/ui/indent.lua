@@ -6,17 +6,20 @@ end
 -- See :h indent_blankline.txt
 -- Included by default
 -- vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile", "help" }
+vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_filetype_exclude = {
     "help",
+    "startify",
     "dashboard",
     "packer",
+    "neogitstatus",
     "NvimTree",
     "Trouble",
-    "neo-tree",
-    "norg",
+    "norg"
 }
 vim.g.indentLine_enabled = 1
-vim.g.indent_blankline_char = "│"
+-- vim.g.indent_blankline_char = "│"
+vim.g.indent_blankline_char = "▏"
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_first_indent_level = false
 vim.g.indent_blankline_use_treesitter = true
@@ -27,6 +30,8 @@ vim.g.indent_blankline_context_patterns = {
     "function",
     "method",
     "^if",
+    "^do",
+    "^switch",
     "^while",
     "jsx_element",
     "^for",
@@ -43,7 +48,6 @@ vim.g.indent_blankline_context_patterns = {
     "import_statement",
     "operation_type",
 }
-
 indent_blankline.setup({
     show_current_context = true,
     show_current_context_start = false,
