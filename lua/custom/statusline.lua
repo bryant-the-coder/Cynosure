@@ -198,7 +198,7 @@ Statusline.active = function()
         filename(), -- Show filename
         "%#Statusline#",
         "%=",
-        word_counter(),
+        -- word_counter(),
         space,
         "%#Error#",
         get_error(),
