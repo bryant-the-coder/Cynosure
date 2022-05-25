@@ -224,6 +224,10 @@ end
 function Statusline.short()
     return "%#StatusLineNC#   NvimTree"
 end
+
+function Statusline.none()
+    return "%#StatusLineNC# "
+end
 -- }}}
 
 -- Setting autocmd
@@ -234,6 +238,8 @@ api.nvim_exec(
   au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
   au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
   au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
+  au WinEnter,BufEnter,FileType Dashboard setlocal statusline=%!v:lua.Statusline.none()
+  au WinEnter,BufEnter,FileType TelescopePrompt setlocal statusline=%!v:lua.Statusline.none()
   augroup END
 ]],
     false
