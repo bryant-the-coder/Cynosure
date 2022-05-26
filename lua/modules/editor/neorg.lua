@@ -24,6 +24,7 @@ neorg.setup({
                 type = "auto",
             },
         },
+        ["core.export"] = {},
         ["core.export.markdown"] = {
             config = {
                 extensions = "all",
