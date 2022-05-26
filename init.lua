@@ -5,3 +5,5 @@ require("core.autocommands")
 require("modules.ui.theme")
 require("custom.statusline")
 require("custom.overrides")
+require("custom.abbrev")
+
