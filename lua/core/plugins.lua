@@ -7,7 +7,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system({
+    BOOTSTRAP = fn.system({
         "git",
         "clone",
         "--depth",
@@ -486,6 +486,11 @@ return require("packer").startup({
                 require("modules.tools.fidget")
             end,
         })
+
+        -- Install packer and plugins if it does not exist
+        if BOOTSTRAP then
+            require("packer").sync()
+        end
     end,
     config = {
         profile = {
