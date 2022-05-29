@@ -1,4 +1,5 @@
 require("core.disable_builtin")
+local utils = require("core.utils")
 
 local g = vim.g
 local o = vim.opt
@@ -59,7 +60,9 @@ o.smartcase = true -- Don't ignore when uppercase search
 
 -- Statusline
 o.laststatus = 3
-o.winbar = "%{%v:lua.require'custom.winbar'.eval()%}"
+if utils.has_version("0.8") then
+    o.winbar = "%{%v:lua.require'custom.winbar'.eval()%}"
+end
 
 -- Conceal
 o.conceallevel = 2

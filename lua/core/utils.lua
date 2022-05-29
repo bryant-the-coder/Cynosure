@@ -194,4 +194,11 @@ M.insert_semicolon = function()
     vim.api.nvim_win_set_cursor(0, cursor)
 end
 
+--- Checking for neovim version
+---@param version string version number
+---@return boolean has_version
+M.has_version = function(version)
+    return vim.fn.has("nvim-" .. version) > 0
+end
+
 return M
