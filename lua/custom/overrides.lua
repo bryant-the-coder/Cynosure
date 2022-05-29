@@ -152,9 +152,6 @@ fg("Visual", blue)
 -- Neorg
 bg("NeorgCodeBlock", darker_black)
 
--- Bufferline
-fg("BufferLineRightCustomAreaText1", red)
-
 -- Lsp diagnostics
 fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
