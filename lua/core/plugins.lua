@@ -411,7 +411,8 @@ return require("packer").startup({
         -- Neogen
         use({
             "danymat/neogen",
-            after = { "LuaSnip" },
+            -- after = { "LuaSnip" },
+            command = "Neogen",
             disable = false,
             config = function()
                 require("modules.lang.neogen")
@@ -482,6 +483,7 @@ return require("packer").startup({
         use({
             "j-hui/fidget.nvim",
             disable = false,
+            module = "lspconfig",
             config = function()
                 require("modules.tools.fidget")
             end,
