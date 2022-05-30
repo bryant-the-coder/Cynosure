@@ -122,7 +122,7 @@ end
 --           Basic               --
 -----------------------------------
 -- Line Number
-fg("CursorLineNr", yellow)
+fg("CursorLineNr",  yellow)
 fg("LineNr", light_grey)
 
 -- Same as bg, so it doesn't appear
