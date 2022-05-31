@@ -335,6 +335,13 @@ return require("packer").startup({
                 require("modules.tools.colorizer")
             end,
         })
+        use({
+            "max397574/colortils.nvim",
+            cmd = "Colortils",
+            config = function()
+                require("modules.tools.colortils")
+            end,
+        })
 
         -- Indentation
         use({
