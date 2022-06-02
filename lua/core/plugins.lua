@@ -143,7 +143,6 @@ return require("packer").startup({
         use({
             "windwp/nvim-ts-autotag",
             opt = true,
-            event = "InsertEnter",
             ft = { "html", "tsx" },
             disable = true,
         })
@@ -169,7 +168,6 @@ return require("packer").startup({
             "nvim-treesitter/playground",
             cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
             opt = true,
-            event = { "CursorMoved", "CursorMovedI" },
             disable = false,
         })
 
