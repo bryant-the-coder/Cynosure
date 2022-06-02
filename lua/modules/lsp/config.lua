@@ -101,6 +101,8 @@ vim.diagnostic.config(config)
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
 
+-- credits to @Malace : https://www.reddit.com/r/neovim/comments/ql4iuj/rename_hover_including_window_title_and/
+-- This is modified version of the above snippet
 vim.lsp.buf.rename = {
     float = function()
         local currName = vim.fn.expand("<cword>")
