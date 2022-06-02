@@ -175,7 +175,9 @@ map("n", "<leader>ps", "<cmd>PackerSync<CR>")
 map("n", "<leader>pp", "<cmd>PackerStatus<CR>")
 
 -- LSP
-map("n", "<leader>lr", vim.lsp.buf.rename)
+map("n", "<leader>lr", function()
+    vim.lsp.buf.rename.float()
+end)
 map("n", "<leader>ld", vim.lsp.buf.definition)
 map("n", "<leader>lt", vim.lsp.buf.type_definition)
 map("n", "<leader>lh", vim.lsp.buf.signature_help)
