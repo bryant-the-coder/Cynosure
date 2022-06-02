@@ -100,3 +100,59 @@ vim.diagnostic.config(config)
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+
+vim.lsp.buf.rename = {
+    float = function()
+        local currName = vim.fn.expand("<cword>")
+
+        local win = require("plenary.popup").create("  ", {
+            title = currName,
+            style = "minimal",
+            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            relative = "cursor",
+            borderhighlight = "RenamerBorder",
+            titlehighlight = "RenamerTitle",
+            focusable = true,
+            width = 25,
+            height = 1,
+            line = "cursor+2",
+            col = "cursor-1",
+        })
+
+        local map_opts = { noremap = true, silent = true }
+
+        vim.cmd("startinsert")
+
+        vim.api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
+        vim.api.nvim_buf_set_keymap(0, "n", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
+
+        vim.api.nvim_buf_set_keymap(
+            0,
+            "i",
+            "<CR>",
+            "<cmd>stopinsert | lua vim.lsp.buf.rename.apply(" .. currName .. "," .. win .. ")<CR>",
+            map_opts
+        )
+
+        vim.api.nvim_buf_set_keymap(
+            0,
+            "n",
+            "<CR>",
+            "<cmd>stopinsert | lua vim.lsp.buf.rename.apply(" .. currName .. "," .. win .. ")<CR>",
+            map_opts
+        )
+    end,
+
+    apply = function(curr, win)
+        local newName = vim.trim(vim.fn.getline("."))
+        vim.api.nvim_win_close(win, true)
+
+        if #newName > 0 and newName ~= curr then
+            local params = vim.lsp.util.make_position_params()
+            params.newName = newName
+
+            vim.lsp.buf_request(0, "textDocument/rename", params)
+            vim.notify(newName .. " is set", vim.log.levels.ERROR, { title = "Variable Rename" })
+        end
+    end,
+}
