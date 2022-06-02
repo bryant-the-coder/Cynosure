@@ -122,7 +122,7 @@ end
 --           Basic               --
 -----------------------------------
 -- Line Number
-fg("CursorLineNr",  yellow)
+fg("CursorLineNr", yellow)
 fg("LineNr", light_grey)
 
 -- Same as bg, so it doesn't appear
@@ -152,11 +152,13 @@ fg("Visual", blue)
 -- Neorg
 bg("NeorgCodeBlock", darker_black)
 
--- Lsp diagnostics
+-- Lsp
 fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
+fg_bg("RenamerTitle", black, yellow)
+fg("RenamerBorder", yellow)
 
 -- Pmenu
 bg("Pmenu", black)
