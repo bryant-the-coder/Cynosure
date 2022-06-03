@@ -1,4 +1,13 @@
-require("harpoon").setup({
+local present, harpoon = pcall(require, "harpoon")
+if not present then
+    return
+end
+
+vim.cmd[[
+    PackerLoad harpoon
+]]
+
+harpoon.setup({
     global_settings = {
         save_on_toggle = false,
         save_on_change = true,

@@ -318,9 +318,11 @@ return require("packer").startup({
         use({
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",
+            after = "telescope.nvim",
         })
         use({
             "nvim-telescope/telescope-file-browser.nvim",
+            after = "telescope.nvim",
         })
 
         -- Colorizer
@@ -388,9 +390,9 @@ return require("packer").startup({
         -- Harpoon
         use({
             "bryant-the-coder/harpoon",
-            module = "harpoon",
+            -- module = "harpoon",
             opt = true,
-            after = "telescope.nvim",
+            -- after = "telescope.nvim",
             disable = false,
             config = function()
                 require("modules.files.harpoon")
@@ -494,7 +496,7 @@ return require("packer").startup({
             end,
         })
 
-        -- Install packer and plugins if it does not exist
+        -- Install packer and plugins if it doesn't exist
         if BOOTSTRAP then
             require("packer").sync()
         end
