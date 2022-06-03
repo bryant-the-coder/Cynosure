@@ -9,6 +9,7 @@ local servers = {
     "sumneko_lua",
     "yamils",
     "ltex",
+    "pyright"
 }
 
 -- Setting up installer
