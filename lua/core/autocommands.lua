@@ -90,7 +90,7 @@ cmd("FileChangedShellPost", {
     desc = "Actions when the file is changed outside of Neovim",
     group = "_auto_reload_file",
     callback = function()
-        vim.notify("File changed, reloading the buffer", vim.log.levels.ERROR)
+        vim.notify("File changed, reloading the buffer", "error", { title = "Buffer changed", icon = "勒" })
     end,
 })
 

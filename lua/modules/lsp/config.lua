@@ -154,7 +154,7 @@ vim.lsp.buf.rename = {
             params.newName = newName
 
             vim.lsp.buf_request(0, "textDocument/rename", params)
-            vim.notify(newName .. " is set", vim.log.levels.ERROR, { title = "Variable Rename" })
+            vim.notify(newName .. " is set", "warn", { title = "Variable Rename", icon = "凜" })
         end
     end,
 }

@@ -110,7 +110,7 @@ M.rename = function()
             vim.lsp.buf.rename(vim.trim(rename_new))
         end)
         -- Use notify.nvim, logs notification as warn, title as Variable Rename
-        vim.notify(rename_old .. "  " .. rename_new, vim.log.levels.WARN, { title = "Variable Rename" })
+        vim.notify(rename_old .. "  " .. rename_new, "warn", { title = "Variable Rename", icon = "ﰇ" })
     end
 
     local rename_old = vim.fn.expand("<cword>")

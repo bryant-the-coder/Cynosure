@@ -6,9 +6,9 @@ local default = {
     minimum_width = 60,
     icons = {
         ERROR = "",
-        WARN = "",
-        INFO = "",
-        DEBUG = "",
+        WARN = "",
+        INFO = "",
+        DEBUG = "",
         TRACE = "",
     },
 }
