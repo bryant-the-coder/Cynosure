@@ -390,9 +390,7 @@ return require("packer").startup({
         -- Harpoon
         use({
             "bryant-the-coder/harpoon",
-            -- module = "harpoon",
             opt = true,
-            -- after = "telescope.nvim",
             disable = false,
             config = function()
                 require("modules.files.harpoon")
@@ -432,7 +430,7 @@ return require("packer").startup({
             event = "BufRead",
             opt = true,
             -- opt = true,
-            --[[setup = function()
+            setup = function()
                 vim.api.nvim_create_autocmd({ "BufAdd", "VimEnter" }, {
                     -- vim.api.nvim_create_autocmd({ "BufAdd" }, {
                     callback = function()
@@ -455,7 +453,7 @@ return require("packer").startup({
                         end
                     end,
                 })
-            end, ]]
+            end,
             disable = false,
             config = function()
                 require("modules.tools.gitsigns")
