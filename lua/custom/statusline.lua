@@ -71,6 +71,12 @@ local vcs = function()
 end
 -- }}}
 
+-- Coordinates {{{
+local function coords()
+    return "  %4(%l%):%2c"
+end
+-- }}}
+
 -- File {{{
 --- Shorten filename
 ---@return string filename
@@ -172,6 +178,18 @@ end
 -- local function get_hint()
 -- 	return get_diagnostic("H", "Hint")
 -- end
+-- }}}
+
+-- Progress bar {{{
+--- Return a bar as a progress in the file
+---@return string sbar
+local function progress_bar()
+    local sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇" }
+    local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+    local lines = vim.api.nvim_buf_line_count(0)
+    local i = math.floor(curr_line / lines * (#sbar - 1)) + 1
+    return sbar[i]
+end
 -- }}}
 
 -- Clock {{{
