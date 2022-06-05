@@ -111,11 +111,12 @@ end
 
 local function filename()
     local name = get_name()
-    local flags = table.concat({ get_readonly(), get_modified() })
-    if flags ~= "" then
-        flags = " " .. flags
-    end
-    return table.concat({ name, flags })
+    -- local flags = table.concat({ get_readonly(), get_modified() })
+    -- if flags ~= "" then
+    --     flags = " " .. flags
+    -- end
+    -- return table.concat({ name, flags })
+    return table.concat({ name })
 end
 -- }}}
 
