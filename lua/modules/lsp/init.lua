@@ -158,3 +158,6 @@ require("clangd_extensions").setup({
         },
     },
 })
+
+-- Pyright
+lspconfig.pyright.setup({})
