@@ -22,14 +22,25 @@
 -- 	{ "║", "FloatBorder" },
 -- }
 
+-- local border = {
+--     { "╭", "FloatBorder" },
+--     { "─", "FloatBorder" },
+--     { "╮", "FloatBorder" },
+--     { "│", "FloatBorder" },
+--     { "╯", "FloatBorder" },
+--     { "─", "FloatBorder" },
+--     { "╰", "FloatBorder" },
+--     { "│", "FloatBorder" },
+-- }
+
 local border = {
-    { "╭", "FloatBorder" },
+    { "┌", "FloatBorder" },
     { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
+    { "┐", "FloatBorder" },
     { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
+    { "┘", "FloatBorder" },
     { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
+    { "└", "FloatBorder" },
     { "│", "FloatBorder" },
 }
 
@@ -110,7 +121,7 @@ vim.lsp.buf.rename = {
         local win = require("plenary.popup").create("  ", {
             title = currName,
             style = "minimal",
-            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
             relative = "cursor",
             borderhighlight = "RenamerBorder",
             titlehighlight = "RenamerTitle",

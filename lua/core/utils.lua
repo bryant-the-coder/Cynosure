@@ -92,16 +92,27 @@ M.rename = function()
     -- 	{ "║", "FloatBorder" },
     -- }
 
+    -- local border = {
+    --     { "╭", "FloatBorder" },
+    --     { "─", "FloatBorder" },
+    --     { "╮", "FloatBorder" },
+    --     { "│", "FloatBorder" },
+    --     { "╯", "FloatBorder" },
+    --     { "─", "FloatBorder" },
+    --     { "╰", "FloatBorder" },
+    --     { "│", "FloatBorder" },
+    -- }
+
     local border = {
-        { "╭", "CmpBorder" },
-        { "─", "CmpBorder" },
-        { "╮", "CmpBorder" },
-        { "│", "CmpBorder" },
-        { "╯", "CmpBorder" },
-        { "─", "CmpBorder" },
-        { "╰", "CmpBorder" },
-        { "│", "CmpBorder" },
+        { "┌", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "┐", "FloatBorder" },
+        { "│", "FloatBorder" },
+        { "┘", "FloatBorder" },
+        { "─", "FloatBorder" },
+        { "└", "FloatBorder" },
     }
+
     local function post(rename_old)
         vim.cmd("stopinsert!")
         local rename_new = vim.api.nvim_get_current_line()

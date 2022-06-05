@@ -25,14 +25,25 @@ end
 -- 	{ "║", "FloatBorder" },
 -- }
 
+-- local border = {
+--     { "╭", "FloatBorder" },
+--     { "─", "FloatBorder" },
+--     { "╮", "FloatBorder" },
+--     { "│", "FloatBorder" },
+--     { "╯", "FloatBorder" },
+--     { "─", "FloatBorder" },
+--     { "╰", "FloatBorder" },
+--     { "│", "FloatBorder" },
+-- }
+
 local border = {
-    { "╭", "FloatBorder" },
+    { "┌", "FloatBorder" },
     { "─", "FloatBorder" },
-    { "╮", "FloatBorder" },
+    { "┐", "FloatBorder" },
     { "│", "FloatBorder" },
-    { "╯", "FloatBorder" },
+    { "┘", "FloatBorder" },
     { "─", "FloatBorder" },
-    { "╰", "FloatBorder" },
+    { "└", "FloatBorder" },
     { "│", "FloatBorder" },
 }
 

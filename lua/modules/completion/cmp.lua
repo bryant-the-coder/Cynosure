@@ -63,14 +63,25 @@ local kind_icons = {
 -- 	{ "║", "FloatBorder" },
 -- }
 
+-- local border = {
+--     { "╭", "CmpBorder" },
+--     { "─", "CmpBorder" },
+--     { "╮", "CmpBorder" },
+--     { "│", "CmpBorder" },
+--     { "╯", "CmpBorder" },
+--     { "─", "CmpBorder" },
+--     { "╰", "CmpBorder" },
+--     { "│", "CmpBorder" },
+-- }
+
 local border = {
-    { "╭", "CmpBorder" },
+    { "┌", "CmpBorder" },
     { "─", "CmpBorder" },
-    { "╮", "CmpBorder" },
+    { "┐", "CmpBorder" },
     { "│", "CmpBorder" },
-    { "╯", "CmpBorder" },
+    { "┘", "CmpBorder" },
     { "─", "CmpBorder" },
-    { "╰", "CmpBorder" },
+    { "└", "CmpBorder" },
     { "│", "CmpBorder" },
 }
 
