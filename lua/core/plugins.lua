@@ -156,7 +156,7 @@ return require("packer").startup({
             config = function()
                 require("modules.files.nvim-tree")
             end,
-            disable = false,
+            disable = true,
         })
 
         -- Harpoon
