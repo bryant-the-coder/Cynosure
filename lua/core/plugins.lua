@@ -26,15 +26,6 @@ return require("packer").startup({
             "wbthomason/packer.nvim",
         })
 
-        -- Better performance
-        use({
-            "lewis6991/impatient.nvim",
-            disable = false,
-            config = function()
-                require("modules.editor.impatient")
-            end,
-        })
-
         -- Dependencies
         use({
             "nvim-lua/plenary.nvim",
@@ -52,30 +43,91 @@ return require("packer").startup({
             disable = false,
         })
 
-        -- Bufferline
+        -- Copmletion
+        -- CMP
         use({
-            "akinsho/bufferline.nvim",
-            opt = true,
-            setup = function()
-                vim.api.nvim_create_autocmd({ "BufAdd", "TabEnter" }, {
-                    pattern = "*",
-                    group = vim.api.nvim_create_augroup("BufferLineLazyLoading", {}),
-                    callback = function()
-                        local count = #vim.fn.getbufinfo({ buflisted = 1 })
-                        if count >= 2 then
-                            vim.cmd([[PackerLoad bufferline.nvim]])
-                        end
-                    end,
-                })
+            "hrsh7th/nvim-cmp",
+            event = { "InsertEnter", "CmdLineEnter" },
+            after = { "LuaSnip" },
+            disable = false,
+            requires = {
+                {
+                    "saadparwaiz1/cmp_luasnip",
+                    after = { "nvim-cmp" },
+                },
+                { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
+                { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+                { "hrsh7th/cmp-path", after = "nvim-cmp" },
+            },
+            config = function()
+                require("modules.completion.cmp")
             end,
+        })
+
+        -- Snippets
+        use({
+            "L3MON4D3/LuaSnip",
+            event = "InsertEnter",
             disable = false,
             config = function()
-                require("modules.ui.bufferline")
+                require("modules.completion.snippets")
+            end,
+        })
+        use({
+            "bryant-the-coder/friendly-snippets",
+            event = "InsertEnter",
+        })
+
+        -- Autopairs
+        use({
+            "windwp/nvim-autopairs",
+            event = {
+                "InsertEnter",
+                -- for working with cmp
+                "CmdLineEnter",
+            },
+            -- TODO: uncomment this
+            after = "nvim-cmp",
+            opt = true,
+            disable = false,
+            config = function()
+                require("modules.completion.autopairs")
+            end,
+        })
+
+        -- Editor
+        -- Impatient
+        use({
+            "lewis6991/impatient.nvim",
+            disable = false,
+            config = function()
+                require("modules.editor.impatient")
+            end,
+        })
+
+        -- Comment
+        use({
+            "numToStr/Comment.nvim",
+            keys = {
+                "gcc",
+                "gc",
+                "gcb",
+                "gb",
+                "gco",
+                "gcO",
+            },
+            opt = true,
+            requires = {
+                "JoosepAlviste/nvim-ts-context-commentstring",
+                event = "InsertEnter",
+            },
+            disable = false,
+            config = function()
+                require("modules.editor.comment")
             end,
         })
 
         -- Neorg
-        -- Notes taking
         use({
             "nvim-neorg/neorg",
             ft = "norg",
@@ -85,18 +137,17 @@ return require("packer").startup({
                 require("modules.editor.neorg")
             end,
         })
-
         use({
             "max397574/neorg-kanban",
             after = "neorg",
         })
-
         use({
             "nvim-neorg/neorg-telescope",
             after = "neorg",
         })
 
-        -- Explorer menu
+        -- Files
+        -- Nvim-Tree
         use({
             "kyazdani42/nvim-tree.lua",
             opt = true,
@@ -107,6 +158,76 @@ return require("packer").startup({
             end,
             disable = false,
         })
+
+        -- Harpoon
+        use({
+            "bryant-the-coder/harpoon",
+            opt = true,
+            disable = false,
+            config = function()
+                require("modules.files.harpoon")
+            end,
+        })
+
+        -- Telescope
+        use({
+            "nvim-telescope/telescope.nvim",
+            disable = false,
+            module = { "telescope", "modules.files.telescope" },
+            cmd = "Telescope",
+            config = function()
+                require("modules.files.telescope")
+            end,
+        })
+        use({
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+            after = "telescope.nvim",
+        })
+        use({
+            "nvim-telescope/telescope-file-browser.nvim",
+            after = "telescope.nvim",
+        })
+
+        -- Language
+        -- Formatter
+        use({
+            "mhartington/formatter.nvim",
+            cmd = "FormatWrite",
+            setup = function()
+                local group = vim.api.nvim_create_augroup("Formatter", {})
+                vim.api.nvim_create_autocmd("BufWritePost", {
+                    callback = function()
+                        vim.cmd([[FormatWrite]])
+                    end,
+                    group = group,
+                })
+            end,
+            config = function()
+                require("modules.lang.formatter")
+            end,
+        })
+
+        -- Neogen
+        use({
+            "danymat/neogen",
+            -- after = { "LuaSnip" },
+            command = "Neogen",
+            disable = false,
+            config = function()
+                require("modules.lang.neogen")
+            end,
+        })
+
+        -- Null-ls
+        --[[ use({
+            "Jose-elias-alvarez/null-ls.nvim",
+            event = { "BufRead", "InsertEnter" },
+            disable = false,
+            config = function()
+                require("modules.lang.null-ls")
+            end,
+        } )]]
 
         -- Treesitter
         use({
@@ -147,23 +268,6 @@ return require("packer").startup({
             disable = true,
         })
 
-        -- Complete pairs automatically
-        use({
-            "windwp/nvim-autopairs",
-            event = {
-                "InsertEnter",
-                -- for working with cmp
-                "CmdLineEnter",
-            },
-            -- TODO: uncomment this
-            after = "nvim-cmp",
-            opt = true,
-            disable = false,
-            config = function()
-                require("modules.completion.autopairs")
-            end,
-        })
-
         use({
             "nvim-treesitter/playground",
             cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
@@ -177,21 +281,37 @@ return require("packer").startup({
             cmd = { "TSContextEnable", "TSContextDisable", "TSContextToggle" },
         })
 
+        -- Trouble
+        use({
+            "folke/trouble.nvim",
+            cmd = {
+                "Trouble",
+                "TroubleRefresh",
+                "TroubleClose",
+                "TroubleToggle",
+            },
+            opt = true,
+            disable = false,
+            config = function()
+                require("modules.lang.trouble")
+            end,
+        })
+
         -- LSP
-        -- use({
-        --     "williamboman/nvim-lsp-installer",
-        --     disable = false,
-        --     {
-        --         "neovim/nvim-lspconfig",
-        --         module = "lspconfig",
-        --         event = "BufRead",
-        --         disable = false,
-        --         tag = "v0.1.3",
-        --         config = function()
-        --             require("plugins.config.lsp")
-        --         end,
-        --     },
-        -- })
+        --[[ use({
+            "williamboman/nvim-lsp-installer",
+            disable = false,
+            {
+                "neovim/nvim-lspconfig",
+                module = "lspconfig",
+                event = "BufRead",
+                disable = false,
+                tag = "v0.1.3",
+                config = function()
+                    require("plugins.config.lsp")
+                end,
+            },
+        }) ]]
         use({
             "neovim/nvim-lspconfig",
             opt = true,
@@ -243,89 +363,8 @@ return require("packer").startup({
             ft = { "cpp", "c" },
         })
 
-        -- Formatting
-        --[[ use({
-            "Jose-elias-alvarez/null-ls.nvim",
-            event = { "BufRead", "InsertEnter" },
-            disable = false,
-            config = function()
-                require("modules.lang.null-ls")
-            end,
-        } )]]
-
-        use({
-            "mhartington/formatter.nvim",
-            cmd = "FormatWrite",
-            setup = function()
-                local group = vim.api.nvim_create_augroup("Formatter", {})
-                vim.api.nvim_create_autocmd("BufWritePost", {
-                    callback = function()
-                        vim.cmd([[FormatWrite]])
-                    end,
-                    group = group,
-                })
-            end,
-            config = function()
-                require("modules.lang.formatter")
-            end,
-        })
-
-        -- Completion
-        use({
-            "hrsh7th/nvim-cmp",
-            event = { "InsertEnter", "CmdLineEnter" },
-            after = { "LuaSnip" },
-            disable = false,
-            requires = {
-                {
-                    "saadparwaiz1/cmp_luasnip",
-                    after = { "nvim-cmp" },
-                },
-                { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-                { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-                { "hrsh7th/cmp-path", after = "nvim-cmp" },
-            },
-            config = function()
-                require("modules.completion.cmp")
-            end,
-        })
-
-        -- Snippet
-        use({
-            "L3MON4D3/LuaSnip",
-            event = "InsertEnter",
-            disable = false,
-            config = function()
-                require("modules.completion.snippets")
-            end,
-        })
-        use({
-            "bryant-the-coder/friendly-snippets",
-            event = "InsertEnter",
-        })
-
-        -- Telescope
-        -- Fuzzy-finder
-        use({
-            "nvim-telescope/telescope.nvim",
-            disable = false,
-            module = { "telescope", "modules.files.telescope" },
-            cmd = "Telescope",
-            config = function()
-                require("modules.files.telescope")
-            end,
-        })
-        use({
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-            after = "telescope.nvim",
-        })
-        use({
-            "nvim-telescope/telescope-file-browser.nvim",
-            after = "telescope.nvim",
-        })
-
-        -- Colorizer
+        -- Tools
+        -- Colors the word
         use({
             "norcalli/nvim-colorizer.lua",
             disable = false,
@@ -335,6 +374,7 @@ return require("packer").startup({
                 require("modules.tools.colorizer")
             end,
         })
+        -- Change colors live in a window
         use({
             "max397574/colortils.nvim",
             cmd = "Colortils",
@@ -343,36 +383,13 @@ return require("packer").startup({
             end,
         })
 
-        -- Indentation
+        -- Show lsp progress when you enter a file
         use({
-            "lukas-reineke/indent-blankline.nvim",
-            event = "InsertEnter",
+            "j-hui/fidget.nvim",
             disable = false,
-            opt = true,
+            module = "lspconfig",
             config = function()
-                require("modules.ui.indent")
-            end,
-        })
-
-        -- Comment
-        use({
-            "numToStr/Comment.nvim",
-            keys = {
-                "gcc",
-                "gc",
-                "gcb",
-                "gb",
-                "gco",
-                "gcO",
-            },
-            opt = true,
-            requires = {
-                "JoosepAlviste/nvim-ts-context-commentstring",
-                event = "InsertEnter",
-            },
-            disable = false,
-            config = function()
-                require("modules.editor.comment")
+                require("modules.tools.fidget")
             end,
         })
 
@@ -385,43 +402,6 @@ return require("packer").startup({
                 require("modules.tools.toggleterm")
             end,
             disable = false,
-        })
-
-        -- Harpoon
-        use({
-            "bryant-the-coder/harpoon",
-            opt = true,
-            disable = false,
-            config = function()
-                require("modules.files.harpoon")
-            end,
-        })
-
-        -- Finding errors easily
-        use({
-            "folke/trouble.nvim",
-            cmd = {
-                "Trouble",
-                "TroubleRefresh",
-                "TroubleClose",
-                "TroubleToggle",
-            },
-            opt = true,
-            disable = false,
-            config = function()
-                require("modules.lang.trouble")
-            end,
-        })
-
-        -- Neogen
-        use({
-            "danymat/neogen",
-            -- after = { "LuaSnip" },
-            command = "Neogen",
-            disable = false,
-            config = function()
-                require("modules.lang.neogen")
-            end,
         })
 
         -- Git intergrations
@@ -449,6 +429,40 @@ return require("packer").startup({
             disable = false,
         })
 
+        -- UI
+        -- Bufferline
+        use({
+            "akinsho/bufferline.nvim",
+            opt = true,
+            setup = function()
+                vim.api.nvim_create_autocmd({ "BufAdd", "TabEnter" }, {
+                    pattern = "*",
+                    group = vim.api.nvim_create_augroup("BufferLineLazyLoading", {}),
+                    callback = function()
+                        local count = #vim.fn.getbufinfo({ buflisted = 1 })
+                        if count >= 2 then
+                            vim.cmd([[PackerLoad bufferline.nvim]])
+                        end
+                    end,
+                })
+            end,
+            disable = false,
+            config = function()
+                require("modules.ui.bufferline")
+            end,
+        })
+
+        -- Indentation
+        use({
+            "lukas-reineke/indent-blankline.nvim",
+            event = "InsertEnter",
+            disable = false,
+            opt = true,
+            config = function()
+                require("modules.ui.indent")
+            end,
+        })
+
         -- Notifications
         use({
             "rcarriga/nvim-notify",
@@ -457,15 +471,6 @@ return require("packer").startup({
             disable = false,
             config = function()
                 require("modules.ui.notify")
-            end,
-        })
-
-        use({
-            "j-hui/fidget.nvim",
-            disable = false,
-            module = "lspconfig",
-            config = function()
-                require("modules.tools.fidget")
             end,
         })
 
