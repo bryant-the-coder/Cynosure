@@ -1,6 +1,8 @@
 # Cynosure
 New config for neovim after [NvHack](https://github.com/bryant-the-coder/NvHack)
 
+![image](https://user-images.githubusercontent.com/92417638/172029944-724c7e33-242d-4837-bd3f-1eb90e12cf31.png)
+
 ### Core
 I have a `core` folder in which files for things like autocommands, setting, plugins or utils are.
 
