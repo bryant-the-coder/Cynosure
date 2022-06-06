@@ -82,6 +82,22 @@ cmd({ "VimEnter" }, {
         require("custom.dashboard").display()
     end,
 })
+
+-- If filetype is dashboard then do not show statusline
+cmd("FileType", {
+    pattern = "dashboard",
+    callback = function()
+        vim.opt.laststatus = 0
+    end,
+})
+
+-- Other filetype, show statusline
+cmd("BufUnload", {
+    buffer = 0,
+    callback = function()
+        vim.opt.laststatus = 3
+    end,
+})
 -- }}}
 
 -- Nofity when file changes {{{
