@@ -150,5 +150,3 @@ cmd({ "VimEnter", "DirChanged" }, {
     end,
 })
 -- }}}
-
-create_command("Sync", ":PackerSync", { desc = "PackerSync" })
