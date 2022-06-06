@@ -60,9 +60,9 @@ o.smartcase = true -- Don't ignore when uppercase search
 
 -- Statusline
 o.laststatus = 3
-if utils.has_version("0.8") then
+--[[ if utils.has_version("0.8") then
     o.winbar = "%{%v:lua.require'custom.winbar'.eval()%}"
-end
+end ]]
 o.statusline = "%!v:lua.require'custom.statusline'.run()"
 
 -- Conceal
