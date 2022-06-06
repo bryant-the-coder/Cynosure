@@ -211,8 +211,7 @@ return require("packer").startup({
         -- Neogen
         use({
             "danymat/neogen",
-            -- after = { "LuaSnip" },
-            command = "Neogen",
+            event = "CursorMoved",
             disable = false,
             config = function()
                 require("modules.lang.neogen")
