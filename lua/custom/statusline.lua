@@ -1,8 +1,8 @@
 local fn = vim.fn
 local api = vim.api
+local fmt = string.format
 local space = " "
 
---Modes {{{
 local modes = {
     ["n"] = "NORMAL",
     ["no"] = "NORMAL",
@@ -25,6 +25,8 @@ local modes = {
     ["!"] = "SHELL",
     ["t"] = "TERMINAL",
 }
+
+local M = {}
 
 -- Making the modes name UPPERCASE
 local function mode()
@@ -53,104 +55,42 @@ local function update_mode_colors()
     end
     return mode_color
 end
---}}}
 
--- Git Branch {{{
---- Using gitsigns for git
----@return string
-local vcs = function()
+-- Filename
+local function file()
+    local icon = ""
+    local filename = fn.fnamemodify(fn.expand("%:t"), ":r")
+    local extension = fn.expand("%:e")
+
+    if filename == "" then
+        icon = icon .. "  Empty "
+    else
+        filename = " " .. filename .. " "
+    end
+
+    local ft_icon = require("nvim-web-devicons").get_icon(filename, extension)
+    icon = (ft_icon ~= nil and " " .. ft_icon) or icon
+
+    return icon .. filename
+end
+
+-- Nvim-gps
+local function gps()
+    local gps_present, gps = pcall(require, "nvim-gps")
+    return gps_present and gps.is_available() and gps.get_location() or ""
+end
+
+-- Git
+local git = function()
     local git_info = vim.b.gitsigns_status_dict
     if not git_info or git_info.head == "" then
         return ""
     end
-    return table.concat({
-        "%#Branch#  ",
-        git_info.head,
-        " ",
-    })
-end
--- }}}
 
--- Coordinates {{{
-local function coords()
-    return "  %4(%l%):%2c"
-end
--- }}}
-
--- File {{{
---- Shorten filename
----@return string filename
-local function get_name()
-    local filename = fn.expand("%:t")
-    if filename == "" then
-        return ""
-    end
-    return " " .. filename .. " "
+    return "%#Branch#  " .. git_info.head .. " "
 end
 
---- Readonly icon
----@return string readonly
-local function get_readonly()
-    if vim.bo.readonly then
-        return "[RO]"
-    end
-    return ""
-end
-
---- Edited file icon
----@return string save / written
-local function get_modified()
-    if vim.bo.modified then
-        return "[+]"
-    end
-    if not vim.bo.modifiable then
-        return "[-]"
-    end
-    return ""
-end
-
-local function filename()
-    local name = get_name()
-    -- local flags = table.concat({ get_readonly(), get_modified() })
-    -- if flags ~= "" then
-    --     flags = " " .. flags
-    -- end
-    -- return table.concat({ name, flags })
-    return table.concat({ name })
-end
--- }}}
-
--- FIletype {{{
-local function get_filetype()
-    local file_name, file_ext = fn.expand("%:t"), fn.expand("%:e")
-    local icon = require("nvim-web-devicons").get_icon(file_name, file_ext, { default = true })
-    local filetype = vim.bo.filetype
-
-    if filetype == "" then
-        return ""
-    end
-    return string.format(" %s %s ", icon, filetype):lower()
-end
----}}}
-
--- Word counter {{{
-local function word_counter()
-    local wc = vim.api.nvim_eval("wordcount()")
-    if wc["visual_words"] then
-        return wc["visual_words"]
-    else
-        return wc["words"]
-    end
-end
--- }}}
-
--- LSP {{{
-local fmt = string.format
-
---- Getting diagnostic
----@param prefix string Which is W as in warning
----@param severity number
----@return string W:1
+-- LSP
 local function get_diagnostic(prefix, severity)
     local count
     if vim.fn.has("nvim-0.6") == 0 then
@@ -173,51 +113,37 @@ end
 local function get_warning()
     return get_diagnostic("W", "Warning")
 end
--- local function get_info()
--- 	return get_diagnostic("I", "Info")
--- end
--- local function get_hint()
--- 	return get_diagnostic("H", "Hint")
--- end
--- }}}
 
--- Progress bar {{{
---- Return a bar as a progress in the file
----@return string sbar
-local function progress_bar()
-    local sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇" }
-    local curr_line = vim.api.nvim_win_get_cursor(0)[1]
-    local lines = vim.api.nvim_buf_line_count(0)
-    local i = math.floor(curr_line / lines * (#sbar - 1)) + 1
-    return sbar[i]
-end
--- }}}
-
--- Clock {{{
---- Creating a working clock
----@return string + icon
+-- Clock
 local function clock()
     return " 什 " .. os.date("%H:%M ")
 end
---}}}
 
--- Main {{{
-Statusline = {}
+-- Treesitter status
+local function ts_status()
+    local ts = vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()]
+    -- If ts is available, return ""
+    -- If ts isnt available, return "滑 unavailable"
+    return (ts and next(ts)) and "" or " 滑 unavailable "
+end
 
-Statusline.active = function()
+M.run = function()
     return table.concat({
         "%#Statusline#",
         update_mode_colors(), -- Update mode colors
         mode(), -- Show mode
         "%#Normal#",
-        vcs(),
+        git(),
         "%#Statusline#",
+        ts_status(),
+
         "%=",
+        -- gps(),
         "%#Filename#",
-        filename(), -- Show filename
+        file(), -- Show filename
         "%#Statusline#",
         "%=",
-        -- word_counter(),
+
         space,
         "%#Error#",
         get_error(),
@@ -228,38 +154,4 @@ Statusline.active = function()
     })
 end
 
-function Statusline.inactive()
-    return table.concat({
-        "%#StatusInactive#",
-        "%=",
-        filename(),
-
-        "%=",
-    })
-end
-
---- NvimTree text
----@return string NvimTree
-function Statusline.short()
-    return "%#StatusLineNC#   NvimTree"
-end
-
-function Statusline.none()
-    return "%#StatusLineNC# "
-end
--- }}}
-
--- Setting autocmd
-api.nvim_exec(
-    [[
-  augroup Statusline
-  au!
-  au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline.active()
-  au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline.inactive()
-  au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline.short()
-  au WinEnter,BufEnter,FileType Dashboard setlocal statusline=%!v:lua.Statusline.none()
-  au WinEnter,BufEnter,FileType TelescopePrompt setlocal statusline=%!v:lua.Statusline.none()
-  augroup END
-]],
-    false
-)
+return M

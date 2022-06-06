@@ -63,6 +63,7 @@ o.laststatus = 3
 if utils.has_version("0.8") then
     o.winbar = "%{%v:lua.require'custom.winbar'.eval()%}"
 end
+o.statusline = "%!v:lua.require'custom.statusline'.run()"
 
 -- Conceal
 o.conceallevel = 2
