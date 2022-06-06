@@ -29,6 +29,7 @@ return require("packer").startup({
         -- Dependencies
         use({
             "nvim-lua/plenary.nvim",
+            module = "plenary",
             disable = false,
         })
         use({
