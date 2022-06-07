@@ -1,40 +1,40 @@
 ---@diagnostic disable: undefined-global
 return {
     s("h1", {
-        t { "* " },
+        t({ "* " }),
         i(1),
     }),
     s("h2", {
-        t { "** " },
+        t({ "** " }),
         i(1),
     }),
     s("h3", {
-        t { "*** " },
+        t({ "*** " }),
         i(1),
     }),
     s("h4", {
-        t { "**** " },
+        t({ "**** " }),
         i(1),
     }),
     s("h5", {
-        t { "***** " },
+        t({ "***** " }),
         i(1),
     }),
     s({ trig = "ses" }, {
-        t { "Session " },
+        t({ "Session " }),
         i(1),
         f(function()
-            local input = vim.fn.input " Enter time in HH:MM or MM format: "
+            local input = vim.fn.input(" Enter time in HH:MM or MM format: ")
             local plus_hour, plus_min
-            if input:find ":" == nil then
+            if input:find(":") == nil then
                 plus_hour = 00
                 plus_min = input
             else
-                plus_hour, plus_min = input:match "(%d+):(%d+)"
+                plus_hour, plus_min = input:match("(%d+):(%d+)")
             end
 
             -- Getting system time
-            local t = os.date "%H:%M"
+            local t = os.date("%H:%M")
             local h = tonumber(string.sub(t, 1, 2))
             local m = tonumber(string.sub(t, 4, 5))
 
@@ -63,7 +63,7 @@ return {
             local session_time = h .. ":" .. m
 
             local twentry_four_to_twelve_hour = function(t)
-                local hour, min = t:match "(%d+):(%d+)"
+                local hour, min = t:match("(%d+):(%d+)")
                 if tonumber(hour) > 12 then
                     hour = tonumber(hour) - 12
                     return hour .. ":" .. min .. " PM"
@@ -77,19 +77,19 @@ return {
 
             return " [" .. added_time .. "]" .. "(" .. current_12_hour .. " -> " .. session_12_hour .. ")"
         end, {}),
-        t { "{" },
+        t({ "{" }),
         i(2, "topic"),
-        t { "}" },
+        t({ "}" }),
     }),
     s({ trig = "sF", docstring = "sF" }, {
-        t "** Session ",
+        t("** Session "),
         i(1, "1 "),
         f(function()
             result = {}
-            result.start_hour = os.date "%I" -- defining start hour
-            result.start_min = os.date "%M" -- defining start min
+            result.start_hour = os.date("%I") -- defining start hour
+            result.start_min = os.date("%M") -- defining start min
             result.status = function()
-                return os.date "%p" -- finding wheter pm or am
+                return os.date("%p") -- finding wheter pm or am
             end
             result.format = function(ses)
                 local hour = tonumber(result.end_hour)
@@ -104,14 +104,14 @@ return {
                     result.end_hour = 1 + hour
                 end
                 if tonumber(result.end_min) < 10 then
-                    print "hello"
+                    print("hello")
                     result.end_min = "0" .. result.end_min
                 end
                 print(result.end_min)
                 return "{" .. ses .. " H}" .. " [ " .. result.start_time() .. " -> " .. result.end_time() .. " ]"
             end
             result.adder = function()
-                local time = vim.fn.input "Enter session time (H:M) = "
+                local time = vim.fn.input("Enter session time (H:M) = ")
                 local hour = string.sub(time, 1, 1)
                 local min = string.sub(time, 3, 4)
                 result.end_hour = tonumber(result.start_hour) + tonumber(hour)
@@ -127,7 +127,7 @@ return {
             end
             return " " .. result.adder()
         end),
-        t { "", "  > " },
+        t({ "", "  > " }),
         i(0),
     }),
 }
