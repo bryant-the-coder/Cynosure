@@ -26,7 +26,9 @@ return require("packer").startup({
             "wbthomason/packer.nvim",
         })
 
-        -- Dependencies
+        -----------------------------------
+        --          Dependencies         --
+        -----------------------------------
         use({
             "nvim-lua/plenary.nvim",
             module = "plenary",
@@ -44,7 +46,9 @@ return require("packer").startup({
             disable = false,
         })
 
-        -- Copmletion
+        -----------------------------------
+        --           Completion          --
+        -----------------------------------
         -- CMP
         use({
             "hrsh7th/nvim-cmp",
@@ -96,7 +100,9 @@ return require("packer").startup({
             end,
         })
 
-        -- Editor
+        -----------------------------------
+        --             Editor            --
+        -----------------------------------
         -- Impatient
         use({
             "lewis6991/impatient.nvim",
@@ -147,7 +153,9 @@ return require("packer").startup({
             after = "neorg",
         })
 
-        -- Files
+        -----------------------------------
+        --              Files            --
+        -----------------------------------
         -- Nvim-Tree
         use({
             "kyazdani42/nvim-tree.lua",
@@ -190,7 +198,9 @@ return require("packer").startup({
             after = "telescope.nvim",
         })
 
-        -- Language
+        -----------------------------------
+        --            Language           --
+        -----------------------------------
         -- Formatter
         use({
             "mhartington/formatter.nvim",
@@ -363,7 +373,9 @@ return require("packer").startup({
             ft = { "cpp", "c" },
         })
 
-        -- Tools
+        -----------------------------------
+        --             Tools             --
+        -----------------------------------
         -- Colors the word
         use({
             "norcalli/nvim-colorizer.lua",
@@ -429,7 +441,9 @@ return require("packer").startup({
             disable = false,
         })
 
-        -- UI
+        -----------------------------------
+        --               UI              --
+        -----------------------------------
         -- Bufferline
         use({
             "akinsho/bufferline.nvim",
