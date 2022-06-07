@@ -77,8 +77,11 @@ hl(0, "StatusVisual", { fg = "#181a1f", bg = "#C678DD" })
 hl(0, "StatusTerminal", { fg = "#181a1f", bg = "#E06C75" })
 hl(0, "Filename", { fg = "#a9b1d6" })
 hl(0, "Branch", { fg = "#181a1f", bg = "#ff69b4" })
+hl(0, "GitInfo", { fg = "#8b919c", bg = "NONE" })
 hl(0, "Error", { fg = "#181a1f", bg = "#EE6D85", bold = true })
 hl(0, "Warning", { fg = "#181a1f", bg = "#D7A65F", bold = true })
+hl(0, "Hint", { fg = "#181a1f", bg = purple, bold = true })
+hl(0, "Info", { fg = "#181a1f", bg = green, bold = true })
 hl(0, "Clock", { fg = "#181a1f", bg = "#41a6b5" })
 
 if ui.italic then
@@ -157,7 +160,7 @@ fg("DiagnosticHint", purple)
 fg("DiagnosticError", red)
 fg("DiagnosticWarn", yellow)
 fg("DiagnosticInformation", green)
-fg_bg("RenamerTitle", black, yellow, { bold = true, italic = true })
+fg_bg("RenamerTitle", black, yellow, { bold = true })
 fg("RenamerBorder", yellow)
 
 -- Pmenu
