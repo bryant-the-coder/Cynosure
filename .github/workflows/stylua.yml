@@ -13,5 +13,5 @@ jobs:
           args: .
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "chore: autoformat with stylua"
           branch: ${{ github.head_ref }}
+          commit_message: "chore: autoformat with stylua"
