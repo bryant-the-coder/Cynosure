@@ -105,7 +105,7 @@ function M.display()
     vim.api.nvim_buf_set_option(0, "bufhidden", "wipe")
     vim.api.nvim_buf_set_option(0, "buftype", "nofile")
 
-    local time = os.date("*t")
+    local time = os.date "*t"
     -- If the time is 5am / less than or equals to 11 then morning
     if time.hour == 5 or time.hour <= 11 then
         vim.api.nvim_put(center(morning), "l", true, true)
@@ -123,11 +123,11 @@ function M.display()
 
     vim.api.nvim_put(center(quotes), "l", true, true)
 
-    vim.cmd([[1]])
+    vim.cmd [[1]]
     -- DONT EVER USE AUTOCHDIR! USE IT AT YOUR OWN RISK!
     -- autochdir = auto change directory
     -- [[silent! setlocal nonu nornu autochdir ft=dashboard nocul laststatus=0 nowrap]]
-    vim.cmd([[silent! setlocal nonu nornu ft=dashboard nocul nowrap]])
+    vim.cmd [[silent! setlocal nonu nornu ft=dashboard nocul nowrap]]
 
     vim.api.nvim_set_hl(0, "Red", { fg = default.colors.green })
     vim.api.nvim_set_hl(0, "Orange", { fg = default.colors.orange, italic = true, bold = true })

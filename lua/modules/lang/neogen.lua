@@ -3,7 +3,7 @@ if not present then
     return
 end
 
-neogen.setup({
+neogen.setup {
     snippet_engine = "luasnip",
     enabled = true,
-})
+}

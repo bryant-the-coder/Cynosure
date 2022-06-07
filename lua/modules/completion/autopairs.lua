@@ -3,18 +3,18 @@ if not status_ok then
     return
 end
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp = require("cmp")
-local Rule = require("nvim-autopairs.rule")
-local cond = require("nvim-autopairs.conds")
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+local cmp = require "cmp"
+local Rule = require "nvim-autopairs.rule"
+local cond = require "nvim-autopairs.conds"
 
-npairs.setup({
+npairs.setup {
     check_ts = true,
     -- enable_check_bracket_line = true,
-})
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+}
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
 
-npairs.add_rules({
+npairs.add_rules {
     -- Alternative version of add space in parentheses
     --[[ Rule(" ", " ")
         :with_pair(function(opts)
@@ -86,4 +86,4 @@ npairs.add_rules({
     -- 	:set_end_pair_length(0)
     -- 	:with_move(cond.none())
     -- 	:with_del(cond.none()),
-})
+}

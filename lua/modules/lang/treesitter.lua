@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-local incremental_selection = require("nvim-treesitter.incremental_selection")
+local incremental_selection = require "nvim-treesitter.incremental_selection"
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
 local langs = {
@@ -17,7 +17,7 @@ local langs = {
     "html",
     "javascript",
     "scss",
-    "query"
+    "query",
 }
 
 parser_configs.norg_meta = {
@@ -36,7 +36,7 @@ parser_configs.norg_table = {
     },
 }
 require("nvim-treesitter.install").compilers = { "clang", "gcc" }
-treesitter.setup({
+treesitter.setup {
     ensure_installed = langs,
     sync_install = false,
     incremental_selection = {
@@ -74,20 +74,20 @@ treesitter.setup({
         use_virtual_text = true,
         lint_events = { "BufWrite", "CursorHold" },
     },
-})
+}
 
-require("treesitter-context").setup({
+require("treesitter-context").setup {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     throttle = true, -- Throttles plugin updates (may improve performance)
     max_lines = 4, -- How many lines the window should span. Values <= 0 mean no limit.
-})
+}
 
 local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
     return
 end
 
-local incremental_selection = require("nvim-treesitter.incremental_selection")
+local incremental_selection = require "nvim-treesitter.incremental_selection"
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 
 local langs = {
@@ -119,7 +119,7 @@ parser_configs.norg_table = {
     },
 }
 require("nvim-treesitter.install").compilers = { "clang", "gcc" }
-treesitter.setup({
+treesitter.setup {
     ensure_installed = langs,
     sync_install = false,
     incremental_selection = {
@@ -183,11 +183,11 @@ treesitter.setup({
             },
         },
     },
-})
+}
 
-require("treesitter-context").setup({
+require("treesitter-context").setup {
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     throttle = true, -- Throttles plugin updates (may improve performance)
     max_lines = 4, -- How many lines the window should span. Values <= 0 mean no limit.
     line_numbers = true,
-})
+}

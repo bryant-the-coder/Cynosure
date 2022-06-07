@@ -59,8 +59,8 @@ end
 -- Filename
 local function file()
     local icon = ""
-    local filename = fn.fnamemodify(fn.expand("%:t"), ":r")
-    local extension = fn.expand("%:e")
+    local filename = fn.fnamemodify(fn.expand "%:t", ":r")
+    local extension = fn.expand "%:e"
 
     if filename == "" then
         icon = icon .. "  Empty "
@@ -114,7 +114,7 @@ end
 -- LSP
 local function get_diagnostic(prefix, severity)
     local count
-    if vim.fn.has("nvim-0.6") == 0 then
+    if vim.fn.has "nvim-0.6" == 0 then
         count = vim.lsp.diagnostic.get_count(0, severity)
     else
         local severities = {
@@ -143,7 +143,7 @@ end
 
 -- Clock
 local function clock()
-    return "%#Clock#" .. " 什 " .. os.date("%H:%M ")
+    return "%#Clock#" .. " 什 " .. os.date "%H:%M "
 end
 
 -- Treesitter status
@@ -155,7 +155,7 @@ local function ts_status()
 end
 
 M.run = function()
-    return table.concat({
+    return table.concat {
         "%#Statusline#",
         update_mode_colors(), -- Update mode colors
         mode(), -- Show mode
@@ -176,7 +176,7 @@ M.run = function()
         --[[ get_hint(),
         get_info(), ]]
         clock(),
-    })
+    }
 end
 
 return M

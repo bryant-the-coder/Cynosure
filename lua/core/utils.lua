@@ -44,9 +44,9 @@ end
 --- Go to url
 ---@param cmd thread https://github.com
 M.url = function(cmd)
-    local url = vim.api.nvim_get_current_line():match([[%[.*]%((.*)%)]]) -- To work on md links
+    local url = vim.api.nvim_get_current_line():match [[%[.*]%((.*)%)]] -- To work on md links
     if url == nil then
-        url = vim.fn.expand("<cWORD>")
+        url = vim.fn.expand "<cWORD>"
         if not string.match(url, "http") then
             url = "https://github.com/" .. url
         end
@@ -63,7 +63,7 @@ end
 --- Swap between booleans with ease
 M.swap_boolean = function()
     local c = vim.api.nvim_get_current_line()
-    local subs = c:match("true") and c:gsub("true", "false") or c:gsub("false", "true")
+    local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
     vim.api.nvim_set_current_line(subs)
 end
 
@@ -115,7 +115,7 @@ M.rename = function()
     }
 
     local function post(rename_old)
-        vim.cmd("stopinsert!")
+        vim.cmd "stopinsert!"
         local rename_new = vim.api.nvim_get_current_line()
         vim.schedule(function()
             vim.api.nvim_win_close(0, true)
@@ -125,7 +125,7 @@ M.rename = function()
         vim.notify(rename_old .. "  " .. rename_new, "warn", { title = "Variable Rename", icon = "ﰇ" })
     end
 
-    local rename_old = vim.fn.expand("<cword>")
+    local rename_old = vim.fn.expand "<cword>"
     local created_buffer = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_open_win(created_buffer, true, {
         relative = "cursor",
@@ -136,11 +136,11 @@ M.rename = function()
         width = 30,
         height = 1,
     })
-    vim.cmd("startinsert")
+    vim.cmd "startinsert"
 
     vim.keymap.set("i", "<ESC>", function()
-        vim.cmd("q")
-        vim.cmd("stopinsert")
+        vim.cmd "q"
+        vim.cmd "stopinsert"
     end, { buffer = created_buffer })
 
     vim.keymap.set("i", "<CR>", function()
@@ -150,27 +150,27 @@ end
 
 M.l_motion = function()
     local cursorPosition = vim.api.nvim_win_get_cursor(0)
-    vim.cmd("normal ^")
+    vim.cmd "normal ^"
     local firstChar = vim.api.nvim_win_get_cursor(0)
 
     if cursorPosition[2] < firstChar[2] then
-        vim.cmd("normal ^")
+        vim.cmd "normal ^"
     else
         vim.api.nvim_win_set_cursor(0, cursorPosition)
-        vim.cmd("normal! l")
+        vim.cmd "normal! l"
     end
 end
 
 M.h_motion = function()
     local cursorPosition = vim.api.nvim_win_get_cursor(0)
-    vim.cmd("normal ^")
+    vim.cmd "normal ^"
     local firstChar = vim.api.nvim_win_get_cursor(0)
 
     if cursorPosition[2] <= firstChar[2] then
-        vim.cmd("normal 0")
+        vim.cmd "normal 0"
     else
         vim.api.nvim_win_set_cursor(0, cursorPosition)
-        vim.cmd("normal! h")
+        vim.cmd "normal! h"
     end
 end
 
@@ -191,7 +191,7 @@ end
 M.insert_comma = function()
     local cursor = vim.api.nvim_win_get_cursor(0)
     -- append ,
-    vim.cmd([[normal A,]])
+    vim.cmd [[normal A,]]
     -- restore cursor position
     vim.api.nvim_win_set_cursor(0, cursor)
 end
@@ -201,7 +201,7 @@ M.insert_semicolon = function()
     -- save cursor position
     local cursor = vim.api.nvim_win_get_cursor(0)
     -- append ,
-    vim.cmd([[normal A;]])
+    vim.cmd [[normal A;]]
     -- restore cursor position
     vim.api.nvim_win_set_cursor(0, cursor)
 end
@@ -214,7 +214,7 @@ M.has_version = function(version)
 end
 
 M.open = function()
-    local currName = vim.fn.expand("<cword>") .. " "
+    local currName = vim.fn.expand "<cword>" .. " "
 
     local win = require("plenary.popup").create("  ", {
         title = currName,
@@ -232,8 +232,8 @@ M.open = function()
 
     local map_opts = { noremap = true, silent = true }
 
-    vim.cmd("normal w")
-    vim.cmd("startinsert")
+    vim.cmd "normal w"
+    vim.cmd "startinsert"
 
     vim.api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
     vim.api.nvim_buf_set_keymap(0, "n", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
@@ -256,7 +256,7 @@ M.open = function()
 end
 
 M.apply = function(curr, win)
-    local newName = vim.trim(vim.fn.getline("."))
+    local newName = vim.trim(vim.fn.getline ".")
     vim.api.nvim_win_close(win, true)
 
     if #newName > 0 and newName ~= curr then

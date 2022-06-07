@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 local relative = "editor"
-fidget.setup({
+fidget.setup {
     text = {
         spinner = "moon",
         -- spinner = {
@@ -81,4 +81,4 @@ fidget.setup({
         logging = false,
         strict = false,
     },
-})
+}
