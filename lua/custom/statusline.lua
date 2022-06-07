@@ -77,7 +77,7 @@ local function file()
     local ft_icon = devicons.get_icon(filename, extension)
     icon = (ft_icon ~= nil and " " .. ft_icon) or icon
 
-    return icon .. filename
+    return "%#Filename#" .. icon .. filename
 end
 
 -- Nvim-gps
@@ -93,7 +93,22 @@ local git = function()
         return ""
     end
 
-    return "%#Branch#  " .. git_info.head .. " "
+    return "%#Branch#  " .. git_info.head .. " " .. "%#Statusline#"
+end
+
+local git_info = function()
+    if not vim.b.gitsigns_head or vim.b.gitsigns_git_status then
+        return ""
+    end
+
+    local git_status = vim.b.gitsigns_status_dict
+
+    local added = (git_status.added and git_status.added ~= 0) and (" + " .. git_status.added) or ""
+    local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
+    local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
+    local git_info = added .. changed .. removed
+
+    return "%#GitInfo#" .. git_info .. "%#Statusline#"
 end
 
 -- LSP
@@ -114,15 +129,21 @@ local function get_diagnostic(prefix, severity)
 end
 
 local function get_error()
-    return get_diagnostic("X", "Error")
+    return "%#Error#" .. get_diagnostic("E", "Error")
 end
 local function get_warning()
-    return get_diagnostic("W", "Warning")
+    return "%#Warning#" .. get_diagnostic("W", "Warning")
+end
+local function get_hint()
+    return "%#Hint#" .. get_diagnostic("H", "Hint")
+end
+local function get_info()
+    return "%#Info#" .. get_diagnostic("I", "Info")
 end
 
 -- Clock
 local function clock()
-    return " 什 " .. os.date("%H:%M ")
+    return "%#Clock#" .. " 什 " .. os.date("%H:%M ")
 end
 
 -- Treesitter status
@@ -140,22 +161,20 @@ M.run = function()
         mode(), -- Show mode
         "%#Normal#",
         git(),
-        "%#Statusline#",
+        git_info(),
+        -- "%#Statusline#",
         ts_status(),
 
         "%=",
         -- gps(),
-        "%#Filename#",
         file(), -- Show filename
-        "%#Statusline#",
         "%=",
 
         space,
-        "%#Error#",
         get_error(),
-        "%#Warning#",
         get_warning(),
-        "%#Clock#",
+        --[[ get_hint(),
+        get_info(), ]]
         clock(),
     })
 end
