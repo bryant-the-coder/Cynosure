@@ -17,6 +17,7 @@ local langs = {
     "html",
     "javascript",
     "scss",
+    "query"
 }
 
 parser_configs.norg_meta = {
