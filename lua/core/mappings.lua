@@ -176,7 +176,7 @@ map("n", "<leader>pp", "<cmd>PackerStatus<CR>")
 
 -- LSP
 map("n", "<leader>lr", function()
-    vim.lsp.buf.rename.float()
+    require("core.utils").open()
 end)
 map("n", "<leader>ld", vim.lsp.buf.definition)
 map("n", "<leader>lt", vim.lsp.buf.type_definition)
