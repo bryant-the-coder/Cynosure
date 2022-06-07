@@ -47,7 +47,7 @@ end
 --     current_line_blame_formatter = "<author> | <author_time:%m-%d-%Y | %X> | <summary>",
 -- })
 
-gitsigns.setup({
+gitsigns.setup {
     debug_mode = true,
     max_file_length = 1000000000,
     signs = {
@@ -97,7 +97,7 @@ gitsigns.setup({
     update_debounce = 0,
     word_diff = false,
     diff_opts = { internal = true },
-})
+}
 
 -- vim.cmd([[
 --     highlight GitSignsAdd guifg=#9ece6a

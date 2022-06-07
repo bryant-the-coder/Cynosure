@@ -3,10 +3,10 @@ if not status_ok then
     return
 end
 
-require("packer").loader("lua-dev.nvim")
+require("packer").loader "lua-dev.nvim"
 
-require("modules.lsp.installer")
-require("modules.lsp.config")
+require "modules.lsp.installer"
+require "modules.lsp.config"
 local function lsp_highlight_document(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
         vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
@@ -77,8 +77,8 @@ local sumneko = {
             },
             workspace = {
                 library = {
-                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                    [vim.fn.stdpath("config") .. "/lua"] = true,
+                    [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+                    [vim.fn.stdpath "config" .. "/lua"] = true,
                 },
             },
         },
@@ -86,14 +86,14 @@ local sumneko = {
 }
 local use_lua_dev = false
 if use_lua_dev then
-    local luadev = require("lua-dev").setup({
+    local luadev = require("lua-dev").setup {
         library = {
             vimruntime = true,
             types = true,
             plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         },
         lspconfig = sumneko,
-    })
+    }
 
     lspconfig.sumneko_lua.setup(luadev)
 else
@@ -101,16 +101,16 @@ else
 end
 
 -- JSON
-lspconfig.jsonls.setup({
+lspconfig.jsonls.setup {
     on_attach = on_attach,
-})
+}
 
 -- Clangd
-local clangd_defaults = require("lspconfig.server_configurations.clangd")
+local clangd_defaults = require "lspconfig.server_configurations.clangd"
 local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {
     on_attach = on_attach,
 })
-require("clangd_extensions").setup({
+require("clangd_extensions").setup {
     server = clangd_configs,
     extensions = {
         autoSetHints = true,
@@ -157,7 +157,7 @@ require("clangd_extensions").setup({
             },
         },
     },
-})
+}
 
 -- Pyright
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup {}

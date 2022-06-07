@@ -60,7 +60,7 @@ cmd("TextYankPost", {
     desc = "Highlight while yanking",
     group = "_buffer",
     callback = function()
-        vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
+        vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
     end,
 })
 -- }}}
@@ -141,8 +141,8 @@ cmd({ "VimEnter", "DirChanged" }, {
     group = "git_repo_check",
     callback = function()
         local is_git = vim.api.nvim_exec("!git rev-parse --is-inside-work-tree", true)
-        if is_git:match("true") then
-            vim.cmd("doautocmd User IsGit")
+        if is_git:match "true" then
+            vim.cmd "doautocmd User IsGit"
             return true
         else
             return false
