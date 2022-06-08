@@ -1,4 +1,4 @@
-local notify = require "notify"
+local notify = require("notify")
 local default = {
     stages = "fade",
     render = "default",
@@ -26,7 +26,7 @@ function _G.P(...)
     return ...
 end
 
-vim.notify = require "notify"
+vim.notify = require("notify")
 
 -- vim.cmd([[
 -- highlight link NotifyERRORBody Normal

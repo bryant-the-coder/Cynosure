@@ -29,7 +29,7 @@ g.nvim_tree_icons = {
     },
 }
 
-tree.setup {
+tree.setup({
     disable_netrw = true,
     hijack_netrw = true,
     open_on_setup = false,
@@ -97,4 +97,4 @@ tree.setup {
             },
         },
     },
-}
+})

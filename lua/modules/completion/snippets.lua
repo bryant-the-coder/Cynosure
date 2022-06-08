@@ -1,6 +1,6 @@
-local ls = require "luasnip"
+local ls = require("luasnip")
 local parse = ls.parser.parse_snippet
-local types = require "luasnip.util.types"
+local types = require("luasnip.util.types")
 local s = ls.snippet
 local sn = ls.snippet_node
 local t = ls.text_node
@@ -20,7 +20,7 @@ local fmta = require("luasnip.extras.fmt").fmta
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_lua").lazy_load()
 
-ls.config.setup {
+ls.config.setup({
     -- This tells LuaSnip to remember to keep around the last snippet.
     -- You can jump back into it even if you move outside of the selection
     history = true,
@@ -60,7 +60,7 @@ ls.config.setup {
         fmta = fmta,
         n = n,
         ls = ls,
-        types = require "luasnip.util.types",
+        types = require("luasnip.util.types"),
         parse = parse,
     },
-}
+})
