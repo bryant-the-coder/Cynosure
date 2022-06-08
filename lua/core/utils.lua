@@ -24,12 +24,6 @@ M.fg_bg = function(group, fgcol, bgcol)
 end
 
 --- Getting color from base16
--- Theme that i like
--- A) everblush
--- B) UWU
--- C) everforest
--- D) onedark
--- E) gruvchad
 M.get = function()
     local theme = _G.theme
     -- local time = os.date("*t")
