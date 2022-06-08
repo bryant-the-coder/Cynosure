@@ -49,7 +49,6 @@ telescope.setup {
             ".png",
             ".ico",
             ".add",
-            ".add.spl",
         },
         preview = {
             filesize_hook = function(filepath, bufnr, opts)
