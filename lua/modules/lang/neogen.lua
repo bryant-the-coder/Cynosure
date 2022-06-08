@@ -6,4 +6,11 @@ end
 neogen.setup {
     snippet_engine = "luasnip",
     enabled = true,
+    languages = {
+        lua = {
+            template = {
+                annotation_convention = "ldoc",
+            },
+        },
+    },
 }
