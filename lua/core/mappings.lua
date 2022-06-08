@@ -134,7 +134,7 @@ end)
 -- Go to url
 -- Windows user
 map("n", "<leader>tu", function()
-    require("core.utils").url("start")
+    require("core.utils").url "start"
 end)
 -- Mac or linux user
 --[[ map("n", "<leader>tu", function()
@@ -187,10 +187,10 @@ map("n", "<C-a>", vim.lsp.buf.references)
 -- map("n", "<C-k>", vim.diagnostic.goto_prev)
 -- map("n", "<C-j>", vim.diagnostic.goto_next)
 map("n", "<C-k>", function()
-    vim.diagnostic.goto_prev({ border = "rounded" })
+    vim.diagnostic.goto_prev { border = "rounded" }
 end)
 map("n", "<C-j>", function()
-    vim.diagnostic.goto_next({ border = "rounded" })
+    vim.diagnostic.goto_next { border = "rounded" }
 end)
 
 -- Harpooon

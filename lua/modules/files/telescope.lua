@@ -3,16 +3,16 @@ if not present then
     return
 end
 
-vim.cmd([[
+vim.cmd [[
     PackerLoad telescope-fzf-native.nvim
     PackerLoad telescope-file-browser.nvim
-]])
+]]
 
-local actions = require("telescope.actions")
-local theme = require("telescope.themes")
-local previewers_utils = require("telescope.previewers.utils")
+local actions = require "telescope.actions"
+local theme = require "telescope.themes"
+local previewers_utils = require "telescope.previewers.utils"
 
-telescope.setup({
+telescope.setup {
     defaults = {
         layout_config = {
             width = 0.75,
@@ -108,9 +108,9 @@ telescope.setup({
         },
         file_browser = {},
     },
-})
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("file_browser")
+}
+require("telescope").load_extension "fzf"
+require("telescope").load_extension "file_browser"
 
 local M = {}
 

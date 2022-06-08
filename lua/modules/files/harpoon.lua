@@ -3,11 +3,11 @@ if not present then
     return
 end
 
-vim.cmd([[
+vim.cmd [[
     PackerLoad harpoon
-]])
+]]
 
-harpoon.setup({
+harpoon.setup {
     global_settings = {
         save_on_toggle = false,
         save_on_change = true,
@@ -15,4 +15,4 @@ harpoon.setup({
         tmux_autoclose_windows = false,
         excluded_filetypes = { "harpoon", "package.lock.json" },
     },
-})
+}

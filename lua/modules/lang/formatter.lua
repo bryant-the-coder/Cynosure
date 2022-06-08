@@ -1,7 +1,7 @@
 -- Utilities for creating configurations
-local util = require("formatter.util")
+local util = require "formatter.util"
 
-require("formatter").setup({
+require("formatter").setup {
     -- All formatter configurations are opt-in
     filetype = {
         cpp = {
@@ -26,4 +26,4 @@ require("formatter").setup({
             require("formatter.filetypes.python").black,
         },
     },
-})
+}
