@@ -6,17 +6,17 @@ end
 local default = {
     colors = require("core.utils").get(),
 }
-local groups = require("bufferline.groups")
+local groups = require "bufferline.groups"
 local fn = vim.fn
 
-vim.cmd([[
+vim.cmd [[
  function! Quit_vim(a,b,c,d)
      wqa
  endfunction
-]])
+]]
 
 -- Code from NvChad
-bufferline.setup({
+bufferline.setup {
     options = {
         numbers = "none",
         themable = true,
@@ -175,4 +175,4 @@ bufferline.setup({
             guibg = default.colors.black,
         },
     },
-})
+}
