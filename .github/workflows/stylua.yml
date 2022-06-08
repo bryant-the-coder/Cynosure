@@ -1,31 +1,17 @@
-name: format
-on:
-  workflow_dispatch:
-  push:
-    paths-ignore:
-      - ".github/**"
-      - "*.md"
-      - "*.txt"
-    branches: "**"
+name: Formatting
+
+on: [push, pull_request_target]
 
 jobs:
-  stylua:
+  format-with-stylua:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: JohnnyMorganz/stylua-action@1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: --config-path=./stylua.toml .
-      - name: Commit files
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          if [[ -n $(git status -s) ]]; then
-            git commit --all --message "chore: format with stylua"
-          fi
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+          args: .
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          commit_message: "chore: autoformat with stylua"
+          branch: ${{ github.head_ref }}
