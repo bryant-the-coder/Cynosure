@@ -1,5 +1,5 @@
-require "core.disable_builtin"
-local utils = require "core.utils"
+require("core.disable_builtin")
+local utils = require("core.utils")
 
 local g = vim.g
 local o = vim.opt
@@ -27,7 +27,7 @@ o.splitright = true
 o.splitbelow = true
 
 -- Command line
-o.shortmess:append "I"
+o.shortmess:append("I")
 o.cmdheight = 1
 o.hidden = true
 o.history = 300
@@ -88,7 +88,7 @@ o.undofile = false -- Don't write undofile
 o.swapfile = false -- Don't write swapfile
 
 -- Terminal
-if vim.fn.has "win32" == 1 then
+if vim.fn.has("win32") == 1 then
     o.shell = "pwsh.exe -nol"
     o.shellcmdflag = "-nop -c"
     o.shellquote = '"'

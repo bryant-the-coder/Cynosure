@@ -3,7 +3,7 @@ if not present then
     return
 end
 
-toggleterm.setup {
+toggleterm.setup({
     size = 16,
     open_mapping = [[<c-b>]],
     shade_filetypes = {},
@@ -31,4 +31,4 @@ toggleterm.setup {
             background = "NormalFloat",
         },
     },
-}
+})

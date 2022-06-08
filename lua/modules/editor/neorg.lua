@@ -3,9 +3,9 @@ if not present then
     return
 end
 
-local neorg_callbacks = require "neorg.callbacks"
+local neorg_callbacks = require("neorg.callbacks")
 
-neorg.setup {
+neorg.setup({
     load = {
         ["core.defaults"] = {},
         ["core.norg.dirman"] = {
@@ -118,7 +118,7 @@ neorg.setup {
         ["external.kanban"] = {},
         ["core.integrations.telescope"] = {},
     },
-}
+})
 
 neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
     -- Map all the below keybinds only when the "norg" mode is active
