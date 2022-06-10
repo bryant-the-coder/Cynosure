@@ -21,7 +21,9 @@ end
 
 return require("packer").startup {
     function(use)
-        -- Packer can manage itself
+        -----------------------------------
+        --              Core             --
+        -----------------------------------
         use {
             "wbthomason/packer.nvim",
         }
