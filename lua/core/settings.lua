@@ -88,11 +88,15 @@ o.undofile = false -- Don't write undofile
 o.swapfile = false -- Don't write swapfile
 
 -- Terminal
-if vim.fn.has "win32" == 1 then
+--[[ if vim.fn.has "win32" == 1 then
     o.shell = "pwsh.exe -nol"
     o.shellcmdflag = "-nop -c"
     o.shellquote = '"'
     o.shellxquote = ""
     o.shellpipe = "| Out-File -Encoding UTF8 %s"
     o.shellredir = "| Out-File -Encoding UTF8 %s"
-end
+end ]]
+
+-- Using nu as a shell
+vim.opt.shell = "nu"
+vim.opt.shellcmdflag = "-c"
