@@ -11,6 +11,7 @@ local default = {
         DEBUG = "",
         TRACE = "",
     },
+    background_colour = "#000000",
 }
 
 vim.opt.termguicolors = true
