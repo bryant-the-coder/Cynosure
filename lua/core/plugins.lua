@@ -339,6 +339,7 @@ return require("packer").startup {
                 "typescript",
                 "tex",
                 "json",
+                "python",
             },
             config = function()
                 require "modules.lsp.init"

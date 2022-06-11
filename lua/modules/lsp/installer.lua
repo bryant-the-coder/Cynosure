@@ -9,7 +9,7 @@ local servers = {
     "sumneko_lua",
     "yamils",
     "ltex",
-    "pyright",
+    "jedi_language_server",
 }
 
 -- Setting up installer

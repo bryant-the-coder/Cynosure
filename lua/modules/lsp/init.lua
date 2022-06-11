@@ -165,4 +165,4 @@ require("clangd_extensions").setup {
 }
 
 -- Pyright
-lspconfig.pyright.setup {}
+lspconfig.jedi_language_server.setup {}
