@@ -33,6 +33,11 @@ local function on_attach(client, bufnr)
     lsp_highlight_document(client, bufnr)
 end
 
+local function on_attach_16(client, bufnr)
+    lsp_highlight_document(client, bufnr)
+    client.offset_encoding = "utf-16"
+end
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local completion = capabilities.textDocument.completion.completionItem
@@ -108,7 +113,7 @@ lspconfig.jsonls.setup {
 -- Clangd
 local clangd_defaults = require "lspconfig.server_configurations.clangd"
 local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {
-    on_attach = on_attach,
+    on_attach = on_attach_16,
 })
 require("clangd_extensions").setup {
     server = clangd_configs,

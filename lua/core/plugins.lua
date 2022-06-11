@@ -206,6 +206,7 @@ return require("packer").startup {
         -- Formatter
         use {
             "mhartington/formatter.nvim",
+            disable = true,
             cmd = "FormatWrite",
             setup = function()
                 local group = vim.api.nvim_create_augroup("Formatter", {})
@@ -232,14 +233,14 @@ return require("packer").startup {
         }
 
         -- Null-ls
-        --[[ use({
+        use {
             "Jose-elias-alvarez/null-ls.nvim",
             event = { "BufRead", "InsertEnter" },
             disable = false,
             config = function()
-                require("modules.lang.null-ls")
+                require "modules.lang.null-ls"
             end,
-        } )]]
+        }
 
         -- Treesitter
         use {
@@ -373,6 +374,14 @@ return require("packer").startup {
             "p00f/clangd_extensions.nvim",
             disable = false,
             ft = { "cpp", "c" },
+        }
+
+        use {
+            "ray-x/lsp_signature.nvim",
+            disable = true,
+            config = function()
+                require "modules.lsp.signature"
+            end,
         }
 
         -----------------------------------

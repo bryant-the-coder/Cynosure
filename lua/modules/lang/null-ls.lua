@@ -8,12 +8,12 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 null_ls.setup {
     debug = false,
     sources = {
-        -- formatting.prettier.with({
-        --     extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-        -- }),
-        -- formatting.stylua,
-        -- formatting.rustfmt,
-        -- formatting.clang_format,
+        formatting.prettier.with {
+            extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+        },
+        formatting.stylua,
+        formatting.rustfmt,
+        formatting.clang_format,
     },
 
     -- Format on save (laggy)
