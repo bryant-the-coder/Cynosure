@@ -131,12 +131,15 @@ end
 local function get_error()
     return "%#Error#" .. get_diagnostic("E", "Error")
 end
+
 local function get_warning()
     return "%#Warning#" .. get_diagnostic("W", "Warning")
 end
+
 local function get_hint()
     return "%#Hint#" .. get_diagnostic("H", "Hint")
 end
+
 local function get_info()
     return "%#Info#" .. get_diagnostic("I", "Info")
 end
