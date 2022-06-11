@@ -181,6 +181,7 @@ cmp.setup {
     },
     sources = cmp.config.sources {
         { name = "nvim_lsp", priority = "9" },
+        { name = "nvim_lsp_signature_help", priority = 10 },
         { name = "luasnip", priority = "8" },
         { name = "buffer", keyword_length = 5 },
         { name = "npm", keyword_length = 2 },
