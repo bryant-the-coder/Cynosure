@@ -66,7 +66,7 @@ end
 
 -- Toggle transparent / ui right here :D
 local ui = {
-    transparency = true,
+    transparency = false,
     italic = true,
 }
 hl(0, "StatusNormal", { fg = "#181a1f", bg = "#98c379" })

@@ -48,6 +48,11 @@ return require("packer").startup {
             disable = false,
         }
 
+        use {
+            "MunifTanjim/nui.nvim",
+            opt = true,
+        }
+
         -----------------------------------
         --           Completion          --
         -----------------------------------
@@ -167,7 +172,16 @@ return require("packer").startup {
             config = function()
                 require "modules.files.nvim-tree"
             end,
-            disable = true,
+            disable = false,
+        }
+
+        use {
+            "nvim-neo-tree/neo-tree.nvim",
+            branch = "v2.x",
+            cmd = { "Neotree", "NeoTreeShow", "NeoTreeFocus", "NeoTreeFocusToggle" },
+            config = function()
+                require "modules.files.neo-tree"
+            end,
         }
 
         -- Harpoon

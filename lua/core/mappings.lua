@@ -152,7 +152,11 @@ end)
 --           Plugins             --
 -----------------------------------
 -- Nvim-tree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
+-- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
+
+-- Neo-tree
+map("n", "<leader>nr", "<cmd>Neotree<CR>")
+map("n", "<leader>nf", "<cmd>Neotree float<CR>")
 
 -- Zen-mode
 map("n", "<leader>zm", "<cmd>ZenMode<CR>")
