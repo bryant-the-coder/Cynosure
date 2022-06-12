@@ -13,8 +13,8 @@ null_ls.setup {
         },
         formatting.stylua,
         formatting.rustfmt,
-        formatting.clang_format,
-        formatting.yapf,
+        -- formatting.clang_format,
+        -- formatting.yapf,
     },
 
     -- Format on save (laggy)

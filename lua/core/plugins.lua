@@ -240,6 +240,7 @@ return require("packer").startup {
         use {
             "danymat/neogen",
             event = "CursorMoved",
+            branch = "deprecate_get_node_text",
             disable = false,
             config = function()
                 require "modules.lang.neogen"
@@ -389,6 +390,14 @@ return require("packer").startup {
             "p00f/clangd_extensions.nvim",
             disable = false,
             ft = { "cpp", "c" },
+        }
+
+        use {
+            "ray-x/lsp_signature.nvim",
+            after = "nvim-lspconfig",
+            config = function()
+                require "modules.lsp.signature"
+            end,
         }
 
         -----------------------------------
