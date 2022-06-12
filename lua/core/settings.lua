@@ -101,3 +101,5 @@ end ]]
 -- Using nu as a shell
 vim.opt.shell = "nu"
 vim.opt.shellcmdflag = "-c"
+
+-- vim.g.python3_host_prog = "C:/Users/User/AppData/Local/Programs/Python/Python310/python.EXE"
