@@ -243,7 +243,6 @@ return require("packer").startup {
         use {
             "danymat/neogen",
             event = "CursorMoved",
-            branch = "deprecate_get_node_text",
             disable = false,
             config = function()
                 require "modules.lang.neogen"
