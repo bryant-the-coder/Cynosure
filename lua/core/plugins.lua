@@ -39,6 +39,9 @@ return require("packer").startup {
         use {
             "kyazdani42/nvim-web-devicons",
             module = "nvim-web-devicons",
+            config = function()
+                require "modules.ui.devicons"
+            end,
             disable = false,
         }
 

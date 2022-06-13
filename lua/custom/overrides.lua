@@ -13,8 +13,12 @@ local grey_fg = colors.grey_fg
 local light_grey = colors.light_grey
 local line = colors.line
 local nord_blue = colors.nord_blue
+local vibrant_green = colors.vibrant_green
+local baby_pink = colors.baby_pink
+local dark_purple = colors.dark_purple
 local one_bg = colors.one_bg
 local one_bg2 = colors.one_bg2
+local pink = colors.pink
 local pmenu_bg = colors.pmenu_bg
 local purple = colors.purple
 local red = colors.red
@@ -25,6 +29,7 @@ local one_bg3 = colors.one_bg3
 local teal = colors.teal
 local grey_fg2 = colors.grey_fg2
 local cyan = colors.cyan
+local sun = colors.sun
 
 -- Define bg color
 -- @param group Group
@@ -66,7 +71,7 @@ end
 
 -- Toggle transparent / ui right here :D
 local ui = {
-    transparency = false,
+    transparency = true,
     italic = true,
 }
 hl(0, "StatusNormal", { fg = "#181a1f", bg = "#98c379" })
@@ -233,3 +238,31 @@ fg("NvimTreeRootFolder", red, { underline = true })
 fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeVertSplit", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", black2, red)
+
+fg("DevIconDefault", red)
+fg("DevIconc", blue)
+fg("DevIcondeb", cyan)
+fg("DevIconcss", blue)
+fg("DevIconDockerfile", cyan)
+fg("DevIconhtml", baby_pink)
+fg("DevIconjpeg", dark_purple)
+fg("Deviconjpg", dark_purple)
+fg("DevIconjs", sun)
+fg("DevIconkt", orange)
+fg("DevIconlock", red)
+fg("DevIconlua", blue)
+fg("DevIconmp3", white)
+fg("DevIconmp4", white)
+fg("DevIconout", white)
+fg("DevIconttf", white)
+fg("DevIconpng", dark_purple)
+fg("DevIconpy", cyan)
+fg("DevIcontoml", blue)
+fg("DevIconts", teal)
+fg("DevIconrb", pink)
+fg("DevIconrpm", orange)
+fg("DevIconvue", vibrant_green)
+fg("DevIconwoff", white)
+fg("DevIconwoff2", white)
+fg("DevIconxz", sun)
+fg("DevIconzip", sun)
