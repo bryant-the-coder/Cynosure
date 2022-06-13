@@ -186,6 +186,7 @@ cmp.setup {
         { name = "buffer", keyword_length = 5 },
         { name = "npm", keyword_length = 2 },
         { name = "neorg" },
+        { name = "path" },
     },
 }
 
