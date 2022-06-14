@@ -263,20 +263,10 @@ return require("packer").startup {
         use {
             "nvim-treesitter/nvim-treesitter",
             disable = false,
-            ft = {
-                "lua",
-                "rust",
-                "c",
-                "cpp",
-                "html",
-                "css",
-                "javascript",
-                "typescript",
-                "tex",
-                "json",
-            },
+            setup = function()
+                require("custom.load").ts()
+            end,
             run = ":TSUpdate",
-            event = { "BufRead", "BufNewFile" },
             config = function()
                 require "modules.lang.treesitter"
             end,
@@ -409,8 +399,10 @@ return require("packer").startup {
         use {
             "norcalli/nvim-colorizer.lua",
             disable = false,
-            ft = { "lua", "css", "scss", "html", "js", "jsx" },
             opt = true,
+            setup = function()
+                require("custom.load").colorizer()
+            end,
             config = function()
                 require "modules.tools.colorizer"
             end,
@@ -480,16 +472,7 @@ return require("packer").startup {
             opt = true,
             -- Taken from https://github.com/max397574/omega-nvim
             setup = function()
-                vim.api.nvim_create_autocmd({ "BufAdd", "TabEnter" }, {
-                    pattern = "*",
-                    group = vim.api.nvim_create_augroup("BufferLineLazyLoading", {}),
-                    callback = function()
-                        local count = #vim.fn.getbufinfo { buflisted = 1 }
-                        if count >= 2 then
-                            vim.cmd [[PackerLoad bufferline.nvim]]
-                        end
-                    end,
-                })
+                require("custom.load").bufferline()
             end,
             disable = false,
             config = function()
