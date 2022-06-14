@@ -1,6 +1,6 @@
-local M = {}
+local winbar = {}
 
-M.eval = function()
+winbar.eval = function()
     if vim.api.nvim_eval_statusline("%f", {})["str"] == "[No Name]" then
         return ""
     end
@@ -21,4 +21,4 @@ M.eval = function()
         .. "%*"
 end
 
-return M
+return winbar

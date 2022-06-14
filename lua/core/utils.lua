@@ -1,17 +1,17 @@
-local M = {}
+local utils = {}
 local cmd = vim.cmd
 
 --- Define bg color
 ---@param group string
 ---@param col string
-M.bg = function(group, col)
+utils.bg = function(group, col)
     cmd("hi " .. group .. " guibg=" .. col)
 end
 
 --- Define fg color
 ---@param gruop string
 ---@param col string
-M.fg = function(gruop, col)
+utils.fg = function(gruop, col)
     cmd("hi " .. gruop .. " guifg=" .. col)
 end
 
@@ -19,12 +19,12 @@ end
 ---@param group string
 ---@param fgcol string
 ---@param bgcol string
-M.fg_bg = function(group, fgcol, bgcol)
+utils.fg_bg = function(group, fgcol, bgcol)
     cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
 end
 
 --- Getting color from base16
-M.get = function()
+utils.get = function()
     local theme = _G.theme
     -- local time = os.date("*t")
     -- if time.hour < 7 or time.hour >= 21 then
@@ -37,7 +37,7 @@ end
 
 --- Go to url
 ---@param cmd thread https://github.com
-M.url = function(cmd)
+utils.url = function(cmd)
     local url = vim.api.nvim_get_current_line():match [[%[.*]%((.*)%)]] -- To work on md links
     if url == nil then
         url = vim.fn.expand "<cWORD>"
@@ -55,7 +55,7 @@ M.url = function(cmd)
 end
 
 --- Swap between booleans with ease
-M.swap_boolean = function()
+utils.swap_boolean = function()
     local c = vim.api.nvim_get_current_line()
     local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
     vim.api.nvim_set_current_line(subs)
@@ -63,7 +63,7 @@ end
 
 --- Rename a variable (simple)
 ---@return string
-M.rename = function()
+utils.rename = function()
     -- local border = {
     --     { "┏", "FloatBorder" },
     --     { "━", "FloatBorder" },
@@ -142,7 +142,7 @@ M.rename = function()
     end, { buffer = created_buffer })
 end
 
-M.l_motion = function()
+utils.l_motion = function()
     local cursorPosition = vim.api.nvim_win_get_cursor(0)
     vim.cmd "normal ^"
     local firstChar = vim.api.nvim_win_get_cursor(0)
@@ -155,7 +155,7 @@ M.l_motion = function()
     end
 end
 
-M.h_motion = function()
+utils.h_motion = function()
     local cursorPosition = vim.api.nvim_win_get_cursor(0)
     vim.cmd "normal ^"
     local firstChar = vim.api.nvim_win_get_cursor(0)
@@ -168,7 +168,7 @@ M.h_motion = function()
     end
 end
 
-M.border = function()
+utils.border = function()
     return {
         { "╭", "FloatBorder" },
         { "─", "FloatBorder" },
@@ -182,7 +182,7 @@ M.border = function()
 end
 
 --- Inserts a "," add the end of line
-M.insert_comma = function()
+utils.insert_comma = function()
     local cursor = vim.api.nvim_win_get_cursor(0)
     -- append ,
     vim.cmd [[normal A,]]
@@ -191,7 +191,7 @@ M.insert_comma = function()
 end
 
 --- Inserts a ";" add the end of line
-M.insert_semicolon = function()
+utils.insert_semicolon = function()
     -- save cursor position
     local cursor = vim.api.nvim_win_get_cursor(0)
     -- append ,
@@ -203,11 +203,11 @@ end
 --- Checking for neovim version
 ---@param version string version number
 ---@return boolean has_version
-M.has_version = function(version)
+utils.has_version = function(version)
     return vim.fn.has("nvim-" .. version) > 0
 end
 
-M.open = function()
+utils.open = function()
     local currName = vim.fn.expand "<cword>" .. " "
 
     local win = require("plenary.popup").create("  ", {
@@ -249,7 +249,7 @@ M.open = function()
     )
 end
 
-M.apply = function(curr, win)
+utils.apply = function(curr, win)
     local newName = vim.trim(vim.fn.getline ".")
     vim.api.nvim_win_close(win, true)
 
@@ -262,4 +262,4 @@ M.apply = function(curr, win)
     end
 end
 
-return M
+return utils

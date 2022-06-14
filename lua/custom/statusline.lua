@@ -26,7 +26,7 @@ local modes = {
     ["t"] = "TERMINAL",
 }
 
-local M = {}
+local dashboard = {}
 
 -- Making the modes name UPPERCASE
 local function mode()
@@ -157,7 +157,7 @@ local function ts_status()
     return (ts and next(ts)) and "" or " 滑 unavailable "
 end
 
-M.run = function()
+dashboard.run = function()
     return table.concat {
         "%#Statusline#",
         update_mode_colors(), -- Update mode colors
@@ -182,4 +182,4 @@ M.run = function()
     }
 end
 
-return M
+return dashboard
