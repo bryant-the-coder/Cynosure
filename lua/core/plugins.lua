@@ -415,6 +415,7 @@ return require("packer").startup {
                 require "modules.tools.colorizer"
             end,
         }
+
         -- Change colors live in a window
         use {
             "max397574/colortils.nvim",
@@ -477,6 +478,7 @@ return require("packer").startup {
         use {
             "akinsho/bufferline.nvim",
             opt = true,
+            -- Taken from https://github.com/max397574/omega-nvim
             setup = function()
                 vim.api.nvim_create_autocmd({ "BufAdd", "TabEnter" }, {
                     pattern = "*",
@@ -531,9 +533,9 @@ return require("packer").startup {
             title = "Packer", -- Packer, Installing
             done_sym = "",
             error_syn = "×",
-            -- open_fn = function()
-            --     require("packer.util").float({ border = border })
-            -- end,
+            --[[ open_fn = function()
+                return require("packer.util").float { border = "single" }
+            end, ]]
         },
         max_jobs = 6,
     },
