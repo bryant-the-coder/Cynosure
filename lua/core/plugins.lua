@@ -263,10 +263,20 @@ return require("packer").startup {
         use {
             "nvim-treesitter/nvim-treesitter",
             disable = false,
-            setup = function()
-                require("custom.load").ts()
-            end,
+            ft = {
+                "lua",
+                "rust",
+                "c",
+                "cpp",
+                "html",
+                "css",
+                "javascript",
+                "typescript",
+                "tex",
+                "json",
+            },
             run = ":TSUpdate",
+            event = { "BufRead", "BufNewFile" },
             config = function()
                 require "modules.lang.treesitter"
             end,
