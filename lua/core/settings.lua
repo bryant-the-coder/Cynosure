@@ -29,7 +29,7 @@ o.splitbelow = true
 
 -- Command line
 o.shortmess:append "I"
-o.cmdheight = 1
+o.cmdheight = 0
 o.hidden = true
 o.history = 300
 o.updatetime = 200
