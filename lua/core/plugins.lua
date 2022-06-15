@@ -451,8 +451,11 @@ return require("packer").startup {
         -- Git intergrations
         use {
             "lewis6991/gitsigns.nvim",
-            event = "BufRead",
+            -- event = "BufRead",
             opt = true,
+            setup = function()
+                require("custom.load").gitsigns()
+            end,
             disable = false,
             config = function()
                 require "modules.tools.gitsigns"
