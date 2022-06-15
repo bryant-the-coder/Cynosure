@@ -162,11 +162,11 @@ vim.cmd [[
     inoreabbrev diea idea
     inoreabbrev doens does
     inoreabbrev doese does
-    inoreabbrev doesnt does not
+    inoreabbrev doesnt doesn't
     inoreabbrev doign doing
     inoreabbrev doimg doing
     inoreabbrev donig doing
-    inoreabbrev dont do not
+    inoreabbrev dont don't
     inoreabbrev eahc each
     inoreabbrev efel feel
     inoreabbrev ehlp help
