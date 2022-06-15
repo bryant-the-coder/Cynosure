@@ -93,8 +93,9 @@ local quotes = {
 }
 
 function dashboard.display()
-    if not (
-        (vim.api.nvim_buf_get_number(0) > 1 or vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]:len() == 0)
+    if
+        not (
+            (vim.api.nvim_buf_get_number(0) > 1 or vim.api.nvim_buf_get_lines(0, 0, 1, false)[1]:len() == 0)
             and vim.api.nvim_buf_get_name(0):len() == 0
         )
     then
