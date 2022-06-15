@@ -19,7 +19,7 @@ tree.setup {
             end,
         },
     },
-    use_popups_for_input = false,
+    use_popups_for_input = true,
     default_component_configs = {
         indent = {
             -- indent_size = 2,
