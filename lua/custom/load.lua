@@ -69,7 +69,7 @@ end
 
 load.gitsigns = function()
     -- taken from https://github.com/max397574
-    vim.api.nvim_create_autocmd({ "BufAdd", "VimEnter" }, {
+    vim.api.nvim_create_autocmd({ "BufRead" }, {
         callback = function()
             local function onexit(code, _)
                 if code == 0 then
@@ -85,7 +85,7 @@ load.gitsigns = function()
                     args = {
                         "ls-files",
                         "--error-unmatch",
-                        vim.fn.expand "%",
+                        vim.fn.expand "%:p:h",
                     },
                 }, onexit)
             end
