@@ -25,10 +25,9 @@ local load = {}
 
 load.bufferline = function()
     lazy_load {
-        events = { "BufNewFile", "BufAdd", "TabEnter" },
+        events = { "BufNewFile", "BufRead", "TabEnter" },
         augroup_name = "BufferLineLazy",
         plugins = "bufferline.nvim",
-
         condition = function()
             return #vim.fn.getbufinfo { buflisted = 1 } >= 2
         end,
@@ -40,7 +39,6 @@ load.colorizer = function()
         events = { "BufRead", "BufNewFile" },
         augroup_name = "ColorizerLazy",
         plugins = "nvim-colorizer.lua",
-
         condition = function()
             -- If the word contains this items, it will load it
             local items = { "#", "rgb", "hsl" }
@@ -54,15 +52,50 @@ load.colorizer = function()
     }
 end
 
+load.todo_comments = function()
+    lazy_load {
+        events = { "BufRead", "BufNewFile" },
+        augruop = "TodoLazy",
+        plugins = "todo-comments.nvim",
+        condition = function()
+            local words = {
+                "FIXME",
+                "BUG",
+                "FIXIT",
+                "ISSUE",
+                "FIX",
+                "TODO",
+                "REVIST",
+                "todo",
+                "Todo",
+                "HACK",
+                "WARN",
+                "WARNING",
+                "XXX",
+                "PERF",
+                "OPTIM",
+                "PERFORMANCE",
+                "OPTIMIZE",
+                "NOTE",
+            }
+
+            for _, val in ipairs(words) do
+                if vim.fn.search(val) ~= 0 then
+                    return true
+                end
+            end
+        end,
+    }
+end
+
 load.ts = function()
     lazy_load {
         events = { "BufRead", "BufWinEnter", "BufNewFile" },
         augroup_name = "Treesitter_lazy",
         plugins = "nvim-treesitter",
-
         condition = function()
             local file = vim.fn.expand "%"
-            return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= ""
+            return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= "neo-tree filesystem" and file ~= ""
         end,
     }
 end

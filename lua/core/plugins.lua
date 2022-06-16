@@ -476,6 +476,14 @@ return require("packer").startup {
             disable = false,
         }
 
+        use {
+            "folke/todo-comments.nvim",
+            event = "InsertEnter",
+            config = function()
+                require "modules.tools.todo"
+            end,
+        }
+
         -----------------------------------
         --               UI              --
         -----------------------------------
