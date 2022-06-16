@@ -1,3 +1,4 @@
+-- HACK: Make this working again
 require("dapui").setup()
 
 local dap = require "dap"
