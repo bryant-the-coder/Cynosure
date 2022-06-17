@@ -101,7 +101,6 @@ return require("packer").startup {
                 -- for working with cmp
                 "CmdLineEnter",
             },
-            -- TODO: uncomment this
             after = "nvim-cmp",
             opt = true,
             disable = false,
@@ -242,7 +241,7 @@ return require("packer").startup {
         -- Neogen
         use {
             "danymat/neogen",
-            event = "CursorMoved",
+            cmd = "Neogen",
             disable = false,
             config = function()
                 require "modules.lang.neogen"
@@ -520,6 +519,13 @@ return require("packer").startup {
             disable = false,
             config = function()
                 require "modules.ui.notify"
+            end,
+        }
+
+        use {
+            "andweeb/presence.nvim",
+            config = function()
+                require "modules.editor.presence"
             end,
         }
 
