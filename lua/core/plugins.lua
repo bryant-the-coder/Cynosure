@@ -522,13 +522,6 @@ return require("packer").startup {
             end,
         }
 
-        use {
-            "andweeb/presence.nvim",
-            config = function()
-                require "modules.editor.presence"
-            end,
-        }
-
         -- Install packer and plugins if it doesn't exist
         if BOOTSTRAP then
             require("packer").sync()
