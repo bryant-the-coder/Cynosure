@@ -3,43 +3,19 @@ if not status_ok then
     return
 end
 
+-- Load lua-dev because i am lazyloading it
 require("packer").loader "lua-dev.nvim"
 
+-- Dont remove this files
 require "modules.lsp.installer"
 require "modules.lsp.config"
-local function lsp_highlight_document(client, bufnr)
-    if client.server_capabilities.documentHighlightProvider then
-        vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-        vim.api.nvim_create_autocmd("CursorHold", {
-            callback = function()
-                vim.lsp.buf.document_highlight()
-            end,
-            buffer = bufnr,
-        })
-        vim.api.nvim_create_autocmd("CursorMoved", {
-            callback = function()
-                vim.lsp.buf.clear_references()
-            end,
-            buffer = bufnr,
-        })
-    end
 
-    vim.api.nvim_set_hl(0, "LspReferenceText", { nocombine = true, reverse = false, underline = true })
-    vim.api.nvim_set_hl(0, "LspReferenceRead", { nocombine = true, reverse = false, underline = true })
-    vim.api.nvim_set_hl(0, "LspReferenceWrite", { nocombine = true, reverse = false, underline = true })
-end
-
+-- Creating a function call on_attach
 local function on_attach(client, bufnr)
-    lsp_highlight_document(client, bufnr)
-end
-
-local function on_attach_16(client, bufnr)
-    lsp_highlight_document(client, bufnr)
-    client.offset_encoding = "utf-16"
+    require("modules.lsp.on_attach").setup(client, bufnr)
 end
 
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 local completion = capabilities.textDocument.completion.completionItem
 capabilities.textDocument.completion.completionItem.preselectSupport = true
 capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
