@@ -53,7 +53,7 @@ return require("packer").startup {
 
         use {
             "MunifTanjim/nui.nvim",
-            opt = true,
+            -- after = "neo-tree.nvim",
         }
 
         -----------------------------------
@@ -383,6 +383,7 @@ return require("packer").startup {
 
         use {
             "max397574/lua-dev.nvim",
+            ft = { "lua" },
             after = "nvim-lspconfig",
             disable = false,
         }
@@ -390,7 +391,6 @@ return require("packer").startup {
         use {
             "p00f/clangd_extensions.nvim",
             disable = false,
-            ft = { "cpp", "c" },
         }
 
         use {
@@ -437,7 +437,7 @@ return require("packer").startup {
         }
 
         -- Terminal
-        use {
+        --[[ use {
             "akinsho/toggleterm.nvim",
             keys = "<c-b>",
             module = { "toggleterm" },
@@ -445,7 +445,7 @@ return require("packer").startup {
                 require "modules.tools.toggleterm"
             end,
             disable = false,
-        }
+        } ]]
 
         -- Git intergrations
         use {
