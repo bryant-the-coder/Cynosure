@@ -196,6 +196,7 @@ end)
 map("n", "<C-j>", function()
     vim.diagnostic.goto_next { border = "rounded" }
 end)
+map("n", "<leader>lbh", vim.lsp.buf.hover, { desc = "Show the documentation in a floating window" })
 
 -- Harpooon
 map("n", "<A-p>", function()
