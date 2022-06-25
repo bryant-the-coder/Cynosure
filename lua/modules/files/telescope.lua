@@ -96,6 +96,11 @@ telescope.setup {
             prompt_title = "~ Diagnostics ~",
             preview_title = "~ Diagnostics Preview ~",
         },
+        buffers = {
+            -- Anchor = N is to place the prompt in the middle of the screen
+            layout_config = { height = 25, width = 70, anchor = "N" },
+            previewer = false,
+        },
     },
     extensions = {
         fzf = {
