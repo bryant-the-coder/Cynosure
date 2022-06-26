@@ -70,7 +70,6 @@ o.statusline = "%!v:lua.require'custom.statusline'.run()"
 o.conceallevel = 2
 
 -- See :h fillchars
--- See :h fillchars
 o.fillchars = {
     eob = " ",
     vert = "║",
@@ -80,6 +79,10 @@ o.fillchars = {
     vertleft = "╣",
     vertright = "╠",
     verthoriz = "╬",
+}
+o.listchars = {
+    trail = "·",
+    eol = "↲",
 }
 
 -- Backups / Undo
