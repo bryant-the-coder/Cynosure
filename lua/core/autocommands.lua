@@ -88,6 +88,7 @@ cmd("FileType", {
     pattern = "dashboard",
     callback = function()
         vim.opt.laststatus = 0
+        vim.opt.list = false
     end,
 })
 
@@ -96,6 +97,7 @@ cmd("BufUnload", {
     buffer = 0,
     callback = function()
         vim.opt.laststatus = 3
+        vim.opt.list = true
     end,
 })
 -- }}}
