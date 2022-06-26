@@ -1,6 +1,6 @@
 local cmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
-local create_command = vim.api.nvim_create_user_command
+-- local create_command = vim.api.nvim_create_user_command
 
 -- Disable autocommenting {{{
 cmd("BufEnter", {
