@@ -5,11 +5,11 @@ local default = {
     timeout = 2000,
     minimum_width = 60,
     icons = {
-        ERROR = "",
-        WARN = "",
-        INFO = "",
-        DEBUG = "",
-        TRACE = "",
+        ERROR = " ",
+        WARN = " ",
+        INFO = " ",
+        DEBUG = " ",
+        TRACE = " ",
     },
     background_colour = "#000000",
 }
