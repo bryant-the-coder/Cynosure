@@ -3,10 +3,6 @@ if not present then
     return
 end
 
-vim.cmd [[
-    PackerLoad harpoon
-]]
-
 harpoon.setup {
     global_settings = {
         save_on_toggle = false,

@@ -126,4 +126,15 @@ load.gitsigns = function()
     })
 end
 
+load.harpoon = function()
+    lazy_load {
+        events = { "BufRead", "TabEnter" },
+        augroup_name = "HarpoonLazy",
+        plugins = "harpoon",
+        condition = function()
+            return #vim.fn.getbufinfo { buflisted = 1 } >= 2
+        end,
+    }
+end
+
 return load

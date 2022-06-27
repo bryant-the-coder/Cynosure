@@ -189,8 +189,10 @@ return require("packer").startup {
         -- Harpoon
         use {
             "bryant-the-coder/harpoon",
-            opt = true,
             disable = false,
+            setup = function()
+                require("custom.load").harpoon()
+            end,
             config = function()
                 require "modules.files.harpoon"
             end,
