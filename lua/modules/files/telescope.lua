@@ -98,7 +98,7 @@ telescope.setup {
         },
         buffers = {
             -- Anchor = N is to place the prompt in the middle of the screen
-            layout_config = { height = 25, width = 70, anchor = "N" },
+            layout_config = { height = 25, width = 90, anchor = "N" },
             previewer = false,
         },
     },
