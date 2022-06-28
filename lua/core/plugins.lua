@@ -403,6 +403,15 @@ return require("packer").startup {
             end,
         }
 
+        -- Uncomment this if you want lspsage
+        use {
+            "glepnir/lspsaga.nvim",
+            disable = true,
+            config = function()
+                require "modules.lsp.saga"
+            end,
+        }
+
         -----------------------------------
         --             Tools             --
         -----------------------------------
@@ -521,6 +530,14 @@ return require("packer").startup {
             disable = false,
             config = function()
                 require "modules.ui.notify"
+            end,
+        }
+
+        use {
+            "lewis6991/satellite.nvim",
+            after = "bufferline.nvim",
+            config = function()
+                require "modules.ui.satellite"
             end,
         }
 
