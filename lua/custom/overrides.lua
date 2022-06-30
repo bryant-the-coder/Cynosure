@@ -1,5 +1,6 @@
 local hl = vim.api.nvim_set_hl
 local colors = require("core.utils").get()
+-- local base = require("core.utils").get_base()
 
 -- Code from nvchad
 local black = colors.black
@@ -11,8 +12,6 @@ local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
 local light_grey = colors.light_grey
-local line = colors.line
-local nord_blue = colors.nord_blue
 local vibrant_green = colors.vibrant_green
 local baby_pink = colors.baby_pink
 local dark_purple = colors.dark_purple
