@@ -26,13 +26,12 @@ end
 --- Getting color from base16
 utils.get = function()
     local theme = _G.theme
-    -- local time = os.date("*t")
-    -- if time.hour < 7 or time.hour >= 21 then
-    --     theme = "onedark"
-    -- else
-    --     theme = "everblush"
-    -- end
     return require("hl_themes." .. theme)
+end
+
+utils.get_base = function()
+    local theme = _G.theme
+    return require("themes." .. theme .. "-base16")
 end
 
 --- Go to url
@@ -76,14 +75,14 @@ utils.rename = function()
     -- }
 
     -- local border = {
-    -- 	{ "╔", "FloatBorder" },
-    -- 	{ "═", "FloatBorder" },
-    -- 	{ "╗", "FloatBorder" },
-    -- 	{ "║", "FloatBorder" },
-    -- 	{ "╝", "FloatBorder" },
-    -- 	{ "═", "FloatBorder" },
-    -- 	{ "╚", "FloatBorder" },
-    -- 	{ "║", "FloatBorder" },
+    -- { "╔", "FloatBorder" },
+    -- { "═", "FloatBorder" },
+    -- { "╗", "FloatBorder" },
+    -- { "║", "FloatBorder" },
+    -- { "╝", "FloatBorder" },
+    -- { "═", "FloatBorder" },
+    -- { "╚", "FloatBorder" },
+    -- { "║", "FloatBorder" },
     -- }
 
     -- local border = {
@@ -259,6 +258,19 @@ utils.apply = function(curr, win)
 
         vim.lsp.buf_request(0, "textDocument/rename", params)
         vim.notify(newName .. " is set", "warn", { title = "Variable Rename", icon = "凜" })
+    end
+end
+
+utils.show_documentation = function()
+    local filetype = vim.bo.filetype
+    if vim.tbl_contains({ "vim", "help" }, filetype) then
+        vim.cmd("h " .. vim.fn.expand "<cword>")
+    elseif vim.tbl_contains({ "man" }, filetype) then
+        vim.cmd("Man " .. vim.fn.expand "<cword>")
+    elseif vim.fn.expand "%:t" == "Cargo.toml" then
+        require("crates").show_popup()
+    else
+        vim.lsp.buf.hover()
     end
 end
 
