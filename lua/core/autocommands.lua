@@ -45,13 +45,13 @@ cmd("BufWritePre", {
 -- }}}
 
 -- Cursor position {{{
-cmd("BufReadPost", {
-    desc = "Restore cursor position upon reopening the file",
-    group = "_buffer",
-    command = [[
-       if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
-    ]],
-})
+-- cmd("BufReadPost", {
+--     desc = "Restore cursor position upon reopening the file",
+--     group = "_buffer",
+--     command = [[
+--        if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit' | execute "normal! g`\"zvzz" | endif
+--     ]],
+-- })
 -- }}}
 
 -- Highlight while yanking {{{
