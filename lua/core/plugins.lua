@@ -488,9 +488,17 @@ return require("packer").startup {
 
         use {
             "folke/todo-comments.nvim",
-            event = "InsertEnter",
+            after = "nvim-treesitter",
             config = function()
                 require "modules.tools.todo"
+            end,
+        }
+
+        use {
+            "kylechui/nvim-surround",
+            after = "nvim-treesitter",
+            config = function()
+                require "modules.tools.surround"
             end,
         }
 
@@ -514,7 +522,8 @@ return require("packer").startup {
         -- Indentation
         use {
             "lukas-reineke/indent-blankline.nvim",
-            event = "InsertEnter",
+            after = "nvim-lspconfig",
+            -- event = "InsertEnter",
             disable = false,
             opt = true,
             config = function()
