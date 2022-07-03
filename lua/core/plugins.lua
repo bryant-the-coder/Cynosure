@@ -19,6 +19,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
+local plugins = require("core.config").plugins
+
 return require("packer").startup {
     function(use)
         -----------------------------------
@@ -34,7 +36,7 @@ return require("packer").startup {
         use {
             "nvim-lua/plenary.nvim",
             module = "plenary",
-            disable = false,
+            disable = plugins.plenary,
         }
         use {
             "kyazdani42/nvim-web-devicons",
@@ -42,18 +44,19 @@ return require("packer").startup {
             config = function()
                 require "modules.ui.devicons"
             end,
-            disable = false,
+            disable = plugins.icons,
         }
 
         -- Theme
         use {
             "bryant-the-coder/base16",
-            disable = false,
+            disable = plugins.base16,
         }
 
         use {
             "MunifTanjim/nui.nvim",
             -- after = "neo-tree.nvim",
+            disable = plugins.nui,
         }
 
         -----------------------------------
@@ -64,33 +67,35 @@ return require("packer").startup {
             "hrsh7th/nvim-cmp",
             event = { "InsertEnter", "CmdLineEnter" },
             after = { "LuaSnip" },
-            disable = false,
             requires = {
                 {
                     "saadparwaiz1/cmp_luasnip",
                     after = { "nvim-cmp" },
+                    disable = plugins.cmp_luasnip,
                 },
-                { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-                { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-                { "hrsh7th/cmp-path", after = "nvim-cmp" },
+                { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp", disable = plugins.cmp_lsp },
+                { "hrsh7th/cmp-buffer", after = "nvim-cmp", disable = plugins.cmp_buffer },
+                { "hrsh7th/cmp-path", after = "nvim-cmp", disable = plugins.cmp_path },
             },
             config = function()
                 require "modules.completion.cmp"
             end,
+            disable = plugins.cmp,
         }
 
         -- Snippets
         use {
             "L3MON4D3/LuaSnip",
             event = "InsertEnter",
-            disable = false,
             config = function()
                 require "modules.completion.snippets"
             end,
+            disable = plugins.luasnip,
         }
         use {
             "bryant-the-coder/friendly-snippets",
             event = "InsertEnter",
+            disable = plugins.friendly_snippets,
         }
 
         -- Autopairs
@@ -103,10 +108,10 @@ return require("packer").startup {
             },
             after = "nvim-cmp",
             opt = true,
-            disable = false,
             config = function()
                 require "modules.completion.autopairs"
             end,
+            disable = plugins.autopairs,
         }
 
         -----------------------------------
@@ -115,10 +120,10 @@ return require("packer").startup {
         -- Impatient
         use {
             "lewis6991/impatient.nvim",
-            disable = false,
             config = function()
                 require "modules.editor.impatient"
             end,
+            disable = plugins.impatient,
         }
 
         -- Comment
@@ -136,11 +141,12 @@ return require("packer").startup {
             requires = {
                 "JoosepAlviste/nvim-ts-context-commentstring",
                 event = "InsertEnter",
+                disable = plugins.commentstring,
             },
-            disable = false,
             config = function()
                 require "modules.editor.comment"
             end,
+            disable = plugins.comment,
         }
 
         -- Neorg
@@ -148,18 +154,20 @@ return require("packer").startup {
             "nvim-neorg/neorg",
             ft = "norg",
             after = "nvim-treesitter", -- You may want to specify Telescope here as well
-            disable = false,
             config = function()
                 require "modules.editor.neorg"
             end,
+            disable = plugins.neorg,
         }
         use {
             "max397574/neorg-kanban",
             after = "neorg",
+            disable = plugins.neorg_kanban,
         }
         use {
             "nvim-neorg/neorg-telescope",
             after = "neorg",
+            disable = plugins.neorg_telescope,
         }
 
         -----------------------------------
@@ -174,7 +182,7 @@ return require("packer").startup {
             config = function()
                 require "modules.files.nvim-tree"
             end,
-            disable = true,
+            disable = plugins.nvim_tree,
         }
 
         use {
@@ -184,38 +192,41 @@ return require("packer").startup {
             config = function()
                 require "modules.files.neo-tree"
             end,
+            disable = plugins.neotree,
         }
 
         -- Harpoon
         use {
             "bryant-the-coder/harpoon",
-            disable = false,
             setup = function()
                 require("custom.load").harpoon()
             end,
             config = function()
                 require "modules.files.harpoon"
             end,
+            disable = plugins.harpoon,
         }
 
         -- Telescope
         use {
             "nvim-telescope/telescope.nvim",
-            disable = false,
             module = { "telescope", "modules.files.telescope" },
             cmd = "Telescope",
             config = function()
                 require "modules.files.telescope"
             end,
+            disable = plugins.telescope,
         }
         use {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",
             after = "telescope.nvim",
+            disable = plugins.telescope_fzf_native,
         }
         use {
             "nvim-telescope/telescope-file-browser.nvim",
             after = "telescope.nvim",
+            disable = plugins.telescope_file_browser,
         }
 
         -----------------------------------
@@ -224,7 +235,6 @@ return require("packer").startup {
         -- Formatter
         use {
             "mhartington/formatter.nvim",
-            disable = true,
             cmd = "FormatWrite",
             setup = function()
                 local group = vim.api.nvim_create_augroup("Formatter", {})
@@ -238,32 +248,32 @@ return require("packer").startup {
             config = function()
                 require "modules.lang.formatter"
             end,
+            disable = plugins.formatter,
         }
 
         -- Neogen
         use {
             "danymat/neogen",
             cmd = "Neogen",
-            disable = false,
             config = function()
                 require "modules.lang.neogen"
             end,
+            disable = plugins.neogen,
         }
 
         -- Null-ls
         use {
             "Jose-elias-alvarez/null-ls.nvim",
             event = { "InsertEnter" },
-            disable = false,
             config = function()
                 require "modules.lang.null-ls"
             end,
+            disable = plugins.null,
         }
 
         -- Treesitter
         use {
             "nvim-treesitter/nvim-treesitter",
-            disable = false,
             ft = {
                 "lua",
                 "rust",
@@ -281,6 +291,7 @@ return require("packer").startup {
             config = function()
                 require "modules.lang.treesitter"
             end,
+            disable = plugins.treesitter,
         }
 
         -- Vscode like rainbow parenthesis
@@ -288,7 +299,7 @@ return require("packer").startup {
             "p00f/nvim-ts-rainbow",
             after = "nvim-treesitter",
             opt = true,
-            disable = false,
+            disable = plugins.ts_rainbow,
         }
 
         -- Auto complete tag
@@ -296,20 +307,21 @@ return require("packer").startup {
             "windwp/nvim-ts-autotag",
             opt = true,
             ft = { "html", "tsx" },
-            disable = true,
+            disable = plugins.autotag,
         }
 
         use {
             "nvim-treesitter/playground",
             cmd = { "TSPlaygroundToggle", "TSHighlightCapturesUnderCursor" },
             opt = true,
-            disable = false,
+            disable = plugins.playground,
         }
 
         use {
             "lewis6991/nvim-treesitter-context",
             after = "nvim-treesitter",
             cmd = { "TSContextEnable", "TSContextDisable", "TSContextToggle" },
+            disable = plugins.ts_context,
         }
 
         -- Trouble
@@ -322,10 +334,10 @@ return require("packer").startup {
                 "TroubleToggle",
             },
             opt = true,
-            disable = false,
             config = function()
                 require "modules.lang.trouble"
             end,
+            disable = plugins.trouble,
         }
 
         -- LSP
@@ -363,6 +375,7 @@ return require("packer").startup {
                 require "modules.lsp.init"
                 require "modules.lsp.installer"
             end,
+            disable = plugins.lsp,
         }
 
         -- LSP installer
@@ -380,19 +393,19 @@ return require("packer").startup {
                 "tex",
                 "json",
             },
-            disable = false,
+            disable = plugins.lsp_installer,
         }
 
         use {
             "max397574/lua-dev.nvim",
             ft = { "lua" },
             after = "nvim-lspconfig",
-            disable = false,
+            disable = plugins.lua_dev,
         }
 
         use {
             "p00f/clangd_extensions.nvim",
-            disable = true,
+            disable = plugins.clangd_ext,
         }
 
         use {
@@ -401,15 +414,16 @@ return require("packer").startup {
             config = function()
                 require "modules.lsp.signature"
             end,
+            disable = plugins.lsp_signature,
         }
 
         -- Uncomment this if you want lspsage
         use {
             "glepnir/lspsaga.nvim",
-            disable = true,
             config = function()
                 require "modules.lsp.saga"
             end,
+            disable = plugins.lspsaga,
         }
 
         -----------------------------------
@@ -418,7 +432,6 @@ return require("packer").startup {
         -- Colors the word
         use {
             "norcalli/nvim-colorizer.lua",
-            disable = false,
             opt = true,
             setup = function()
                 require("custom.load").colorizer()
@@ -426,6 +439,7 @@ return require("packer").startup {
             config = function()
                 require "modules.tools.colorizer"
             end,
+            disable = plugins.colorizer,
         }
 
         -- Change colors live in a window
@@ -435,28 +449,29 @@ return require("packer").startup {
             config = function()
                 require "modules.tools.colortils"
             end,
+            disable = plugins.colortils,
         }
 
         -- Show lsp progress when you enter a file
         use {
             "j-hui/fidget.nvim",
-            disable = false,
             module = "lspconfig",
             config = function()
                 require "modules.tools.fidget"
             end,
+            disable = plugins.fidget,
         }
 
         -- Terminal
-        --[[ use {
+        use {
             "akinsho/toggleterm.nvim",
             keys = "<c-b>",
             module = { "toggleterm" },
             config = function()
                 require "modules.tools.toggleterm"
             end,
-            disable = false,
-        } ]]
+            disable = plugins.toggleterm,
+        }
 
         -- Git intergrations
         use {
@@ -466,24 +481,24 @@ return require("packer").startup {
             setup = function()
                 require("custom.load").gitsigns()
             end,
-            disable = false,
             config = function()
                 require "modules.tools.gitsigns"
             end,
+            disable = plugins.gitsigns,
         }
 
         -- Share code
         use {
             "rktjmp/paperplanes.nvim",
             cmd = "PP",
-            disable = false,
+            disable = plugins.paperplanes,
         }
 
         -- Faster movement
         use {
             "ggandor/lightspeed.nvim",
             keys = { "S", "s", "f", "F", "t", "T" },
-            disable = false,
+            disable = plugins.lightspeed,
         }
 
         use {
@@ -492,6 +507,7 @@ return require("packer").startup {
             config = function()
                 require "modules.tools.todo"
             end,
+            disable = plugins.todo_comments,
         }
 
         use {
@@ -500,6 +516,7 @@ return require("packer").startup {
             config = function()
                 require "modules.tools.surround"
             end,
+            disable = plugins.nvim_surround,
         }
 
         -----------------------------------
@@ -513,10 +530,10 @@ return require("packer").startup {
             setup = function()
                 require("custom.load").bufferline()
             end,
-            disable = false,
             config = function()
                 require "modules.ui.bufferline"
             end,
+            disable = plugins.bufferline,
         }
 
         -- Indentation
@@ -524,11 +541,11 @@ return require("packer").startup {
             "lukas-reineke/indent-blankline.nvim",
             after = "nvim-lspconfig",
             -- event = "InsertEnter",
-            disable = false,
             opt = true,
             config = function()
                 require "modules.ui.indent"
             end,
+            disable = plugins.indent_blankline,
         }
 
         -- Notifications
@@ -536,10 +553,10 @@ return require("packer").startup {
             "rcarriga/nvim-notify",
             opt = true,
             event = "BufEnter",
-            disable = false,
             config = function()
                 require "modules.ui.notify"
             end,
+            disable = plugins.notify,
         }
 
         use {
@@ -548,6 +565,7 @@ return require("packer").startup {
             config = function()
                 require "modules.ui.satellite"
             end,
+            disable = plugins.satellite,
         }
 
         -- Install packer and plugins if it doesn't exist
