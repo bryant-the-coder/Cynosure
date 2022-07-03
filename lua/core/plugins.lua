@@ -89,7 +89,7 @@ return require("packer").startup {
             end,
         }
         use {
-            "bryant-the-coder/friendly-snippets",
+            "rafamadriz/friendly-snippets/friendly-snippets",
             event = "InsertEnter",
         }
 
