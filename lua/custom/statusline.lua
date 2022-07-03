@@ -59,7 +59,8 @@ end
 -- Filename
 local function file()
     local icon = ""
-    local filename = fn.fnamemodify(fn.expand "%:t", ":r")
+    local filename = fn.pathshorten(fn.expand "%:t", ":r")
+    -- local filename = vim.fn.pathshorten(vim.fn.fnamemodify(self.filename, ":."))
     local extension = fn.expand "%:e"
 
     if filename == "" then
@@ -103,9 +104,9 @@ local git_info = function()
 
     local git_status = vim.b.gitsigns_status_dict
 
-    local added = (git_status.added and git_status.added ~= 0) and (" + " .. git_status.added) or ""
-    local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
-    local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
+    local added = (git_status.added and git_status.added ~= 0) and ("  " .. git_status.added) or ""
+    local changed = (git_status.changed and git_status.changed ~= 0) and ("  " .. git_status.changed) or ""
+    local removed = (git_status.removed and git_status.removed ~= 0) and ("  " .. git_status.removed) or ""
     local git_info = added .. changed .. removed
 
     return "%#GitInfo#" .. git_info .. "%#Statusline#"
@@ -125,23 +126,23 @@ local function get_diagnostic(prefix, severity)
         }
         count = #vim.diagnostic.get(0, { severity = severities[severity] })
     end
-    return fmt(" %s:%d ", prefix, count)
+    return fmt("%s%d ", prefix, count)
 end
 
 local function get_error()
-    return "%#Error#" .. get_diagnostic("E", "Error")
+    return "%#Error#" .. get_diagnostic(" ", "Error")
 end
 
 local function get_warning()
-    return "%#Warning#" .. get_diagnostic("W", "Warning")
+    return "%#Warning#" .. get_diagnostic(" ", "Warning")
 end
 
 local function get_hint()
-    return "%#Hint#" .. get_diagnostic("H", "Hint")
+    return "%#Hint#" .. get_diagnostic(" ", "Hint")
 end
 
 local function get_info()
-    return "%#Info#" .. get_diagnostic("I", "Info")
+    return "%#Info#" .. get_diagnostic(" ", "Info")
 end
 
 -- Clock
@@ -164,7 +165,7 @@ dashboard.run = function()
         mode(), -- Show mode
         "%#Normal#",
         git(),
-        git_info(),
+        -- git_info(),
         -- "%#Statusline#",
         ts_status(),
 
@@ -178,7 +179,7 @@ dashboard.run = function()
         get_warning(),
         --[[ get_hint(),
         get_info(), ]]
-        clock(),
+        -- clock(),
     }
 end
 

@@ -82,11 +82,16 @@ hl(0, "StatusTerminal", { fg = "#181a1f", bg = "#E06C75" })
 hl(0, "Filename", { fg = "#a9b1d6" })
 hl(0, "Branch", { fg = "#181a1f", bg = "#ff69b4" })
 hl(0, "GitInfo", { fg = "#8b919c", bg = "NONE" })
-hl(0, "Error", { fg = "#181a1f", bg = "#EE6D85", bold = true })
-hl(0, "Warning", { fg = "#181a1f", bg = "#D7A65F", bold = true })
-hl(0, "Hint", { fg = "#181a1f", bg = purple, bold = true })
-hl(0, "Info", { fg = "#181a1f", bg = green, bold = true })
+-- hl(0, "Error", { fg = "#181a1f", bg = "#EE6D85", bold = true })
+-- hl(0, "Warning", { fg = "#181a1f", bg = "#D7A65F", bold = true })
+-- hl(0, "Hint", { fg = "#181a1f", bg = purple, bold = true })
+-- hl(0, "Info", { fg = "#181a1f", bg = green, bold = true })
+hl(0, "Error", { fg = "#EE6D85", bg = "NONE", bold = true })
+hl(0, "Warning", { fg = "#D7A65F", bg = "NONE", bold = true })
+hl(0, "Hint", { fg = purple, bg = "NONE", bold = true })
+hl(0, "Info", { fg = green, bg = "NONE", bold = true })
 hl(0, "Clock", { fg = "#181a1f", bg = "#41a6b5" })
+
 
 if ui.italic then
     -- local light_grey = "#a9a9a9"
