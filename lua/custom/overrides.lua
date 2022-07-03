@@ -92,7 +92,6 @@ hl(0, "Hint", { fg = purple, bg = "NONE", bold = true })
 hl(0, "Info", { fg = green, bg = "NONE", bold = true })
 hl(0, "Clock", { fg = "#181a1f", bg = "#41a6b5" })
 
-
 if ui.italic then
     -- local light_grey = "#a9a9a9"
     fg("Comment", light_grey, { italic = true, bold = true })
