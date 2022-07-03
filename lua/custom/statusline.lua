@@ -69,6 +69,10 @@ local function file()
         filename = " " .. filename .. " "
     end
 
+    --[[ if vim.bo.modified then
+        return " " .. filename
+    end ]]
+
     local devicons_present, devicons = pcall(require, "nvim-web-devicons")
 
     if not devicons_present then
@@ -79,6 +83,14 @@ local function file()
     icon = (ft_icon ~= nil and " " .. ft_icon) or icon
 
     return "%#Filename#" .. icon .. filename
+end
+
+local function work_dir()
+    local cwd = vim.fn.getcwd(0)
+    cwd = vim.fn.fnamemodify(cwd, ":~")
+    cwd = vim.fn.pathshorten(cwd)
+    local trail = cwd:sub(-1) == "/" and "" or "/"
+    return " " .. cwd .. trail
 end
 
 -- Nvim-gps
@@ -162,6 +174,7 @@ dashboard.run = function()
     return table.concat {
         "%#Statusline#",
         update_mode_colors(), -- Update mode colors
+        -- work_dir(),
         mode(), -- Show mode
         "%#Normal#",
         git(),
