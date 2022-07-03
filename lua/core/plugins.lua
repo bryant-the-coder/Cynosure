@@ -174,7 +174,7 @@ return require("packer").startup {
             config = function()
                 require "modules.files.nvim-tree"
             end,
-            disable = false,
+            disable = true,
         }
 
         use {
@@ -392,7 +392,7 @@ return require("packer").startup {
 
         use {
             "p00f/clangd_extensions.nvim",
-            disable = false,
+            disable = true,
         }
 
         use {
