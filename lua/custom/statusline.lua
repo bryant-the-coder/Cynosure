@@ -190,9 +190,9 @@ dashboard.run = function()
         space,
         get_error(),
         get_warning(),
-        --[[ get_hint(),
-        get_info(), ]]
-        -- clock(),
+        get_hint(),
+        get_info(),
+        clock(),
     }
 end
 
