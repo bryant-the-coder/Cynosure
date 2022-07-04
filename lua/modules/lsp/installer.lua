@@ -24,5 +24,7 @@ require("nvim-lsp-installer").setup {
     },
     -- Limit for the maximum amount of servers to be installed at the same time. Once this limit is reached, any further
     -- servers that are requested to be installed will be put in a queue.
+
+    -- NOTE: to prevent lack
     max_concurrent_installers = 3,
 }
