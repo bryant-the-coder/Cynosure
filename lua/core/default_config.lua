@@ -67,6 +67,7 @@ config.plugins = {
     lightspeed = false,
     todo_comments = false,
     nvim_surround = true,
+    align = true,
 
     -----------------------------------
     --               UI              --

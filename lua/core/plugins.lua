@@ -521,6 +521,7 @@ return require("packer").startup {
 
         use {
             "RRethy/nvim-align",
+            disable = plugins.align,
         }
 
         -----------------------------------
