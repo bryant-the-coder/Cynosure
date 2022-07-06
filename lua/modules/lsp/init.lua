@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+-- WARN: DONT PLACE ANY LSP CONFIG BELOW CLANGD
+
 -- Load lua-dev because i am lazyloading it
 require("packer").loader "lua-dev.nvim"
 
@@ -34,7 +36,7 @@ local sumneko = {
         },
     },
 }
-local use_lua_dev = true
+local use_lua_dev = false
 if use_lua_dev then
     local luadev = require("lua-dev").setup {
         library = {
@@ -55,6 +57,51 @@ lspconfig.jsonls.setup {
     on_attach = on_attach,
 }
 
+-- Pyright
+require("lspconfig").jedi_language_server.setup {
+    -- cmd = { "jedi-language-server" },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetype = { "python" },
+    settings = {
+        python = {
+            analysis = {
+                indexing = true,
+                typeCheckingMode = "basic",
+                diagnosticMode = "workspace",
+                inlayHints = {
+                    variableTypes = true,
+                    functionReturnTypes = true,
+                },
+                stubPath = vim.fn.expand "$HOME/typings",
+                diagnosticSeverityOverrides = {
+                    reportMissingTypeStubs = "information",
+
+                    reportGeneralTypeIssues = "warning",
+                    reportUnboundVariable = "warning",
+                    reportUndefinedVariable = "error",
+                    reportUnknownMemberType = "information",
+                    reportUnknownVariableType = "information",
+                    reportUntypedClassDecorator = "none",
+                    reportUntypedFunctionDecorator = "none",
+                    reportFunctionMemberAccess = "warning",
+                    reportUnknownArgumentType = "warning",
+                    reportUnknownParameterType = "warning",
+                    reportUnknownLambdaType = "warning",
+                    reportUnusedImport = "information",
+                    reportUnusedFunction = "information",
+                    reportUnusedVariable = "information",
+                    reportUnusedClass = "information",
+                    strictParameterNoneValue = false,
+                    reportOptionalSubscript = "warning",
+                    reportOptionalMemberAccess = "warning",
+                    reportOptionalIterable = "warning",
+                    reportOptionalCall = "none",
+                },
+            },
+        },
+    },
+}
 -- Clangd
 local clangd_defaults = require "lspconfig.server_configurations.clangd"
 local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {
@@ -77,7 +124,7 @@ local status_ok, clangd = pcall(require, "clangd_extensions")
 if not status_ok then
     return
 end
-clangd.setup {
+require("clangd_extensions").setup {
     server = clangd_configs,
     extensions = {
         autoSetHints = true,
@@ -125,6 +172,3 @@ clangd.setup {
         },
     },
 }
-
--- Pyright
-lspconfig.jedi_language_server.setup {}
