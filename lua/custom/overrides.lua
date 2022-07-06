@@ -1,6 +1,6 @@
 local hl = vim.api.nvim_set_hl
 local colors = require("core.utils").get()
--- local base = require("core.utils").get_base()
+local base = require("core.utils").get_base()
 
 -- Code from nvchad
 local black = colors.black
@@ -29,6 +29,21 @@ local teal = colors.teal
 local grey_fg2 = colors.grey_fg2
 local cyan = colors.cyan
 local sun = colors.sun
+local base01 = base.base01
+local base02 = base.base02
+local base03 = base.base03
+local base04 = base.base04
+local base05 = base.base05
+local base06 = base.base06
+local base07 = base.base07
+local base08 = base.base08
+local base09 = base.base09
+local base0A = base.base0A
+local base0B = base.base0B
+local base0C = base.base0C
+local base0D = base.base0D
+local base0E = base.base0E
+local base0F = base.base0F
 
 -- Define bg color
 -- @param group Group
@@ -73,6 +88,7 @@ local ui = {
     transparency = true,
     italic = true,
 }
+
 hl(0, "StatusNormal", { fg = "#181a1f", bg = "#98c379" })
 hl(0, "StatusReplace", { fg = "#181a1f", bg = "#E5C07B" })
 hl(0, "StatusInsert", { fg = "#181a1f", bg = "#61AFEF" })
@@ -192,29 +208,41 @@ fg("NeoTreeFileNameOpened", folder_bg)
 -- CMP
 fg("CmpItemAbbrDeprecated", "#808080", { strikethrough = true })
 
+bg("CmPmenu", darker_black)
+
 -- fg("CmpItemAbbrMatch", "#569CD6")
 fg("CmpItemAbbrMatch", blue, { bold = true })
 fg("CmpItemAbbrMatchFuzzy", "#569CD6")
 
-fg("CmpItemKindVariable", yellow)
 fg("CmpItemMenuInterface", "#9CDCFE")
 fg("CmpItemMenuText", light_grey)
-
-fg("CmpItemKindFunction", red)
-fg("CmpItemKindMethod", red)
-
-fg("CmpItemKindKeyword", orange)
-fg("CmpItemKindProperty", orange)
-fg("CmpItemKindUnit", orange)
-
-fg("CmpItemKindFile", blue)
-fg("CmpItemKindModule", blue)
-
-fg("CmpItemKindSnippet", purple)
 
 -- fg("CmpBorder", blue)
 fg("CmpBorder", grey)
 fg("CmpDocumentationWindowBorder", grey)
+
+fg("CmpItemKindConstant", base09)
+fg("CmpItemKindFunction", base0D)
+fg("CmpItemKindIdentifier", base08)
+fg("CmpItemKindField", base08)
+fg("CmpItemKindVariable", base0E)
+fg("CmpItemKindSnippet", red)
+fg("CmpItemKindText", base0B)
+fg("CmpItemKindStructure", base0E)
+fg("CmpItemKindType", base0A)
+fg("CmpItemKindKeyword", base07)
+fg("CmpItemKindMethod", base0D)
+fg("CmpItemKindConstructor", blue)
+fg("CmpItemKindFolder", base07)
+fg("CmpItemKindModule", base0A)
+fg("CmpItemKindProperty", base08)
+fg("CmpItemKindUnit", base0E)
+fg("CmpItemKindFile", base07)
+fg("CmpItemKindColor", red)
+fg("CmpItemKindReference", base05)
+fg("CmpItemKindStruct", base0E)
+fg("CmpItemKindOperator", base05)
+fg("CmpItemKindTypeParameter", base08)
 
 -- Telescope
 bg("TelescopeNormal", darker_black)

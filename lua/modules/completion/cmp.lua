@@ -13,34 +13,6 @@ end
 
 local luasnip = require "luasnip"
 
-local kind_icons = {
-    Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "ﰠ",
-    Variable = "",
-    Class = "ﴯ",
-    Interface = "",
-    Module = "",
-    Property = "ﰠ",
-    Unit = "塞",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "פּ",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-}
-
 -- local border = {
 --     { "┏", "FloatBorder" },
 --     { "━", "FloatBorder" },
@@ -175,16 +147,21 @@ cmp.setup {
         --     })[entry.source.name] ]]
         --     return vim_item
         -- end,
-        fields = { "kind", "abbr", "menu" },
+        --[[ fields = { "kind", "abbr", "menu" },
         format = function(_, vim_item)
             vim_item.menu = vim_item.kind
             vim_item.kind = kind_icons[vim_item.kind]
+            return vim_item
+        end, ]]
+        format = function(_, vim_item)
+            local icons = require("custom.icons").lspkind
+            vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
             return vim_item
         end,
     },
     sources = cmp.config.sources {
         { name = "nvim_lsp", priority = "9" },
-        { name = "nvim_lsp_signature_help", priority = 10 },
+        { name = "nvim_lsp_signature_help", priority = "7" },
         { name = "luasnip", priority = "8" },
         { name = "buffer", keyword_length = 5 },
         { name = "npm", keyword_length = 2 },
