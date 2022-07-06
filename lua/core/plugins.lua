@@ -383,6 +383,7 @@ return require("packer").startup {
             "williamboman/nvim-lsp-installer",
             ft = {
                 "lua",
+                "python",
                 "rust",
                 "c",
                 "cpp",
@@ -405,6 +406,7 @@ return require("packer").startup {
 
         use {
             "p00f/clangd_extensions.nvim",
+            ft = { "cpp" },
             disable = plugins.clangd_ext,
         }
 
