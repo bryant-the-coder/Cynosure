@@ -291,7 +291,6 @@ return require("packer").startup {
             config = function()
                 require "modules.lang.treesitter"
             end,
-            disable = plugins.treesitter,
         }
 
         -- Vscode like rainbow parenthesis
@@ -587,8 +586,11 @@ return require("packer").startup {
         },
         display = {
             title = "Packer", -- Packer, Installing
-            done_sym = "",
-            error_syn = "×",
+            working_sym = "ﲊ",
+            error_sym = "✗ ",
+            done_sym = " ",
+            removed_sym = " ",
+            moved_sym = "",
             --[[ open_fn = function()
                 return require("packer.util").float { border = "single" }
             end, ]]
