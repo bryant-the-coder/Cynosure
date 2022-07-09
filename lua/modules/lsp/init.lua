@@ -62,7 +62,6 @@ require("lspconfig").jedi_language_server.setup {
     -- cmd = { "jedi-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
-    filetype = { "python" },
     settings = {
         python = {
             analysis = {
