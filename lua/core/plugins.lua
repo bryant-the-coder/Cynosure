@@ -528,6 +528,15 @@ return require("packer").startup {
         -----------------------------------
         --               UI              --
         -----------------------------------
+        -- Presence
+        use {
+            "andweeb/presence.nvim",
+            opt = true,
+            setup = function()
+                require("custom.load").on_file_open "presence.nvim"
+            end,
+        }
+
         -- Bufferline
         use {
             "akinsho/bufferline.nvim",

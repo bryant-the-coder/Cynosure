@@ -1,20 +1,20 @@
 -- https://github.com/max397574/omega-nvim/blob/master/lua/omega/modules/ui/bufferline.lua
-local lazy_load = function(tb)
-    vim.api.nvim_create_autocmd(tb.events, {
+local lazy_load = function(payload)
+    vim.api.nvim_create_autocmd(payload.events, {
         pattern = "*",
-        group = vim.api.nvim_create_augroup(tb.augroup_name, {}),
+        group = vim.api.nvim_create_augroup(payload.augroup_name, {}),
         callback = function()
-            if tb.condition() then
-                vim.api.nvim_del_augroup_by_name(tb.augroup_name)
+            if payload.cond() then
+                vim.api.nvim_del_augroup_by_name(payload.augroup_name)
 
                 -- dont defer for treesitter as it will show slow highlighting
                 -- This deferring only happens only when we do "nvim filename"
-                if tb.plugins ~= "nvim-treesitter" then
+                if payload.plugins ~= "nvim-treesitter" then
                     vim.defer_fn(function()
-                        vim.cmd("PackerLoad " .. tb.plugins)
+                        vim.cmd("PackerLoad " .. payload.plugins)
                     end, 0)
                 else
-                    vim.cmd("PackerLoad " .. tb.plugins)
+                    vim.cmd("PackerLoad " .. payload.plugins)
                 end
             end
         end,
@@ -28,7 +28,7 @@ load.bufferline = function()
         events = { "BufNewFile", "BufRead", "TabEnter" },
         augroup_name = "BufferLineLazy",
         plugins = "bufferline.nvim",
-        condition = function()
+        cond = function()
             return #vim.fn.getbufinfo { buflisted = 1 } >= 2
         end,
     }
@@ -39,7 +39,7 @@ load.colorizer = function()
         events = { "BufRead", "BufNewFile" },
         augroup_name = "ColorizerLazy",
         plugins = "nvim-colorizer.lua",
-        condition = function()
+        cond = function()
             -- If the word contains this items, it will load it
             local items = { "#", "rgb", "hsl" }
 
@@ -57,7 +57,7 @@ load.todo_comments = function()
         events = { "BufRead", "BufNewFile" },
         augruop = "TodoLazy",
         plugins = "todo-comments.nvim",
-        condition = function()
+        cond = function()
             local words = {
                 "FIXME",
                 "BUG",
@@ -93,7 +93,7 @@ load.ts = function()
         events = { "BufRead", "BufWinEnter", "BufNewFile" },
         augroup_name = "Treesitter_lazy",
         plugins = "nvim-treesitter",
-        condition = function()
+        cond = function()
             local file = vim.fn.expand "%"
             return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= "neo-tree filesystem" and file ~= ""
         end,
@@ -131,8 +131,20 @@ load.harpoon = function()
         events = { "BufRead", "TabEnter" },
         augroup_name = "HarpoonLazy",
         plugins = "harpoon",
-        condition = function()
+        cond = function()
             return #vim.fn.getbufinfo { buflisted = 1 } >= 2
+        end,
+    }
+end
+
+load.on_file_open = function(plugname)
+    lazy_load {
+        events = { "BufRead", "BufWinEnter", "BufNewFile" },
+        augroup_name = "BeLazyOnFileOpen" .. plugname,
+        plugins = plugname,
+        cond = function()
+            local file = vim.fn.expand "%"
+            return file ~= "NvimTree_1" and file ~= "[packer]" and file ~= ""
         end,
     }
 end
