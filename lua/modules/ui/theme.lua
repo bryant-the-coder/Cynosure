@@ -7,7 +7,7 @@ local base16 = require "base16"
 -- D) everforest
 -- E) rose_pine
 
-_G.theme = "everblush"
+_G.theme = "mocha"
 
 local theme = _G.theme
 local time = os.date "*t"
