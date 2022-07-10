@@ -5,7 +5,7 @@ local base16 = require "base16"
 -- B) everforest
 -- C) mocha
 
-_G.theme = "mocha"
+_G.theme = "everblush"
 
 local theme = _G.theme
 

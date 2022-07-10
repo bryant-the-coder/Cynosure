@@ -114,6 +114,8 @@ if ui.italic then
     fg("DiagnosticHeader", "#2cb27f", { italic = true, bold = true })
     fg("GitSignsCurrentLineBlame", light_grey, { italic = true, bold = true })
     fg("CmpItemAbbr", white, { italic = true })
+    fg("TSVariable", base05, { italic = true })
+    -- fg("TSString", base0B, { italic = true })
     fg_bg("TelescopePreviewTitle", black, green, { italic = true })
     fg_bg("TelescopePromptTitle", black, red, { italic = true })
     fg_bg("BufferlineBufferSelected", white, black, { italic = true, bold = true })
@@ -125,6 +127,8 @@ else
     fg("DiagnosticHeader", "#2cb27f", { bold = true })
     fg("GitSignsCurrentLineBlame", light_grey, { bold = true })
     fg("CmpItemAbbr", white)
+    fg("TSVariable", base05)
+    -- fg("TSString", base0B)
     fg_bg("TelescopePreviewTitle", black, green)
     fg_bg("TelescopePromptTitle", black, red)
     fg_bg("BufferlineBufferSelected", white, black, { bold = true })
@@ -209,6 +213,8 @@ fg("NeoTreeFileNameOpened", folder_bg)
 fg("CmpItemAbbrDeprecated", "#808080", { strikethrough = true })
 
 bg("CmPmenu", darker_black)
+
+-- Treesiter
 
 -- fg("CmpItemAbbrMatch", "#569CD6")
 fg("CmpItemAbbrMatch", blue, { bold = true })
