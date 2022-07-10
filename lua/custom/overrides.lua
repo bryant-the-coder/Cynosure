@@ -214,8 +214,6 @@ fg("CmpItemAbbrDeprecated", "#808080", { strikethrough = true })
 
 bg("CmPmenu", darker_black)
 
--- Treesiter
-
 -- fg("CmpItemAbbrMatch", "#569CD6")
 fg("CmpItemAbbrMatch", blue, { bold = true })
 fg("CmpItemAbbrMatchFuzzy", "#569CD6")

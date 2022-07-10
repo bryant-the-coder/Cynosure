@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
--- WARN: DONT PLACE ANY LSP CONFIG BELOW CLANGD
+-- WARN: DONT PLACE ANY LSP CONFIG BELOW CLANGD (just in case you know)
 
 -- Load lua-dev because i am lazyloading it
 require("packer").loader "lua-dev.nvim"

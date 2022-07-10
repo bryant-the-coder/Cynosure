@@ -4,6 +4,8 @@ local lazy_load = function(payload)
         pattern = "*",
         group = vim.api.nvim_create_augroup(payload.augroup_name, {}),
         callback = function()
+            -- WARN: Change `cond` to anything you like.
+            -- ALSO THE COND IN THE ENTIRE FILE
             if payload.cond() then
                 vim.api.nvim_del_augroup_by_name(payload.augroup_name)
 
