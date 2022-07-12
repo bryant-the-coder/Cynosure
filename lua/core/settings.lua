@@ -61,8 +61,8 @@ o.smartcase = true -- Don't ignore when uppercase search
 
 -- Statusline
 o.laststatus = 3
---[[ if utils.has_version("0.8") then
-    o.winbar = "%{%v:lua.require'custom.winbar'.eval()%}"
+--[[ if utils.has_version "0.8" then
+    o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 end ]]
 o.statusline = "%!v:lua.require'custom.statusline'.run()"
 

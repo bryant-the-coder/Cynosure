@@ -1,4 +1,4 @@
-local winbar = {}
+--[[ local winbar = {}
 
 winbar.eval = function()
     if vim.api.nvim_eval_statusline("%f", {})["str"] == "[No Name]" then
@@ -21,4 +21,4 @@ winbar.eval = function()
         .. "%*"
 end
 
-return winbar
+return winbar ]]
