@@ -430,6 +430,9 @@ return require("packer").startup {
         -----------------------------------
         --             Tools             --
         -----------------------------------
+        use {
+            "tpope/vim-fugitive",
+        }
         -- Colors the word
         use {
             "norcalli/nvim-colorizer.lua",
