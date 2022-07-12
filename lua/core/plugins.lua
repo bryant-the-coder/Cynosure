@@ -432,7 +432,17 @@ return require("packer").startup {
         -----------------------------------
         use {
             "tpope/vim-fugitive",
+            after = "gitsigns.nvim",
         }
+
+        use {
+            "zbirenbaum/neodim",
+            event = "LspAttach",
+            config = function()
+                require "modules.tools.neodim"
+            end,
+        }
+
         -- Colors the word
         use {
             "norcalli/nvim-colorizer.lua",
