@@ -535,6 +535,7 @@ return require("packer").startup {
             setup = function()
                 require("custom.load").on_file_open "presence.nvim"
             end,
+            disable = plugins.presence,
         }
 
         -- Bufferline

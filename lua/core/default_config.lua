@@ -72,10 +72,11 @@ config.plugins = {
     -----------------------------------
     --               UI              --
     -----------------------------------
+    presence = false,
     bufferline = false,
     indent_blankline = false,
     notify = false,
-    satellite = false,
+    satellite = true,
 }
 
 return config
