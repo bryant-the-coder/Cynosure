@@ -1,3 +1,5 @@
+-- Taken from coffee
+
 local function clang_format()
     return {
         exe = "clang-format",
