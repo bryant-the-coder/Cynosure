@@ -614,10 +614,10 @@ return require("packer").startup {
             done_sym = " ",
             removed_sym = " ",
             moved_sym = "",
-            --[[ open_fn = function()
+            open_fn = function()
                 return require("packer.util").float { border = "single" }
-            end, ]]
+            end,
         },
-        max_jobs = 6,
+        -- max_jobs = 6,
     },
 }

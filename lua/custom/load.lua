@@ -42,14 +42,7 @@ load.colorizer = function()
         augroup_name = "ColorizerLazy",
         plugins = "nvim-colorizer.lua",
         cond = function()
-            -- If the word contains this items, it will load it
-            local items = { "#", "rgb", "hsl" }
-
-            for _, val in ipairs(items) do
-                if vim.fn.search(val) ~= 0 then
-                    return true
-                end
-            end
+            return true
         end,
     }
 end
