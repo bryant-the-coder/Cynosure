@@ -618,6 +618,7 @@ return require("packer").startup {
                 return require("packer.util").float { border = "single" }
             end,
         },
+        -- Uncomment this if your pc slows down
         -- max_jobs = 6,
     },
 }
