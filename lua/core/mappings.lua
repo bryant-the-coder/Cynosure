@@ -171,6 +171,10 @@ map("n", "<leader>ng", "<cmd>Neogen<CR>")
 map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
 map("i", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
 
+-- Cybu
+map("n", "K", "<Plug>(CybuPrev)")
+map("n", "J", "<Plug>(CybuNext)")
+
 -- Packer
 map("n", "<leader>pi", "<cmd>PackerInstall<CR>")
 map("n", "<leader>pu", "<cmd>PackerUpdate<CR>")
