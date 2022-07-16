@@ -26,7 +26,7 @@ local modes = {
     ["t"] = "TERMINAL",
 }
 
-local dashboard = {}
+local statusline = {}
 
 -- Making the modes name UPPERCASE
 local function mode()
@@ -91,12 +91,6 @@ local function work_dir()
     cwd = vim.fn.pathshorten(cwd)
     local trail = cwd:sub(-1) == "/" and "" or "/"
     return " " .. cwd .. trail
-end
-
--- Nvim-gps
-local function gps()
-    local gps_present, gps = pcall(require, "nvim-gps")
-    return gps_present and gps.is_available() and gps.get_location() or ""
 end
 
 -- Git
@@ -170,7 +164,28 @@ local function ts_status()
     return (ts and next(ts)) and "" or " 滑 unavailable "
 end
 
-dashboard.run = function()
+local function coords()
+    return "%#Coords#" .. " %4(%l%):%2c"
+end
+
+local function progress_bar()
+    local sbar = { "▁", "▂", "▃", "▄", "▅", "▆", "▇" }
+    local curr_line = vim.api.nvim_win_get_cursor(0)[1]
+    local lines = vim.api.nvim_buf_line_count(0)
+    local i = math.floor(curr_line / lines * (#sbar - 1)) + 1
+    return sbar[i]
+end
+
+local function word_counter()
+    local wc = vim.api.nvim_eval "wordcount()"
+    if wc["visual_words"] then
+        return wc["visual_words"]
+    else
+        return wc["words"]
+    end
+end
+
+statusline.run = function()
     return table.concat {
         "%#Statusline#",
         update_mode_colors(), -- Update mode colors
@@ -183,7 +198,6 @@ dashboard.run = function()
         ts_status(),
 
         "%=",
-        -- gps(),
         file(), -- Show filename
         "%=",
 
@@ -192,8 +206,11 @@ dashboard.run = function()
         get_warning(),
         get_hint(),
         get_info(),
+
+        -- coords(),
         clock(),
+        -- progress_bar(),
     }
 end
 
-return dashboard
+return statusline

@@ -29,6 +29,7 @@ local teal = colors.teal
 local grey_fg2 = colors.grey_fg2
 local cyan = colors.cyan
 local sun = colors.sun
+local base00 = base.base00
 local base01 = base.base01
 local base02 = base.base02
 local base03 = base.base03
@@ -107,6 +108,7 @@ hl(0, "Warning", { fg = "#D7A65F", bg = "NONE", bold = true })
 hl(0, "Hint", { fg = purple, bg = "NONE", bold = true })
 hl(0, "Info", { fg = green, bg = "NONE", bold = true })
 hl(0, "Clock", { fg = "#181a1f", bg = "#41a6b5" })
+-- hl(0, "Coords", { fg = "#1E232A", bg = base0F })
 
 if ui.italic then
     -- local light_grey = "#a9a9a9"
@@ -273,6 +275,7 @@ fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
 fg_bg("NvimTreeVertSplit", darker_black, darker_black)
 fg_bg("NvimTreeWindowPicker", black2, red)
 
+-- Dev icon
 fg("DevIconDefault", red)
 fg("DevIconc", blue)
 fg("DevIcondeb", cyan)
