@@ -34,25 +34,6 @@ utils.get_base = function()
     return require("themes." .. theme .. "-base16")
 end
 
---- Go to url
----@param cmd thread https://github.com
-utils.url = function(cmd)
-    local url = vim.api.nvim_get_current_line():match [[%[.*]%((.*)%)]] -- To work on md links
-    if url == nil then
-        url = vim.fn.expand "<cWORD>"
-        if not string.match(url, "http") then
-            url = "https://github.com/" .. url
-        end
-        if string.match(url, [[(.+)[,:]$]]) then
-            url = url:sub(1, -2)
-        end -- to check commas at the end
-    end
-
-    vim.notify("Going to " .. url, "info", { title = "Opening browser..." })
-    vim.cmd(":silent !" .. cmd .. " " .. url)
-    -- vim.cmd(':silent !'..(cmd or "xdg-open")..' '..url..' 1>/dev/null')
-end
-
 --- Swap between booleans with ease
 utils.swap_boolean = function()
     local c = vim.api.nvim_get_current_line()

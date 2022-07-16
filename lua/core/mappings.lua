@@ -130,17 +130,6 @@ end)
 map("n", "h", function()
     require("core.utils").h_motion()
 end)
-
--- Go to url
--- Windows user
-map("n", "<leader>tu", function()
-    require("core.utils").url "start"
-end)
--- Mac or linux user
---[[ map("n", "<leader>tu", function()
-	require("core.utils").go_to_url()
-end) ]]
-
 map("n", "<leader>,", function()
     require("core.utils").insert_comma()
 end)
