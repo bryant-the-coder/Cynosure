@@ -60,6 +60,7 @@ config.plugins = {
     -----------------------------------
     colorizer = false,
     colortils = false,
+    cybu = true,
     fidget = false,
     toggleterm = true,
     gitsigns = false,

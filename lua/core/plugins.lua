@@ -430,6 +430,16 @@ return require("packer").startup {
         -----------------------------------
         --             Tools             --
         -----------------------------------
+        -- Quickly move around tabs
+        use {
+            "ghillb/cybu.nvim",
+            branch = "main", -- timely updates
+            disable = plugins.cybu,
+            config = function()
+                require "modules.tools.cybu"
+            end,
+        }
+
         use {
             "tpope/vim-fugitive",
             after = "gitsigns.nvim",
