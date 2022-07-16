@@ -578,9 +578,9 @@ return require("packer").startup {
         -- Indentation
         use {
             "lukas-reineke/indent-blankline.nvim",
-            after = "nvim-lspconfig",
-            -- event = "InsertEnter",
-            opt = true,
+            setup = function()
+                require("custom.load").blankline()
+            end,
             config = function()
                 require "modules.ui.indent"
             end,

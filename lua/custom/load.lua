@@ -132,6 +132,17 @@ load.harpoon = function()
     }
 end
 
+load.blankline = function()
+    vim.api.nvim_create_autocmd("BufEnter", {
+        callback = function()
+            local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+            if lines ~= { "" } then
+                require("packer").loader "indent-blankline.nvim"
+            end
+        end,
+    })
+end
+
 load.on_file_open = function(plugname)
     lazy_load {
         events = { "BufRead", "BufWinEnter", "BufNewFile" },
