@@ -136,19 +136,19 @@ local function get_diagnostic(prefix, severity)
 end
 
 local function get_error()
-    return "%#Error#" .. get_diagnostic(" ", "Error")
+    return "%#Error#" .. get_diagnostic(" ", "Error")
 end
 
 local function get_warning()
-    return "%#Warning#" .. get_diagnostic(" ", "Warning")
+    return "%#Warning#" .. get_diagnostic(" ", "Warning")
 end
 
 local function get_hint()
-    return "%#Hint#" .. get_diagnostic(" ", "Hint")
+    return "%#Hint#" .. get_diagnostic(" ", "Hint")
 end
 
 local function get_info()
-    return "%#Info#" .. get_diagnostic(" ", "Info")
+    return "%#Info#" .. get_diagnostic(" ", "Info")
 end
 
 -- Clock
