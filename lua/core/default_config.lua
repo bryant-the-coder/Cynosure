@@ -69,6 +69,7 @@ config.plugins = {
     todo_comments = false,
     nvim_surround = true,
     align = true,
+    neodim = true,
 
     -----------------------------------
     --               UI              --

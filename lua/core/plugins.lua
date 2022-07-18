@@ -448,6 +448,7 @@ return require("packer").startup {
         use {
             "zbirenbaum/neodim",
             event = "LspAttach",
+            disable = plugins.neodim,
             config = function()
                 require "modules.tools.neodim"
             end,
