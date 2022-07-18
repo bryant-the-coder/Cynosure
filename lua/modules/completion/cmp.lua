@@ -148,7 +148,7 @@ cmp.setup {
             })[entry.source.name]
             return vim_item
         end, ]]
-        -- fields = { "kind", "abbr", "menu" },
+        -- fields = { "abbr", "kind", "menu" },
         -- format = function(_, vim_item)
         ---    local icons = require("custom.icons").lspkind
         --     vim_item.kind = string.format("%s %s", icons[vim_item.kind], vim_item.kind)
