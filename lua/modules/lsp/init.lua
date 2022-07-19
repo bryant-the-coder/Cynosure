@@ -33,6 +33,15 @@ local sumneko = {
                     [vim.fn.stdpath "config" .. "/lua"] = true,
                 },
             },
+            hint = {
+                enable = true,
+                arrayIndex = "Enable", -- "Enable", "Auto", "Disable"
+                await = true,
+                paramName = "All", -- "All", "Literal", "Disable"
+                paramType = true,
+                semicolon = "All", -- "All", "SameLine", "Disable"
+                setType = true,
+            },
         },
     },
 }
