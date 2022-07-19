@@ -1,7 +1,7 @@
 local config = {}
 
 config.plugins = {
-    -- WARN: Dont disable this
+    -- INFO: Dont disable this
     -- They are dependencies
     plenary = false,
     icons = false,
