@@ -1,5 +1,6 @@
 local M = {}
 
+-- Thanks to max and vsedov
 M.lspkind = {
     Class = "  ",
     Color = "  ",
