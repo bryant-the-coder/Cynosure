@@ -1,6 +1,6 @@
 local base16 = require "base16"
 
--- Theme that I like
+-- Theme that I like:
 -- A) everblush
 -- B) onedark
 -- C) everforest
