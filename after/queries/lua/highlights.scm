@@ -12,6 +12,7 @@
 ((function_call name: (identifier) @function (#eq? @function "print"  )) (#set! conceal ""))
 ((function_call name: (identifier) @function (#eq? @function "pairs"  )) (#set! conceal "P"))
 ((function_call name: (identifier) @function (#eq? @function "ipairs" )) (#set! conceal "I"))
+((function_call name: (identifier) @function (#eq? @function "use" )) (#set! conceal ""))
 
 ;; table.
 ((dot_index_expression table: (identifier) @keyword  (#eq? @keyword  "math" )) (#set! conceal ""))

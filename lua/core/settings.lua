@@ -67,7 +67,7 @@ end ]]
 o.statusline = "%!v:lua.require'custom.statusline'.run()"
 
 -- Conceal
-o.conceallevel = 2
+o.conceallevel = 0
 
 -- See :h fillchars
 o.fillchars = {

@@ -112,7 +112,13 @@ map("n", "<CR>", "o<ESC>", { desc = "Empty line below" })
 map("n", "<leader>lb", "i<CR><ESC>", { desc = "Line break at cursor" })
 map("n", "<leader>il", "i <ESC>l", { desc = "Space before" })
 map("n", "<leader>ih", "a <ESC>h", { desc = "Space after" })
-
+vim.keymap.set("n", "<F10>", function()
+    if vim.o.conceallevel > 0 then
+        vim.o.conceallevel = 0
+    else
+        vim.o.conceallevel = 2
+    end
+end)
 -----------------------------------
 --           Utils               --
 -----------------------------------
