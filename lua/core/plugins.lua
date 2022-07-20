@@ -2,7 +2,7 @@
 -- 1. use ({})
 -- 2. lazy load ( see :h events )
 -- 3. add comment or sections
--- 4. add disable option
+-- 4. add disable option (plugins.<name_of_plugins>)
 
 local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
