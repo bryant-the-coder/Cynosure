@@ -45,7 +45,6 @@ vim.cmd [[
     inoreabbrev removeable  removable
     inoreabbrev betwene between
     inoreabbrev nromal normal
-    inoreabbrev teh the
     inoreabbrev Adn And
     inoreabbrev adn and
     inoreabbrev Execture Execute
