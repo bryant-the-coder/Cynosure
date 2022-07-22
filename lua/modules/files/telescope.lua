@@ -50,6 +50,7 @@ telescope.setup {
             ".ico",
             ".add",
         },
+        path_display = { "shorten" }, -- see :H telescope.defaults.path_display
         preview = {
             filesize_hook = function(filepath, bufnr, opts)
                 -- If the file is very big only print the head of the it
@@ -87,11 +88,11 @@ telescope.setup {
                 "%.ttf",
             },
         },
-        find_files = {
+        --[[ find_files = {
             prompt_title = "~ Find Files ~",
             preview_title = "~ File Preview ~",
             results_title = "~ Files ~",
-        },
+        }, ]]
         diagnostics = {
             prompt_title = "~ Diagnostics ~",
             preview_title = "~ Diagnostics Preview ~",
@@ -115,6 +116,7 @@ telescope.setup {
 }
 require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
+require("telescope").load_extension "harpoon"
 
 local M = {}
 
@@ -157,6 +159,31 @@ M.diag = function()
         preview_title = "~ Diagnostics Preview ~",
     }
     require("telescope.builtin").diagnostics(opts)
+end
+
+M.buffers = function()
+    local opts = {
+        layout_config = {
+            height = 25,
+            width = 90,
+            anchor = "N",
+        },
+        previewer = false,
+    }
+    require("telescope.builtin").buffers(opts)
+end
+
+M.harpoon = function()
+    local opts = {
+        layout_config = {
+            height = 25,
+            width = 100,
+            -- anchor = "N",
+        },
+        previewer = false,
+        prompt_title = "~ Harpoon ~",
+    }
+    require("telescope").extensions.harpoon.marks(opts)
 end
 
 return M
