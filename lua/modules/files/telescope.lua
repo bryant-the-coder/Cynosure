@@ -50,10 +50,11 @@ telescope.setup {
             ".ico",
             ".add",
         },
-        path_display = { "shorten" }, -- see :H telescope.defaults.path_display
+        path_display = { "shorten" }, -- see :h telescope.defaults.path_display
         preview = {
             filesize_hook = function(filepath, bufnr, opts)
                 -- If the file is very big only print the head of the it
+                -- To prevent lag
                 local cmd = { "head", "-c", 1000000, filepath }
                 previewers_utils.job_maker(cmd, bufnr, opts)
             end,
@@ -118,9 +119,9 @@ require("telescope").load_extension "fzf"
 require("telescope").load_extension "file_browser"
 require("telescope").load_extension "harpoon"
 
-local M = {}
+local custom_telescope = {}
 
-M.find_files = function()
+custom_telescope.find_files = function()
     local opts = {
         -- prompt_title = " [ FIND FILES ]",
         prompt_title = "~ Find Files ~",
@@ -133,7 +134,7 @@ M.find_files = function()
     require("telescope.builtin").find_files(opts)
 end
 
-M.live_grep = function()
+custom_telescope.live_grep = function()
     local opts = {
         preview_title = "~ Location Preview ~ ",
         prompt_title = "~ Find String ~",
@@ -153,7 +154,7 @@ M.live_grep = function()
     require("telescope.builtin").live_grep(opts)
 end
 
-M.diag = function()
+custom_telescope.diag = function()
     local opts = {
         prompt_title = "~ Diagnostics ~",
         preview_title = "~ Diagnostics Preview ~",
@@ -161,7 +162,7 @@ M.diag = function()
     require("telescope.builtin").diagnostics(opts)
 end
 
-M.buffers = function()
+custom_telescope.buffers = function()
     local opts = {
         layout_config = {
             height = 25,
@@ -173,7 +174,7 @@ M.buffers = function()
     require("telescope.builtin").buffers(opts)
 end
 
-M.harpoon = function()
+custom_telescope.harpoon = function()
     local opts = {
         layout_config = {
             height = 25,
@@ -186,4 +187,4 @@ M.harpoon = function()
     require("telescope").extensions.harpoon.marks(opts)
 end
 
-return M
+return custom_telescope
