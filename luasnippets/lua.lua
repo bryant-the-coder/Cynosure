@@ -1,14 +1,18 @@
 ---@diagnostic disable: undefined-global
 local module = [[
-local M = {}
+local $1 = {}
 
-${1:code}
+${0:local test = "test}
 
-return M
+return $1
 ]]
 
-local mappings = [[
-map("$1", "$2", "<cmd>$0<CR>")
+local nmap = [[
+map("n", "$1", "$0")
+]]
+
+local imap = [[
+map("i", "$1", "$0")
 ]]
 
 local status = [[
@@ -20,6 +24,7 @@ end
 
 return {
     parse({ trig = "M" }, module),
-    parse({ trig = "map" }, mappings),
+    parse({ trig = "nmap" }, nmap),
+    parse({ trig = "imap" }, imap),
     parse({ trig = "status" }, status),
 }
