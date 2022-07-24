@@ -1,4 +1,4 @@
--- ULES TO FOLLOW
+-- ULES TO FOLLOW :
 -- 1. use ({})
 -- 2. lazy load ( see :h events )
 -- 3. add comment or sections
