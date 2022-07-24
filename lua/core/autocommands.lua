@@ -23,6 +23,16 @@ cmd("TermOpen", {
 })
 -- }}}
 
+cmd("FileType", {
+    pattern = "norg",
+    callback = function()
+        vim.opt.number = false
+        vim.opt.cole = 1
+        vim.opt.foldlevel = 10
+        vim.opt.signcolumn = "yes:2"
+    end,
+})
+
 augroup("_buffer", {})
 -- Trim whitespace {{{
 local NoWhitespace = vim.api.nvim_exec(
