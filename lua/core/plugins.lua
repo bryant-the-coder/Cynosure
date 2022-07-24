@@ -38,6 +38,7 @@ return require("packer").startup {
             module = "plenary",
             disable = plugins.plenary,
         }
+
         use {
             "kyazdani42/nvim-web-devicons",
             module = "nvim-web-devicons",
@@ -552,6 +553,20 @@ return require("packer").startup {
         -----------------------------------
         --               UI              --
         -----------------------------------
+        -- True zen
+        use {
+            "Pocco81/TrueZen.nvim",
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus",
+            },
+            disable = plugins.true_zen,
+            config = function()
+                require "modules.ui.zen"
+            end,
+        }
+
         -- Presence
         use {
             "andweeb/presence.nvim",

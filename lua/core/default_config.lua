@@ -74,6 +74,7 @@ config.plugins = {
     -----------------------------------
     --               UI              --
     -----------------------------------
+    true_zen = true,
     presence = false,
     bufferline = false,
     indent_blankline = false,
