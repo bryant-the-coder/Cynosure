@@ -380,7 +380,13 @@ return require("packer").startup {
 
         -- LSP installer
         use {
-            "williamboman/nvim-lsp-installer",
+            "williamboman/mason-lspconfig.nvim",
+            -- after = "mason.nvim",
+            disable = plugins.lsp_installer,
+        }
+
+        use {
+            "williamboman/mason.nvim",
             ft = {
                 "lua",
                 "python",
@@ -394,7 +400,7 @@ return require("packer").startup {
                 "tex",
                 "json",
             },
-            disable = plugins.lsp_installer,
+            after = "mason-lspconfig.nvim",
         }
 
         use {

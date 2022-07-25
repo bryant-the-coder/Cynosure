@@ -45,7 +45,7 @@ local sumneko = {
         },
     },
 }
-local use_lua_dev = false
+local use_lua_dev = true
 if use_lua_dev then
     local luadev = require("lua-dev").setup {
         library = {
