@@ -378,13 +378,14 @@ return require("packer").startup {
             disable = plugins.lsp,
         }
 
-        -- LSP installer
+        -- mason-lspconfig
         use {
             "williamboman/mason-lspconfig.nvim",
             -- after = "mason.nvim",
             disable = plugins.lsp_installer,
         }
 
+        -- Much like lspisntaller, but better
         use {
             "williamboman/mason.nvim",
             ft = {
@@ -403,6 +404,7 @@ return require("packer").startup {
             after = "mason-lspconfig.nvim",
         }
 
+        -- Setting up inlay hints
         use {
             "lvimuser/lsp-inlayhints.nvim",
             branch = "readme",
