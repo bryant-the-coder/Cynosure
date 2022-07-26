@@ -192,6 +192,7 @@ fg("DiagnosticInformation", green)
 fg_bg("RenamerTitle", black, yellow, { bold = true })
 fg("RenamerBorder", yellow)
 fg_bg("MasonHeader", black, red)
+fg("InlayHints", grey_fg)
 
 -- Pmenu
 bg("Pmenu", black)

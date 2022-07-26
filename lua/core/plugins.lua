@@ -404,6 +404,16 @@ return require("packer").startup {
         }
 
         use {
+            "lvimuser/lsp-inlayhints.nvim",
+            branch = "readme",
+            after = "nvim-lspconfig",
+            disable = plugins.inlay,
+            config = function()
+                require "modules.lsp.inlay"
+            end,
+        }
+
+        use {
             "max397574/lua-dev.nvim",
             ft = { "lua" },
             after = "nvim-lspconfig",

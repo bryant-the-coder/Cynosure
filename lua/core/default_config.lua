@@ -50,6 +50,7 @@ config.plugins = {
     trouble = false,
     lsp = false,
     lsp_installer = false,
+    inlay = false,
     lua_dev = false,
     clangd_ext = false,
     lsp_signature = false,
