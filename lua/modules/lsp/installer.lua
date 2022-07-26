@@ -1,4 +1,4 @@
---[[ local servers = {
+local servers = {
     "emmet_ls",
     "html",
     "tsserver",
@@ -11,21 +11,8 @@
     "ltex",
     "jedi_language_server",
 }
-]]
 
-local servers = {
-    "clangd",
-    "css-lsp",
-    "emmet-ls",
-    "html-lsp",
-    "jedi-language-server",
-    "json-lsp",
-    "ltex-ls",
-    "lua-language-server",
-    "rust-analyzer",
-    "typescript-language-server",
-    "yaml-language-server",
-}
+
 local status_ok, mason = pcall(require, "mason")
 if not status_ok then
     return
