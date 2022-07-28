@@ -66,6 +66,36 @@ lspconfig.jsonls.setup {
     on_attach = on_attach,
 }
 
+require("lspconfig").texlab.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        texlab = {
+            auxDirectory = ".",
+            bibtexFormatter = "texlab",
+            build = {
+                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                executable = "latexmk",
+                forwardSearchAfter = false,
+                onSave = true,
+            },
+            chktex = {
+                onEdit = false,
+                onOpenAndSave = true,
+            },
+            diagnosticsDelay = 100,
+            formatterLineLength = 100,
+            forwardSearch = {
+                args = {},
+            },
+            latexFormatter = "latexindent",
+            latexindent = {
+                modifyLineBreaks = false,
+            },
+        },
+    },
+}
+
 -- Pyright
 require("lspconfig").jedi_language_server.setup {
     -- cmd = { "jedi-language-server" },

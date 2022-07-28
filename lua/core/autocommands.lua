@@ -33,6 +33,13 @@ cmd("FileType", {
     end,
 })
 
+cmd("FileType", {
+    pattern = "plaintex",
+    callback = function()
+        vim.bo.ft = "tex"
+    end,
+})
+
 augroup("_buffer", {})
 -- Trim whitespace {{{
 local NoWhitespace = vim.api.nvim_exec(
