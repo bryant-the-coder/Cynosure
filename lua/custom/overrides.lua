@@ -112,7 +112,8 @@ hl(0, "Clock", { fg = "#181a1f", bg = "#41a6b5" })
 
 if ui.italic then
     -- local light_grey = "#a9a9a9"
-    fg("Comment", light_grey, { italic = true, bold = true })
+    -- fg("Comment", light_grey, { italic = true, bold = true })
+    -- fg("TSComment", light_grey, { italic = true, bold = true })
     -- fg("Function", base0D, { italic = true })
     fg("DiagnosticHeader", "#2cb27f", { italic = true, bold = true })
     fg("GitSignsCurrentLineBlame", light_grey, { italic = true, bold = true })
