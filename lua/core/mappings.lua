@@ -47,6 +47,9 @@ map("n", "x", '"_x')
 map({ "n", "i", "v" }, "<ESC>", "<cmd>noh<CR>")
 -- map({ "n", "v" }, "<CR>", [[{-> v:hlsearch ? ":nohl\<CR>" : "\<CR>"}()]], { silent = true, expr = true })
 
+-- Running and exec files
+map("n", "<leader>ex", "<cmd>call bryant#save_and_exec()<CR>")
+
 -- Saving the traditional way
 map({ "n", "i" }, "<C-s>", "<cmd>w<CR>")
 -- nimap("<C-s>", "<cmd>w<CR>")
@@ -169,6 +172,11 @@ map("i", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
 -- Cybu
 map("n", "K", "<Plug>(CybuPrev)")
 map("n", "J", "<Plug>(CybuNext)")
+
+-- Lsp-Inlayhints
+map("n", "<space>ih", function()
+    require("lsp-inlayhints").toggle()
+end)
 
 -- Packer
 map("n", "<leader>pi", "<cmd>PackerInstall<CR>")
