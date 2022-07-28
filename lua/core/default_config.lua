@@ -50,7 +50,7 @@ config.plugins = {
     trouble = false,
     lsp = false,
     lsp_installer = false,
-    inlay = false,
+    inlay = true,
     lua_dev = false,
     clangd_ext = false,
     lsp_signature = false,
@@ -60,7 +60,7 @@ config.plugins = {
     --             Tools             --
     -----------------------------------
     colorizer = false,
-    colortils = false,
+    colortils = true,
     cybu = true,
     fidget = false,
     toggleterm = true,
