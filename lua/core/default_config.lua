@@ -65,6 +65,7 @@ config.plugins = {
     fidget = false,
     toggleterm = true,
     gitsigns = false,
+    fugitive = true,
     paperplanes = false,
     lightspeed = false,
     todo_comments = false,

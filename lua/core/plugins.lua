@@ -462,6 +462,7 @@ return require("packer").startup {
         use {
             "tpope/vim-fugitive",
             after = "gitsigns.nvim",
+            disable = plugins.fugitive,
         }
 
         use {
