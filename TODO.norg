@@ -1,0 +1,11 @@
+@document.meta
+  title: TODO
+  description:
+  authors: Bryant
+  categories:
+  created: 2022-07-29
+  version: 0.0.11
+@end
+
+- [ ] Persisted.nvim
+- [ ] Add save and compile autocommand (python)
