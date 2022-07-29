@@ -242,6 +242,7 @@ utils.apply = function(curr, win)
     end
 end
 
+-- Show doumentation in a fancy and easy window
 utils.show_documentation = function()
     local filetype = vim.bo.filetype
     if vim.tbl_contains({ "vim", "help" }, filetype) then
@@ -255,6 +256,7 @@ utils.show_documentation = function()
     end
 end
 
+-- Check if its empty or not
 utils.is_empty = function(s)
     return s == nil or s == ""
 end
