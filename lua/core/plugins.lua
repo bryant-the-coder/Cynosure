@@ -19,6 +19,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
+-- Requiring file that contains all the settings for disabling plugins
 local plugins = require("core.default_config").plugins
 
 return require("packer").startup {

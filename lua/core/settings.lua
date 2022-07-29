@@ -82,7 +82,7 @@ o.fillchars = {
 }
 o.listchars = {
     trail = "·",
-    eol = "↲",
+    -- eol = "↲",
 }
 
 -- Backups / Undo
