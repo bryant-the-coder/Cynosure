@@ -196,16 +196,17 @@ map("n", "<leader>qf", vim.diagnostic.setqflist)
 map("n", "<C-a>", vim.lsp.buf.references)
 -- map("n", "<C-k>", vim.diagnostic.goto_prev)
 -- map("n", "<C-j>", vim.diagnostic.goto_next)
+map("n", "<leader>lbh", function()
+    require("core.utils").show_documentation()
+end, { desc = "Show the documentation in a floating window" })
+]]
+
 map("n", "<C-k>", function()
     vim.diagnostic.goto_prev { border = "rounded" }
 end)
 map("n", "<C-j>", function()
     vim.diagnostic.goto_next { border = "rounded" }
 end)
-map("n", "<leader>lbh", function()
-    require("core.utils").show_documentation()
-end, { desc = "Show the documentation in a floating window" })
-]]
 
 -- Harpooon
 map("n", "<A-p>", function()

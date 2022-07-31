@@ -87,8 +87,8 @@ saga.init_lsp_saga {
     server_filetype_map = {},
 }
 
-map("n", "<C-j>", require("lspsaga.diagnostic").goto_next)
-map("n", "<C-k>", require("lspsaga.diagnostic").goto_prev)
+--[[ map("n", "<C-j>", require("lspsaga.diagnostic").goto_next)
+map("n", "<C-k>", require("lspsaga.diagnostic").goto_prev) ]]
 map("n", "<leader>ld", require("lspsaga.definition").preview_definition)
 -- show hover doc and press twice will jumpto hover window
 map("n", "<leader>lh", require("lspsaga.signaturehelp").signature_help)
