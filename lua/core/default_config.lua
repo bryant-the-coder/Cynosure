@@ -54,7 +54,7 @@ config.plugins = {
     lua_dev = false,
     clangd_ext = false,
     lsp_signature = false,
-    lspsaga = true,
+    lspsaga = false,
 
     -----------------------------------
     --             Tools             --
