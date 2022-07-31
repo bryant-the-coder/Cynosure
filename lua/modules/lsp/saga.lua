@@ -90,14 +90,14 @@ map("n", "<C-j>", require("lspsaga.diagnostic").goto_next)
 map("n", "<C-k>", require("lspsaga.diagnostic").goto_prev)
 map("n", "<leader>ld", require("lspsaga.definition").preview_definition)
 -- show hover doc and press twice will jumpto hover window
-map("n", "<leader>lh", require("lspsaga.signaturehelp").signature_help, { silent = true })
+map("n", "<leader>lh", require("lspsaga.signaturehelp").signature_help)
 
 -- scroll down hover doc or scroll in definition preview
-vim.keymap.set("n", "<C-f>", function()
+map("n", "<C-f>", function()
     action.smart_scroll_with_saga(1)
 end, { silent = true })
 -- scroll up hover doc
-vim.keymap.set("n", "<C-b>", function()
+map("n", "<C-b>", function()
     action.smart_scroll_with_saga(-1)
 end, { silent = true })
 
