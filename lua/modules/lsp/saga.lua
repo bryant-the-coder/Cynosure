@@ -56,7 +56,8 @@ saga.init_lsp_saga {
         quit = "q",
         exec = "<CR>",
     },
-    rename_action_quit = "<C-c>",
+    rename_action_quit = "<Esc>",
+    rename_in_select = true,
     definition_preview_icon = "  ",
     -- show symbols in winbar must nightly
     symbol_in_winbar = {
