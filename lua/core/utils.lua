@@ -1,5 +1,6 @@
 local utils = {}
 local cmd = vim.cmd
+local api = vim.api
 
 --- Define bg color
 ---@param group string
@@ -36,9 +37,9 @@ end
 
 --- Swap between booleans with ease
 utils.swap_boolean = function()
-    local c = vim.api.nvim_get_current_line()
+    local c = api.nvim_get_current_line()
     local subs = c:match "true" and c:gsub("true", "false") or c:gsub("false", "true")
-    vim.api.nvim_set_current_line(subs)
+    api.nvim_set_current_line(subs)
 end
 
 --- Rename a variable (simple)
@@ -90,9 +91,9 @@ utils.rename = function()
 
     local function post(rename_old)
         vim.cmd "stopinsert!"
-        local rename_new = vim.api.nvim_get_current_line()
+        local rename_new = api.nvim_get_current_line()
         vim.schedule(function()
-            vim.api.nvim_win_close(0, true)
+            api.nvim_win_close(0, true)
             vim.lsp.buf.rename(vim.trim(rename_new))
         end)
         -- Use notify.nvim, logs notification as warn, title as Variable Rename
@@ -100,8 +101,8 @@ utils.rename = function()
     end
 
     local rename_old = vim.fn.expand "<cword>"
-    local created_buffer = vim.api.nvim_create_buf(false, true)
-    vim.api.nvim_open_win(created_buffer, true, {
+    local created_buffer = api.nvim_create_buf(false, true)
+    api.nvim_open_win(created_buffer, true, {
         relative = "cursor",
         style = "minimal",
         border = border,
@@ -123,27 +124,27 @@ utils.rename = function()
 end
 
 utils.l_motion = function()
-    local cursorPosition = vim.api.nvim_win_get_cursor(0)
+    local cursorPosition = api.nvim_win_get_cursor(0)
     vim.cmd "normal ^"
-    local firstChar = vim.api.nvim_win_get_cursor(0)
+    local firstChar = api.nvim_win_get_cursor(0)
 
     if cursorPosition[2] < firstChar[2] then
         vim.cmd "normal ^"
     else
-        vim.api.nvim_win_set_cursor(0, cursorPosition)
+        api.nvim_win_set_cursor(0, cursorPosition)
         vim.cmd "normal! l"
     end
 end
 
 utils.h_motion = function()
-    local cursorPosition = vim.api.nvim_win_get_cursor(0)
+    local cursorPosition = api.nvim_win_get_cursor(0)
     vim.cmd "normal ^"
-    local firstChar = vim.api.nvim_win_get_cursor(0)
+    local firstChar = api.nvim_win_get_cursor(0)
 
     if cursorPosition[2] <= firstChar[2] then
         vim.cmd "normal 0"
     else
-        vim.api.nvim_win_set_cursor(0, cursorPosition)
+        api.nvim_win_set_cursor(0, cursorPosition)
         vim.cmd "normal! h"
     end
 end
@@ -163,21 +164,21 @@ end
 
 --- Inserts a "," add the end of line
 utils.insert_comma = function()
-    local cursor = vim.api.nvim_win_get_cursor(0)
+    local cursor = api.nvim_win_get_cursor(0)
     -- append ,
     vim.cmd [[normal A,]]
     -- restore cursor position
-    vim.api.nvim_win_set_cursor(0, cursor)
+    api.nvim_win_set_cursor(0, cursor)
 end
 
 --- Inserts a ";" add the end of line
 utils.insert_semicolon = function()
     -- save cursor position
-    local cursor = vim.api.nvim_win_get_cursor(0)
+    local cursor = api.nvim_win_get_cursor(0)
     -- append ,
     vim.cmd [[normal A;]]
     -- restore cursor position
-    vim.api.nvim_win_set_cursor(0, cursor)
+    api.nvim_win_set_cursor(0, cursor)
 end
 
 --- Checking for neovim version
@@ -209,10 +210,10 @@ utils.open = function()
     vim.cmd "normal w"
     vim.cmd "startinsert"
 
-    vim.api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
-    vim.api.nvim_buf_set_keymap(0, "n", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
+    api.nvim_buf_set_keymap(0, "i", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
+    api.nvim_buf_set_keymap(0, "n", "<Esc>", "<cmd>stopinsert | q!<CR>", map_opts)
 
-    vim.api.nvim_buf_set_keymap(
+    api.nvim_buf_set_keymap(
         0,
         "i",
         "<CR>",
@@ -220,7 +221,7 @@ utils.open = function()
         map_opts
     )
 
-    vim.api.nvim_buf_set_keymap(
+    api.nvim_buf_set_keymap(
         0,
         "n",
         "<CR>",
@@ -231,7 +232,7 @@ end
 
 utils.apply = function(curr, win)
     local newName = vim.trim(vim.fn.getline ".")
-    vim.api.nvim_win_close(win, true)
+    api.nvim_win_close(win, true)
 
     if #newName > 0 and newName ~= curr then
         local params = vim.lsp.util.make_position_params()
@@ -262,7 +263,7 @@ utils.is_empty = function(s)
 end
 
 utils.get_buf_option = function(opt)
-    local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
+    local status_ok, buf_option = pcall(api.nvim_buf_get_option, 0, opt)
     if not status_ok then
         return nil
     else
