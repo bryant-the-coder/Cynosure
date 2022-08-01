@@ -92,6 +92,7 @@ map("n", "<C-k>", require("lspsaga.diagnostic").goto_prev) ]]
 map("n", "<leader>ld", require("lspsaga.definition").preview_definition)
 -- show hover doc and press twice will jumpto hover window
 map("n", "<leader>lh", require("lspsaga.signaturehelp").signature_help)
+vim.keymap.set("n", "<leader>lf", require("lspsaga.finder").lsp_finder)
 
 -- scroll down hover doc or scroll in definition preview
 map("n", "<C-f>", function()
