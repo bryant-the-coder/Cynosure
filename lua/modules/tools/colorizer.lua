@@ -5,7 +5,7 @@ end
 require("colorizer").setup({
     "*",
 }, {
-    mode = "foreground",
+    mode = "background",
     hsl_fn = true,
     RRGGBBAA = true,
     rgb_fn = true,
