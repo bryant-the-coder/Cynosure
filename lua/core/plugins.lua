@@ -441,6 +441,7 @@ return require("packer").startup {
         -- Uncomment this if you want lspsage
         use {
             "glepnir/lspsaga.nvim",
+            after = "nvim-lspconfig",
             config = function()
                 require "modules.lsp.saga"
             end,
