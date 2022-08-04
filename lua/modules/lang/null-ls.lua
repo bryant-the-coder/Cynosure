@@ -14,7 +14,7 @@ null_ls.setup {
         },
         formatting.stylua,
         formatting.rustfmt,
-        -- formatting.clang_format,
+        formatting.clang_format,
         -- formatting.yapf,
     },
 

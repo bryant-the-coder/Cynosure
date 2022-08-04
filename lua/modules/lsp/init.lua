@@ -18,6 +18,11 @@ local function on_attach(client, bufnr)
     require("modules.lsp.on_attach").setup(client, bufnr)
 end
 
+local function on_attach_16(client, bufnr)
+    require("modules.lsp.on_attach").setup(client, bufnr)
+    client.offset_encoding = "utf-16"
+end
+
 -- sumneko_lua
 local sumneko = {
     on_attach = on_attach,
@@ -143,7 +148,7 @@ require("lspconfig").jedi_language_server.setup {
 -- Clangd
 local clangd_defaults = require "lspconfig.server_configurations.clangd"
 local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {
-    on_attach = on_attach,
+    on_attach = on_attach_16,
     cmd = {
         "clangd",
         "-j=4",
@@ -202,10 +207,10 @@ require("clangd_extensions").setup {
                 detail = "Comment",
             },
             memory_usage = {
-                border = "none",
+                border = "rounded",
             },
             symbol_info = {
-                border = "none",
+                border = "rounded",
             },
         },
     },
