@@ -1,12 +1,12 @@
 local base16 = require "base16"
 
 -- Theme that I like:
--- A) everblush
--- B) onedark
+-- A) onedark
+-- B) kanagawa
 -- C) everforest
 -- D) mocha
 
-_G.theme = "onedark"
+_G.theme = "kanagawa"
 
 local theme = _G.theme
 
