@@ -425,7 +425,7 @@ return require("packer").startup {
 
         use {
             "p00f/clangd_extensions.nvim",
-            ft = { "cpp" },
+            ft = "cpp",
             disable = plugins.clangd_ext,
         }
 
