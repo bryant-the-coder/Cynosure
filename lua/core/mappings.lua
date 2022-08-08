@@ -14,10 +14,10 @@
 
 local map = vim.keymap.set
 vim.api.nvim_set_keymap(
-  "v",
-  "<Leader>re",
-  [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
-  { noremap = true, silent = true, expr = false }
+    "v",
+    "<Leader>re",
+    [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]],
+    { noremap = true, silent = true, expr = false }
 )
 
 map("n", "<leader>ta", [[<cmd>put! =repeat(nr2char(10), v:count1)<cr>'[]])
@@ -116,34 +116,34 @@ map("n", "<leader>lb", "i<CR><ESC>", { desc = "Line break at cursor" })
 map("n", "<leader>il", "i <ESC>l", { desc = "Space before" })
 map("n", "<leader>ih", "a <ESC>h", { desc = "Space after" })
 map("n", "<F10>", function()
-  if vim.o.conceallevel > 0 then
-    vim.o.conceallevel = 0
-  else
-    vim.o.conceallevel = 2
-  end
+    if vim.o.conceallevel > 0 then
+        vim.o.conceallevel = 0
+    else
+        vim.o.conceallevel = 2
+    end
 end)
 -----------------------------------
 --           Utils               --
 -----------------------------------
 map("n", "<leader>sb", function()
-  require("core.utils").swap_boolean()
+    require("core.utils").swap_boolean()
 end)
 
 map("n", "<A-r>", function()
-  require("core.utils").rename()
+    require("core.utils").rename()
 end)
 
 map("n", "l", function()
-  require("core.utils").l_motion()
+    require("core.utils").l_motion()
 end)
 map("n", "h", function()
-  require("core.utils").h_motion()
+    require("core.utils").h_motion()
 end)
 map("n", "<leader>,", function()
-  require("core.utils").insert_comma()
+    require("core.utils").insert_comma()
 end)
 map("n", "<leader>;", function()
-  require("core.utils").insert_semicolon()
+    require("core.utils").insert_semicolon()
 end)
 
 -----------------------------------
@@ -175,7 +175,7 @@ map("n", "J", "<Plug>(CybuNext)")
 
 -- Lsp-Inlayhints
 map("n", "<space>ih", function()
-  require("lsp-inlayhints").toggle()
+    require("lsp-inlayhints").toggle()
 end)
 
 -- Packer
@@ -202,65 +202,65 @@ end, { desc = "Show the documentation in a floating window" })
 ]]
 
 map("n", "<C-k>", function()
-  vim.diagnostic.goto_prev { border = "rounded" }
+    vim.diagnostic.goto_prev { border = "rounded" }
 end)
 map("n", "<C-j>", function()
-  vim.diagnostic.goto_next { border = "rounded" }
+    vim.diagnostic.goto_next { border = "rounded" }
 end)
 
 -- Harpooon
 map("n", "<A-p>", function()
-  require("harpoon.ui").toggle_quick_menu()
+    require("harpoon.ui").toggle_quick_menu()
 end)
 map("n", "<A-=>", function()
-  require("harpoon.mark").add_file()
+    require("harpoon.mark").add_file()
 end)
 map("n", "<A-1>", function()
-  require("harpoon.ui").nav_file(1)
+    require("harpoon.ui").nav_file(1)
 end)
 map("n", "<A-2>", function()
-  require("harpoon.ui").nav_file(2)
+    require("harpoon.ui").nav_file(2)
 end)
 map("n", "<A-3>", function()
-  require("harpoon.ui").nav_file(3)
+    require("harpoon.ui").nav_file(3)
 end)
 map("n", "<A-4>", function()
-  require("harpoon.ui").nav_file(4)
+    require("harpoon.ui").nav_file(4)
 end)
 
 -- Telescope
 map("n", "<leader>ff", function()
-  require("modules.files.telescope").find_files()
-  -- require("telescope.builtin").find_files()
+    require("modules.files.telescope").find_files()
+    -- require("telescope.builtin").find_files()
 end)
 map("n", "<leader>fw", function()
-  require("modules.files.telescope").live_grep()
-  -- require("telescope.builtin").live_grep()
+    require("modules.files.telescope").live_grep()
+    -- require("telescope.builtin").live_grep()
 end)
 map("n", "<leader>fd", function()
-  require("modules.files.telescope").diag()
-  -- require("telescope.builtin").diagnostics()
+    require("modules.files.telescope").diag()
+    -- require("telescope.builtin").diagnostics()
 end)
 map("n", "<C-p>", function()
-  require("modules.files.telescope").buffers()
-  -- require("telescope.builtin").buffers()
+    require("modules.files.telescope").buffers()
+    -- require("telescope.builtin").buffers()
 end)
 map("n", "<leader>fc", function()
-  require("telescope.builtin").colorscheme()
+    require("telescope.builtin").colorscheme()
 end)
 map("n", "<leader>fo", function()
-  require("telescope.builtin").oldfiles()
+    require("telescope.builtin").oldfiles()
 end)
 map("n", "<leader>fk", function()
-  require("telescope.builtin").keymaps()
+    require("telescope.builtin").keymaps()
 end)
 map("n", "<leader>fm", function()
-  require("telescope.builtin").current_buffer_fuzzy_find()
+    require("telescope.builtin").current_buffer_fuzzy_find()
 end)
 map("n", "<leader>ft", function()
-  require("telescope.builtin").treesitter()
+    require("telescope.builtin").treesitter()
 end)
 map("n", "<leader>fb", "<cmd>Telescope file_browser<CR>")
 map("n", "<leader>ft", function()
-  require("modules.files.telescope").harpoon()
+    require("modules.files.telescope").harpoon()
 end)
