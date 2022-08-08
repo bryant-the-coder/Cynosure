@@ -104,3 +104,4 @@ map("n", "<C-b>", function()
 end, { silent = true })
 
 map("n", "<leader>lr", require("lspsaga.rename").lsp_rename)
+map("n", "<leader>lo", "<cmd>LSoutlineToggle")
