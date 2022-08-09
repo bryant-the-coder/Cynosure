@@ -98,6 +98,7 @@ end
 load.gitsigns = function()
     vim.api.nvim_create_autocmd({ "BufRead" }, {
         callback = function()
+            -- Check if the dir your in contains .git
             if vim.fn.isdirectory ".git" ~= 0 then
                 vim.schedule(function()
                     require("packer").loader "gitsigns.nvim"
