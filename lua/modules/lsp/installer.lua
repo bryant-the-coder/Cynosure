@@ -1,15 +1,13 @@
 local servers = {
-    "emmet_ls",
-    "html",
-    "tsserver",
-    "jsonls",
-    "cssls",
+    "pyright",
+    "typescript-language-server",
+    "json-lsp",
     "clangd",
-    "rust_analyzer",
-    "sumneko_lua",
-    "yamils",
-    "ltex",
-    "jedi_language_server",
+    "rust-analyzer",
+    "lua-language-server",
+    "yaml-language-server",
+    "ltex-ls",
+    "jedi-language-server",
 }
 
 local status_ok, mason = pcall(require, "mason")
