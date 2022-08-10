@@ -1,9 +1,26 @@
+-- Most of the setup is taken from akinsho
 local notify = require "notify"
+
+local border = {
+    { "┌", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "┐", "FloatBorder" },
+    { "│", "FloatBorder" },
+    { "┘", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "└", "FloatBorder" },
+    { "│", "FloatBorder" },
+}
+
 local default = {
     stages = "fade",
-    render = "default",
     timeout = 2000,
-    minimum_width = 60,
+    max_width = function()
+        return math.floor(vim.o.columns * 0.8)
+    end,
+    max_height = function()
+        return math.floor(vim.o.lines * 0.8)
+    end,
     icons = {
         ERROR = " ",
         WARN = " ",
@@ -12,6 +29,11 @@ local default = {
         TRACE = " ",
     },
     background_colour = "#000000",
+    on_open = function(win)
+        if vim.api.nvim_win_is_valid(win) then
+            vim.api.nvim_win_set_config(win, { border = border })
+        end
+    end,
 }
 
 vim.opt.termguicolors = true
