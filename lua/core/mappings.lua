@@ -3,11 +3,11 @@
 ---@param rhs string Command
 ---@param opts string Options
 -- local function nimap(lhs, rhs, opts)
--- 	local default_options = { noremap = true, silent = true }
--- 	if opts then
--- 		default_options = vim.tbl_extend("force", default_options, opts)
--- 	end
--- 	vim.keymap.set({ "n", "i" }, lhs, rhs, default_options)
+-- local default_options = { noremap = true, silent = true }
+-- if opts then
+--     default_options = vim.tbl_extend("force", default_options, opts)
+-- end
+-- vim.keymap.set({ "n", "i" }, lhs, rhs, default_options)
 -- end
 
 -- local nimap = require("core.utils").normal_insert()
