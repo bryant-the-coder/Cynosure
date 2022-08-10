@@ -72,6 +72,8 @@ config.plugins = {
     nvim_surround = true,
     align = true,
     neodim = true,
+    dap = true,
+    dapui = true,
 
     -----------------------------------
     --               UI              --

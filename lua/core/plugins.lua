@@ -450,6 +450,22 @@ return require("packer").startup {
         -----------------------------------
         --             Tools             --
         -----------------------------------
+        use {
+            "rcarriga/nvim-dap-ui",
+            config = function()
+                require "modules.tools.dapui"
+            end,
+            disable = plugins.dap,
+        }
+
+        use {
+            "mfussenegger/nvim-dap",
+            config = function()
+                require "modules.tools.dap"
+            end,
+            disable = plugins.dapui,
+        }
+
         -- Quickly move around tabs
         use {
             "ghillb/cybu.nvim",
