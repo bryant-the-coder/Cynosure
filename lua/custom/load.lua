@@ -99,10 +99,23 @@ load.gitsigns = function()
     vim.api.nvim_create_autocmd({ "BufRead" }, {
         callback = function()
             -- Check if the dir your in contains .git
-            if vim.fn.isdirectory ".git" ~= 0 then
-                vim.schedule(function()
-                    require("packer").loader "gitsigns.nvim"
-                end)
+            local function onexit(code, _)
+                if code == 0 then
+                    vim.schedule(function()
+                        require("packer").loader "gitsigns.nvim"
+                    end)
+                end
+
+                local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+                if lines ~= { "" } then
+                    vim.loop.spawn("git", {
+                        args = {
+                            "ls-files",
+                            "--error-unmatch",
+                            vim.fn.expand "%:p:h",
+                        },
+                    }, onexit)
+                end
             end
         end,
     })
