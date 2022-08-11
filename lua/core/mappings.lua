@@ -68,6 +68,10 @@ map("v", "<", "<gv")
 map({ "i", "v" }, "jk", "<Esc>")
 map({ "i", "v" }, "JK", "<ESC>")
 
+-- Increment/decrement
+map("n", "+", "<C-a>")
+map("n", "-", "<C-x>")
+
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 --[[ map({ "n", "v" }, "j", "jzzzv")
@@ -93,10 +97,10 @@ map("n", "<A-left>", "<C-w>>")
 map("n", "<A-right>", "<C-w><")
 
 -- Window Navigation
-map("n", "J", "<C-w><C-j>")
-map("n", "K", "<C-w><C-k>")
-map("n", "L", "<C-w><C-l>")
-map("n", "H", "<C-w><C-h>")
+map("", "H", "<C-w>h")
+map("", "K", "<C-w>k")
+map("", "J", "<C-w>j")
+map("", "L", "<C-w>l")
 
 -- Buffer navigation
 map("n", "<Tab>", "<cmd>bnext<CR>")
@@ -170,8 +174,8 @@ map("n", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
 map("i", "<leader>tp", "<cmd>TSPlaygroundToggle<CR>")
 
 -- Cybu
-map("n", "K", "<Plug>(CybuPrev)")
-map("n", "J", "<Plug>(CybuNext)")
+map("n", "sk", "<Plug>(CybuPrev)")
+map("n", "sj", "<Plug>(CybuNext)")
 
 -- Lsp-Inlayhints
 map("n", "<space>ih", function()
