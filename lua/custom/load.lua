@@ -1,3 +1,4 @@
+local cmd = vim.api.nvim_create_autocmd
 -- https://github.com/max397574/omega-nvim/blob/master/lua/omega/modules/ui/bufferline.lua
 local lazy_load = function(payload)
     vim.api.nvim_create_autocmd(payload.events, {
@@ -96,26 +97,12 @@ load.ts = function()
 end
 
 load.gitsigns = function()
-    vim.api.nvim_create_autocmd({ "BufRead" }, {
+    cmd({ "BufRead" }, {
         callback = function()
-            -- Check if the dir your in contains .git
-            local function onexit(code, _)
-                if code == 0 then
-                    vim.schedule(function()
-                        require("packer").loader "gitsigns.nvim"
-                    end)
-                end
-
-                local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-                if lines ~= { "" } then
-                    vim.loop.spawn("git", {
-                        args = {
-                            "ls-files",
-                            "--error-unmatch",
-                            vim.fn.expand "%:p:h",
-                        },
-                    }, onexit)
-                end
+            if vim.fn.isdirectory ".git" ~= 0 then
+                vim.schedule(function()
+                    require("packer").loader "gitsigns.nvim"
+                end)
             end
         end,
     })
@@ -133,7 +120,7 @@ load.harpoon = function()
 end
 
 load.blankline = function()
-    vim.api.nvim_create_autocmd("BufEnter", {
+    cmd("BufEnter", {
         callback = function()
             local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
             if lines ~= { "" } then

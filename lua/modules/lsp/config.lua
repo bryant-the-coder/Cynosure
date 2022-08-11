@@ -88,7 +88,7 @@ local codes = {
         "unused-function",
     },
     useless_symbols = {
-        message = "  Remove that useless symbols",
+        message = " Remove that useless symbol",
         "unknown-symbol",
     },
     wrong_type = {
@@ -163,8 +163,8 @@ local config = {
                 t.message = string.format("%s -> (%s)", t.message, code):gsub("1. ", "")
             end
             return t.message
-        end, ]]
-
+        end,
+]]
         -- Code from santigo-zero
         --[[ format = function(diagnostic)
             return string.format(
