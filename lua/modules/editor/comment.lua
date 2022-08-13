@@ -17,7 +17,7 @@ Comment.setup {
     },
 
     -- with nvim-ts-context-commentstring
-    pre_hook = function(ctx)
+    --[[ pre_hook = function(ctx)
         local U = require "Comment.utils"
 
         local location = nil
@@ -31,5 +31,5 @@ Comment.setup {
             key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
             location = location,
         }
-    end,
+    end, ]]
 }
