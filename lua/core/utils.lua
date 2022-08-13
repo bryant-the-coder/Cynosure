@@ -262,6 +262,7 @@ utils.is_empty = function(s)
     return s == nil or s == ""
 end
 
+--- check if the buffer return smth or not
 utils.get_buf_option = function(opt)
     local status_ok, buf_option = pcall(api.nvim_buf_get_option, 0, opt)
     if not status_ok then

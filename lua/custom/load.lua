@@ -26,6 +26,7 @@ end
 
 local load = {}
 
+-- If there is more than 1 buffer, load bufferline
 load.bufferline = function()
     lazy_load {
         events = { "BufNewFile", "BufRead", "TabEnter" },
@@ -48,6 +49,7 @@ load.colorizer = function()
     }
 end
 
+-- Only load todo comments with these specific words
 load.todo_comments = function()
     lazy_load {
         events = { "BufRead", "BufNewFile" },
@@ -96,6 +98,7 @@ load.ts = function()
     }
 end
 
+--- Check if the directory has .git folder or not
 load.gitsigns = function()
     cmd({ "BufRead" }, {
         callback = function()
@@ -108,6 +111,7 @@ load.gitsigns = function()
     })
 end
 
+-- Same logic as loading bufferline
 load.harpoon = function()
     lazy_load {
         events = { "BufRead", "TabEnter" },
