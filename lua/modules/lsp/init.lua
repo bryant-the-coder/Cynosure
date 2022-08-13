@@ -211,3 +211,5 @@ require("clangd_extensions").setup {
         },
     },
 }
+
+lspconfig.tsserver.setup {}

@@ -306,8 +306,7 @@ return require("packer").startup {
         -- Auto complete tag
         use {
             "windwp/nvim-ts-autotag",
-            opt = true,
-            ft = { "html", "tsx" },
+            -- ft = { "html", "typescript", "javascripts", "javascriptreact" },
             disable = plugins.autotag,
         }
 

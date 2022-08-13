@@ -9,9 +9,7 @@ local utils = require "core.utils"
 null_ls.setup {
     debug = false,
     sources = {
-        formatting.prettier.with {
-            extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-        },
+        formatting.prettier.with {},
         formatting.stylua,
         formatting.rustfmt,
         formatting.clang_format,
