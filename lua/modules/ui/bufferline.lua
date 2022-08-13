@@ -74,105 +74,105 @@ bufferline.setup {
     },
     highlights = {
         background = {
-            guifg = default.colors.grey_fg,
-            guibg = default.colors.black2,
+            fg = default.colors.grey_fg,
+            bg = default.colors.black2,
         },
 
         -- buffers
         -- buffer_selected = {
-        --     guifg = default.colors.white,
-        --     guibg = default.colors.black,
+        --     fg = default.colors.white,
+        --     bg = default.colors.black,
         --     gui = "bold,italic",
         -- },
         -- buffer_visible = {
-        --     guifg = default.colors.light_grey,
-        --     guibg = default.colors.black2,
+        --     fg = default.colors.light_grey,
+        --     bg = default.colors.black2,
         --     gui = "bold,italic",
         -- },
         -- duplicate_selected = {
-        --     guifg = default.colors.white,
-        --     -- guibg = default.colors.black,
-        --     guibg = default.colors.grey,
+        --     fg = default.colors.white,
+        --     -- bg = default.colors.black,
+        --     bg = default.colors.grey,
         --     gui = "bold,italic",
         -- },
         -- duplicate_visible = {
-        --     guifg = default.colors.white,
-        --     guibg = default.colors.black2,
+        --     fg = default.colors.white,
+        --     bg = default.colors.black2,
         --     gui = "bold,italic",
         -- },
 
         -- for diagnostics = "nvim_lsp"
         error = {
-            guifg = default.colors.light_grey,
-            guibg = default.colors.black2,
+            fg = default.colors.light_grey,
+            bg = default.colors.black2,
         },
         error_diagnostic = {
-            guifg = default.colors.light_grey,
-            guibg = default.colors.black2,
+            fg = default.colors.light_grey,
+            bg = default.colors.black2,
         },
 
         -- close buttons
         close_button = {
-            guifg = default.colors.light_grey,
-            guibg = default.colors.black2,
+            fg = default.colors.light_grey,
+            bg = default.colors.black2,
         },
         close_button_visible = {
-            guifg = default.colors.light_grey,
-            guibg = default.colors.black2,
+            fg = default.colors.light_grey,
+            bg = default.colors.black2,
         },
         close_button_selected = {
-            guifg = default.colors.red,
-            guibg = default.colors.black,
+            fg = default.colors.red,
+            bg = default.colors.black,
         },
         -- fill = {
-        --     guifg = default.colors.grey_fg,
-        --     guibg = "NONE",
+        --     fg = default.colors.grey_fg,
+        --     bg = "NONE",
         -- },
         indicator_selected = {
-            guifg = default.colors.black,
-            guibg = default.colors.black,
+            fg = default.colors.black,
+            bg = default.colors.black,
         },
 
         -- modified
         modified = {
-            guifg = default.colors.red,
-            guibg = default.colors.black2,
+            fg = default.colors.red,
+            bg = default.colors.black2,
         },
         modified_visible = {
-            guifg = default.colors.red,
-            guibg = default.colors.black2,
+            fg = default.colors.red,
+            bg = default.colors.black2,
         },
         modified_selected = {
-            guifg = default.colors.green,
-            guibg = default.colors.black,
+            fg = default.colors.green,
+            bg = default.colors.black,
         },
 
         -- separators
         separator = {
-            guifg = default.colors.black2,
-            guibg = default.colors.black2,
+            fg = default.colors.black2,
+            bg = default.colors.black2,
         },
         separator_visible = {
-            guifg = default.colors.black2,
-            guibg = default.colors.black2,
+            fg = default.colors.black2,
+            bg = default.colors.black2,
         },
         separator_selected = {
-            guifg = default.colors.black2,
-            guibg = default.colors.black2,
+            fg = default.colors.black2,
+            bg = default.colors.black2,
         },
 
         -- tabs
         tab = {
-            guifg = default.colors.light_grey,
-            guibg = default.colors.one_bg3,
+            fg = default.colors.light_grey,
+            bg = default.colors.one_bg3,
         },
         tab_selected = {
-            guifg = default.colors.black2,
-            guibg = default.colors.nord_blue,
+            fg = default.colors.black2,
+            bg = default.colors.nord_blue,
         },
         tab_close = {
-            guifg = default.colors.red,
-            guibg = default.colors.black,
+            fg = default.colors.red,
+            bg = default.colors.black,
         },
     },
 }
