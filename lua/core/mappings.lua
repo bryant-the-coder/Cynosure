@@ -206,6 +206,7 @@ map("n", "<leader>lbh", function()
 end, { desc = "Show the documentation in a floating window" })
 ]]
 
+map("n", "<leader>lt", vim.lsp.buf.type_definition)
 map("n", "<C-k>", function()
     vim.diagnostic.goto_prev { border = "rounded" }
 end)
