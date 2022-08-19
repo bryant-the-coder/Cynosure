@@ -559,6 +559,9 @@ return require("packer").startup {
         use {
             "ggandor/lightspeed.nvim",
             keys = { "S", "s", "f", "F", "t", "T" },
+            config = function()
+                require "modules.tools.lightspeed"
+            end,
             disable = plugins.lightspeed,
         }
 
