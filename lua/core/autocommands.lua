@@ -95,11 +95,11 @@ cmd("FileType", {
 -- }}}
 
 -- Custom dashboard display {{{
-cmd({ "VimEnter" }, {
+--[[ cmd({ "VimEnter" }, {
     callback = function()
         require("custom.dashboard").display()
     end,
-})
+}) ]]
 
 -- If filetype is dashboard then do not show statusline
 cmd("FileType", {
