@@ -8,6 +8,7 @@ local servers = {
     "yaml-language-server",
     "ltex-ls",
     "jedi-language-server",
+    "texlab",
 }
 
 local status_ok, mason = pcall(require, "mason")

@@ -41,6 +41,12 @@ cmd("FileType", {
     end,
 })
 
+-- Auto resize panes
+cmd("VimResized", {
+    pattern = "*",
+    command = "tabdo wincmd =",
+})
+
 augroup("_buffer", {})
 -- Trim whitespace {{{
 local NoWhitespace = vim.api.nvim_exec(
