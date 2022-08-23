@@ -23,7 +23,10 @@ bufferline.setup {
         close_command = "bdelete! %d",
         right_mouse_command = "sbuffer %d",
         middle_mouse_command = "vertical sbuffer %d",
-        indicator_icon = "▎",
+        indicator = {
+            icon = "▎",
+            style = "icon",
+        },
         buffer_close_icon = "",
         modified_icon = "",
         close_icon = "",
