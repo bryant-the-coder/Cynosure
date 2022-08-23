@@ -369,6 +369,7 @@ return require("packer").startup {
                 "typescript",
                 "tex",
                 "json",
+                "vim",
                 "python",
             },
             config = function()
@@ -391,6 +392,7 @@ return require("packer").startup {
             ft = {
                 "lua",
                 "python",
+                "vim",
                 "rust",
                 "c",
                 "cpp",

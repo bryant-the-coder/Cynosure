@@ -23,6 +23,9 @@ local function on_attach_16(client, bufnr)
     client.offset_encoding = "utf-16"
 end
 
+lspconfig.tsserver.setup {}
+lspconfig.vimls.setup {}
+
 -- sumneko_lua
 local sumneko = {
     on_attach = on_attach,
@@ -211,5 +214,3 @@ require("clangd_extensions").setup {
         },
     },
 }
-
-lspconfig.tsserver.setup {}
