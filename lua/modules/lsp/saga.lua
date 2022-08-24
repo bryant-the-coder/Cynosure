@@ -89,7 +89,7 @@ saga.init_lsp_saga {
 
 --[[ map("n", "<C-j>", require("lspsaga.diagnostic").goto_next)
 map("n", "<C-k>", require("lspsaga.diagnostic").goto_prev) ]]
-map("n", "<leader>ld", require("lspsaga.definition").preview_definition)
+--[[ map("n", "<leader>ld", require("lspsaga.definition").preview_definition)
 -- show hover doc and press twice will jumpto hover window
 map("n", "<leader>lh", require("lspsaga.signaturehelp").signature_help)
 map("n", "<leader>lf", "<cmd>Lspsaga lsp_finder<CR>")
@@ -104,4 +104,4 @@ map("n", "<C-b>", function()
 end, { silent = true })
 
 map("n", "<leader>lr", require("lspsaga.rename").lsp_rename)
-map("n", "<leader>lo", "<cmd>LSoutlineToggle<CR>")
+map("n", "<leader>lo", "<cmd>LSoutlineToggle<CR>") ]]
