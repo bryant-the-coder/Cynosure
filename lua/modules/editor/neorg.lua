@@ -115,8 +115,6 @@ neorg.setup {
                 strategy = "flat", -- nested
             },
         },
-        ["external.kanban"] = {},
-        ["core.integrations.telescope"] = {},
     },
 }
 

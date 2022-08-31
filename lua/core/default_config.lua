@@ -27,8 +27,8 @@ config.plugins = {
     comment = false,
     commentstring = false,
     neorg = false,
-    neorg_kaban = false,
-    neorg_telescope = false,
+    neorg_kanban = true,
+    neorg_telescope = true,
 
     -----------------------------------
     --              Files            --
@@ -44,7 +44,7 @@ config.plugins = {
     null = false,
     treesitter = false,
     ts_rainbow = false,
-    autotag = false,
+    autotag = true,
     playground = false,
     ts_context = false,
     trouble = true,
