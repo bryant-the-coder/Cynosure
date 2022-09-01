@@ -6,8 +6,6 @@ end
 local default = {
     colors = require("core.utils").get(),
 }
-local groups = require "bufferline.groups"
-local fn = vim.fn
 
 vim.cmd [[
  function! Quit_vim(a,b,c,d)
@@ -36,11 +34,11 @@ bufferline.setup {
         max_prefix_length = 13,
         tab_size = 20,
         view = "multiwindow",
-        diagnostics = "nvim_diagnostic",
+        diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = true,
         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
         -- 	return "(" .. count .. ")"
-        -- end,
+        -- 	end
         offsets = { { filetype = "NvimTree", text = "" } },
         separator_style = "thin",
         show_buffer_icons = true,
