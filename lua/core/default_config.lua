@@ -27,7 +27,7 @@ config.plugins = {
     comment = false,
     commentstring = false,
     neorg = false,
-    neorg_kanban = true,
+    neorg_kanban = false,
     neorg_telescope = true,
 
     -----------------------------------

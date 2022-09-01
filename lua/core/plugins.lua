@@ -155,7 +155,6 @@ return require("packer").startup {
         use {
             "nvim-neorg/neorg",
             ft = "norg",
-            after = "nvim-treesitter", -- You may want to specify Telescope here as well
             config = function()
                 require "modules.editor.neorg"
             end,
