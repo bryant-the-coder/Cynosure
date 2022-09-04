@@ -100,7 +100,7 @@ end
 
 --- Check if the directory has .git folder or not
 load.gitsigns = function()
-    cmd({ "BufRead" }, {
+    cmd({ "BufEnter" }, {
         callback = function()
             if vim.fn.isdirectory ".git" ~= 0 then
                 vim.schedule(function()
