@@ -86,7 +86,7 @@ end
 
 -- Toggle transparent / ui right here :D
 local ui = {
-    transparency = true,
+    transparency = false,
     italic = true,
 }
 
@@ -199,7 +199,7 @@ fg("InlayHints", grey_fg)
 bg("Pmenu", black)
 bg("PmenuSbar", one_bg)
 bg("PmenuThumb", grey)
-fg_bg("PmenuSel", black, pmenu_bg)
+fg_bg("PmenuSel", black, blue)
 
 -- GitSigns
 fg("GitSignsAdd", green)
