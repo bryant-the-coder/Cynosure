@@ -115,7 +115,7 @@ neorg.setup {
                 strategy = "flat", -- nested
             },
         },
-        ["external.kanban"] = {},
+        -- ["external.kanban"] = {},
     },
 }
 

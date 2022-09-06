@@ -155,6 +155,7 @@ return require("packer").startup {
         use {
             "nvim-neorg/neorg",
             ft = "norg",
+            after = "nvim-treesitter", -- You may want to specify Telescope here as well
             config = function()
                 require "modules.editor.neorg"
             end,
@@ -679,9 +680,9 @@ return require("packer").startup {
             done_sym = " ",
             removed_sym = " ",
             moved_sym = "",
-            open_fn = function()
+            --[[ open_fn = function()
                 return require("packer.util").float { border = "single" }
-            end,
+            end, ]]
         },
         -- Uncomment this if your pc slows down
         -- max_jobs = 6,
