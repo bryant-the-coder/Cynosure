@@ -37,8 +37,8 @@ bufferline.setup {
         diagnostics = "nvim_lsp",
         diagnostics_update_in_insert = true,
         -- diagnostics_indicator = function(count, level, diagnostics_dict, context)
-        -- 	return "(" .. count .. ")"
-        -- 	end
+        --     return "(" .. count .. ")"
+        -- end,
         offsets = { { filetype = "NvimTree", text = "" } },
         separator_style = "thin",
         show_buffer_icons = true,
@@ -67,6 +67,7 @@ bufferline.setup {
 
         custom_areas = {
             right = function()
+                -- Have an icon that u can click to exit vim
                 return {
                     { text = "%@Quit_vim@  %X" },
                 }
