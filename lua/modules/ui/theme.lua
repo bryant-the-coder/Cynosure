@@ -6,7 +6,8 @@ local base16 = require "base16"
 -- C) everforest
 -- D) mocha
 
-_G.theme = "onedark"
+-- TODO: might add a timer for theme
+_G.theme = "kanagawa"
 
 local theme = _G.theme
 
