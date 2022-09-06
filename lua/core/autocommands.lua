@@ -216,14 +216,14 @@ cmd({ "Filetype" }, {
     desc = "Draw netrw icons",
     group = netrw,
 })
-cmd({ "TextChanged" }, {
+--[[ cmd({ "TextChanged" }, {
     pattern = "*",
     callback = function()
         require("lua.custom.netrw").draw_icons()
     end,
     desc = "Draw netrw icons",
     group = netrw,
-})
+}) ]]
 cmd({ "Filetype" }, {
     pattern = "netrw",
     callback = function()

@@ -3,6 +3,7 @@ local utils = require "core.utils"
 
 local g = vim.g
 local o = vim.opt
+g.neovide_remember_window_size = true
 
 --Cursor & cursorline
 o.guicursor = "n-v-c-sm:block,ci-ve:ver25,r-cr-o:hor20,i:block-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
@@ -65,6 +66,7 @@ o.laststatus = 3
     o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 end ]]
 o.statusline = "%!v:lua.require'custom.statusline'.run()"
+o.guifont = "OperatorMonoSSmLig Nerd Font,codicon:h10"
 
 -- Conceal
 o.conceallevel = 0
