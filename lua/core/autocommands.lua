@@ -206,3 +206,29 @@ create_command("AutoRun", function()
     attach_to_buffer(tonumber(bufnr), pattern, command)
 end, {})
 -- }}}
+
+local netrw = vim.api.nvim_create_augroup("netrw", { clear = true })
+cmd({ "Filetype" }, {
+    pattern = "netrw",
+    callback = function()
+        require("lua.custom.netrw").draw_icons()
+    end,
+    desc = "Draw netrw icons",
+    group = netrw,
+})
+cmd({ "TextChanged" }, {
+    pattern = "*",
+    callback = function()
+        require("lua.custom.netrw").draw_icons()
+    end,
+    desc = "Draw netrw icons",
+    group = netrw,
+})
+cmd({ "Filetype" }, {
+    pattern = "netrw",
+    callback = function()
+        require("lua.custom.netrw").set_maps()
+    end,
+    desc = "Define netrw mappings",
+    group = netrw,
+})
