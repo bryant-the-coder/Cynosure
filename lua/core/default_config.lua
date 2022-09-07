@@ -62,6 +62,7 @@ config.plugins = {
     gitsigns = false,
     fugitive = false,
     neogit = false,
+    diffview = false,
 
     -----------------------------------
     --             Tools             --
