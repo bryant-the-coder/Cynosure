@@ -246,6 +246,38 @@ return require("packer").startup {
         }
 
         -----------------------------------
+        --              Git              --
+        -----------------------------------
+        use {
+            "tpope/vim-fugitive",
+            after = "gitsigns.nvim",
+            disable = plugins.fugitive,
+        }
+
+        -- Git intergrations
+        use {
+            "lewis6991/gitsigns.nvim",
+            -- event = "BufRead",
+            opt = true,
+            setup = function()
+                require("custom.load").git()
+            end,
+            config = function()
+                require "modules.git.gitsigns"
+            end,
+            disable = plugins.gitsigns,
+        }
+
+        use {
+            "TimUntersberger/neogit",
+            after = "gitsigns.nvim",
+            config = function()
+                require "modules.git.neogit"
+            end,
+            disable = plugins.neogit,
+        }
+
+        -----------------------------------
         --            Language           --
         -----------------------------------
         -- Formatter
@@ -492,12 +524,6 @@ return require("packer").startup {
         }
 
         use {
-            "tpope/vim-fugitive",
-            after = "gitsigns.nvim",
-            disable = plugins.fugitive,
-        }
-
-        use {
             "zbirenbaum/neodim",
             event = "LspAttach",
             disable = plugins.neodim,
@@ -548,20 +574,6 @@ return require("packer").startup {
                 require "modules.tools.toggleterm"
             end,
             disable = plugins.toggleterm,
-        }
-
-        -- Git intergrations
-        use {
-            "lewis6991/gitsigns.nvim",
-            -- event = "BufRead",
-            opt = true,
-            setup = function()
-                require("custom.load").gitsigns()
-            end,
-            config = function()
-                require "modules.tools.gitsigns"
-            end,
-            disable = plugins.gitsigns,
         }
 
         -- Share code
