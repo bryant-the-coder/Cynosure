@@ -272,6 +272,15 @@ return require("packer").startup {
             disable = plugins.gitsigns,
         }
 
+        use {
+            "sindrets/diffview.nvim",
+            after = "gitsigns.nvim",
+            config = function()
+                require "modules.git.diffview"
+            end,
+            disable = plugins.diffview,
+        }
+
         -----------------------------------
         --            Language           --
         -----------------------------------
