@@ -185,6 +185,25 @@ local function word_counter()
     end
 end
 
+-- Shows the number of search
+-- Shows the word that you search
+--- @return string
+local function search_count()
+    local res = vim.fn.searchcount { recomput = 1, maxcount = 1000 }
+
+    if res.total ~= nil and res.total > 0 then
+        return string.format(
+            "  %s/%d %s ",
+            -- ' %s/%d %s ',
+            res.current,
+            res.total,
+            vim.fn.getreg "/"
+        )
+    else
+        return ""
+    end
+end
+
 statusline.run = function()
     return table.concat {
         "%#Statusline#",
@@ -196,6 +215,9 @@ statusline.run = function()
         -- git_info(),
         -- "%#Statusline#",
         ts_status(),
+        "%#SearchCount#",
+        search_count(),
+        "%#Statusline#",
 
         "%=",
         file(), -- Show filename

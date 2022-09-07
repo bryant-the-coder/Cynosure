@@ -65,7 +65,7 @@ o.laststatus = 3
 --[[ if utils.has_version "0.8" then
     o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 end ]]
-o.statusline = "%!v:lua.require'custom.statusline'.run()"
+-- o.statusline = "%!v:lua.require'custom.statusline'.run()"
 -- o.guifont = "OperatorMonoSSmLig Nerd Font,codicon:h10"
 -- o.guifont = "ComicCodeLigatures Nerd Font:codicon:h09"
 o.guifont = "MonoLisaNerdFontComplete Nerd Font:h9"

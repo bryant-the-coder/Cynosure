@@ -108,6 +108,7 @@ hl(0, "Warning", { fg = "#D7A65F", bg = "NONE", bold = true })
 hl(0, "Hint", { fg = purple, bg = "NONE", bold = true })
 hl(0, "Info", { fg = green, bg = "NONE", bold = true })
 hl(0, "Clock", { fg = "#181a1f", bg = "#41a6b5" })
+hl(0, "SearchCount", { fg = "#181a1f", bg = base0E })
 -- hl(0, "Coords", { fg = "#1E232A", bg = base0F })
 
 if ui.italic then
