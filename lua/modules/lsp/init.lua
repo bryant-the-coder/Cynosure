@@ -148,6 +148,7 @@ require("lspconfig").jedi_language_server.setup {
         },
     },
 }
+
 -- Clangd
 local clangd_defaults = require "lspconfig.server_configurations.clangd"
 local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_config"], {

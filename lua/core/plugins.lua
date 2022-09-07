@@ -119,6 +119,17 @@ return require("packer").startup {
         -----------------------------------
         --             Editor            --
         -----------------------------------
+        -- Markdown Preview
+        use {
+            "iamcco/markdown-preview.nvim",
+            run = "cd app && yarn install",
+            ft = "markdown",
+            cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
+            config = function()
+                vim.g.mkdp_browser = ""
+            end,
+        }
+
         -- Impatient
         use {
             "lewis6991/impatient.nvim",
