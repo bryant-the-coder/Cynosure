@@ -251,6 +251,10 @@ return require("packer").startup {
         use {
             "tpope/vim-fugitive",
             after = "gitsigns.nvim",
+            cmd = {
+                "Git commit",
+                "Git add",
+            },
             disable = plugins.fugitive,
         }
 
@@ -266,15 +270,6 @@ return require("packer").startup {
                 require "modules.git.gitsigns"
             end,
             disable = plugins.gitsigns,
-        }
-
-        use {
-            "TimUntersberger/neogit",
-            after = "gitsigns.nvim",
-            config = function()
-                require "modules.git.neogit"
-            end,
-            disable = plugins.neogit,
         }
 
         -----------------------------------
