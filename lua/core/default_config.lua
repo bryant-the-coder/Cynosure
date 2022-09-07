@@ -57,6 +57,13 @@ config.plugins = {
     lspsaga = true,
 
     -----------------------------------
+    --              Git              --
+    -----------------------------------
+    gitsigns = false,
+    fugitive = false,
+    neogit = false,
+
+    -----------------------------------
     --             Tools             --
     -----------------------------------
     colorizer = false,
@@ -64,8 +71,6 @@ config.plugins = {
     cybu = true,
     fidget = false,
     toggleterm = true,
-    gitsigns = false,
-    fugitive = true,
     paperplanes = false,
     lightspeed = false,
     todo_comments = false,

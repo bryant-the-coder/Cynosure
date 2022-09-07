@@ -158,7 +158,7 @@ end)
 -- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 
 -- Neo-tree
-map("n", "<leader>nr", "<cmd>Neotree<CR>")
+map("n", "<leader>nr", "<cmd>NeoTreeFocusToggle<CR>")
 map("n", "<leader>nf", "<cmd>Neotree float<CR>")
 
 -- Zen-mode
