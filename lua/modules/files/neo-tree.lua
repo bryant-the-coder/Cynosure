@@ -109,7 +109,7 @@ tree.setup {
             mappings = {
                 ["<bs>"] = "navigate_up",
                 ["."] = "set_root",
-                ["H"] = "toggle_hidden",
+                ["<C-h>"] = "toggle_hidden",
                 ["/"] = "fuzzy_finder",
                 ["f"] = "filter_on_submit",
                 ["<c-x>"] = "clear_filter",

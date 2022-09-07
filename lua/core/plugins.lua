@@ -4,6 +4,8 @@
 -- 3. add comment or sections
 -- 4. add disable option (plugins.<name_of_plugins>)
 
+-- Lazy load whenever you can :)
+
 local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -119,13 +121,14 @@ return require("packer").startup {
         -----------------------------------
         --             Editor            --
         -----------------------------------
-        -- Markdown Preview
+        -- Markdown Preview (seldom use)
         use {
             "iamcco/markdown-preview.nvim",
             run = "cd app && yarn install",
             ft = "markdown",
             cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
             config = function()
+                -- Open the default browser
                 vim.g.mkdp_browser = ""
             end,
         }
