@@ -11,10 +11,10 @@ neorg.setup {
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
-                    home = "D:/neorg",
-                    notes = "D:/neorg/notes",
-                    homework = "D:/neorg/homework",
-                    quotes = "D:/neorg/quotes",
+                    home = "F:/neorg",
+                    notes = "F:/neorg/notes",
+                    homework = "F:/neorg/homework",
+                    quotes = "F:/neorg/quotes",
                 },
                 open_last_workspace = false,
             },
