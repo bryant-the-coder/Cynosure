@@ -47,6 +47,13 @@ neorg.setup {
                 markup_preset = "conceal",
                 -- icon_preset = "diamond",
                 -- icon_preset = "varied",
+                dim_code_blocks = {
+                    width = "content",
+                    padding = {
+                        left = 10,
+                        right = 10,
+                    },
+                },
                 icons = {
                     marker = {
                         enabled = true,
