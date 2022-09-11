@@ -127,6 +127,23 @@ map("n", "<F10>", function()
     end
 end)
 
+-- Wrting a file without a name
+-- This will ask for the filename then write it
+-- Credit: https://www.reddit.com/r/neovim/comments/xazxxe/comment/inwtkis/?utm_source=share&utm_medium=web2x&context=3
+map("n", "<leader>w", function()
+    local ok, res = pcall(vim.cmd, "write")
+    if ok then
+        return
+    elseif res:match "^Vim%(write%):E32:" then
+        ok, res = pcall(vim.fn.input, "File name: ")
+        if ok and res and res ~= "" then
+            vim.cmd("write " .. res)
+        end
+    else
+        vim.api.nvim_err_writeln(res)
+    end
+end)
+
 -----------------------------------
 --           Utils               --
 -----------------------------------
