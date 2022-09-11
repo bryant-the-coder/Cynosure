@@ -175,11 +175,11 @@ cmd({ "WinEnter", "FileType" }, {
 -----------------------------------
 augroup("_lsp", {})
 -- Open float when there are diagnostics
-cmd({ "CursorHold" }, {
+--[[ cmd({ "CursorHold" }, {
     desc = "Open float when there is diagnostics",
     group = "_lsp",
     callback = vim.diagnostic.open_float,
-})
+}) ]]
 
 -- Nofity when file changes
 augroup("_auto_reload_file", {})

@@ -1,4 +1,6 @@
 local on_attach = {}
+local cmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 local function lsp_highlight_document(client, bufnr)
     if client.server_capabilities.documentHighlightProvider then
@@ -20,6 +22,14 @@ local function lsp_highlight_document(client, bufnr)
         vim.api.nvim_set_hl(0, "LspReferenceRead", { nocombine = true, reverse = false, underline = true })
         vim.api.nvim_set_hl(0, "LspReferenceWrite", { nocombine = true, reverse = false, underline = true })
     end
+
+    augroup("_lsp", {})
+    -- Open float when there are diagnostics
+    cmd({ "CursorHold" }, {
+        desc = "Open float when there is diagnostics",
+        group = "_lsp",
+        callback = vim.diagnostic.open_float,
+    })
 end
 
 function on_attach.setup(client, bufnr)
