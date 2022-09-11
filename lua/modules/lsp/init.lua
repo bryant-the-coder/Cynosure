@@ -149,27 +149,29 @@ require("lspconfig").texlab.setup {
     },
 } ]]
 
-require("lspconfig").pyright.setup {
+--[[ require("lspconfig").pyright.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         python = {
             analysis = {
                 indexing = true,
-                typeCheckingMode = "basic",
-                diagnosticMode = "openFilesOnly",
-                inlayHints = {
-                    variableTypes = true,
-                    functionReturnTypes = true,
+                typecheckingmode = "basic",
+                diagnosticmode = "openfilesonly",
+                inlayhints = {
+                    variabletypes = true,
+                    functionreturntypes = true,
                 },
-                stubPath = vim.fn.expand "$HOME/typings",
-                diagnosticSeverityOverrides = {
-                    reportUnusedImport = "information",
-                    reportUnusedFunction = "information",
-                    reportUnusedVariable = "information",
+                stubpath = vim.fn.expand "$home/typings",
+                diagnosticseverityoverrides = {
+                    reportunusedimport = "information",
+                    reportunusedfunction = "information",
+                    reportunusedvariable = "information",
                 },
             },
         },
     },
-}
+} ]]
 
 -- Clangd
 local clangd_defaults = require "lspconfig.server_configurations.clangd"
@@ -237,3 +239,77 @@ require("clangd_extensions").setup {
         },
     },
 }
+
+local pyright = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                indexing = true,
+                typecheckingmode = "basic",
+                diagnosticmode = "openfilesonly",
+                inlayhints = {
+                    variabletypes = true,
+                    functionreturntypes = true,
+                },
+                stubpath = vim.fn.expand "$home/typings",
+                diagnosticseverityoverrides = {
+                    reportunusedimport = "information",
+                    reportunusedfunction = "information",
+                    reportunusedvariable = "information",
+                },
+            },
+        },
+    },
+}
+
+local jedi = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                indexing = true,
+                typeCheckingMode = "basic",
+                diagnosticMode = "workspace",
+                inlayHints = {
+                    variableTypes = true,
+                    functionReturnTypes = true,
+                },
+                stubPath = vim.fn.expand "$HOME/typings",
+                diagnosticSeverityOverrides = {
+                    reportMissingTypeStubs = "information",
+
+                    reportGeneralTypeIssues = "warning",
+                    reportUnboundVariable = "warning",
+                    reportUndefinedVariable = "error",
+                    reportUnknownMemberType = "information",
+                    reportUnknownVariableType = "information",
+                    reportUntypedClassDecorator = "none",
+                    reportUntypedFunctionDecorator = "none",
+                    reportFunctionMemberAccess = "warning",
+                    reportUnknownArgumentType = "warning",
+                    reportUnknownParameterType = "warning",
+                    reportUnknownLambdaType = "warning",
+                    reportUnusedImport = "information",
+                    reportUnusedFunction = "information",
+                    reportUnusedVariable = "information",
+                    reportUnusedClass = "information",
+                    strictParameterNoneValue = false,
+                    reportOptionalSubscript = "warning",
+                    reportOptionalMemberAccess = "warning",
+                    reportOptionalIterable = "warning",
+                    reportOptionalCall = "none",
+                },
+            },
+        },
+    },
+}
+
+local use_pyright = false
+if use_pyright then
+    lspconfig.pyright.setup(pyright)
+else
+    lspconfig.jedi_language_server.setup(jedi)
+end
