@@ -94,6 +94,13 @@ o.writebackup = false -- Don't write backup
 o.undofile = false -- Don't write undofile
 o.swapfile = false -- Don't write swapfile
 
+-- Syntax
+-- Set C syntax for '.h' header files (default is C++)
+vim.g.c_syntax_for_h = true
+
+-- Enable bundled tree-sitter parser for Lua
+vim.g.ts_highlight_lua = true
+
 -- Terminal
 --[[ if vim.fn.has "win32" == 1 then
     o.shell = "pwsh.exe -nol"
