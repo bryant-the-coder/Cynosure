@@ -105,7 +105,7 @@ require("lspconfig").texlab.setup {
 }
 
 -- Pyright
-require("lspconfig").jedi_language_server.setup {
+--[[ require("lspconfig").jedi_language_server.setup {
     -- cmd = { "jedi-language-server" },
     on_attach = on_attach,
     capabilities = capabilities,
@@ -143,6 +143,28 @@ require("lspconfig").jedi_language_server.setup {
                     reportOptionalMemberAccess = "warning",
                     reportOptionalIterable = "warning",
                     reportOptionalCall = "none",
+                },
+            },
+        },
+    },
+} ]]
+
+require("lspconfig").pyright.setup {
+    settings = {
+        python = {
+            analysis = {
+                indexing = true,
+                typeCheckingMode = "basic",
+                diagnosticMode = "openFilesOnly",
+                inlayHints = {
+                    variableTypes = true,
+                    functionReturnTypes = true,
+                },
+                stubPath = vim.fn.expand "$HOME/typings",
+                diagnosticSeverityOverrides = {
+                    reportUnusedImport = "information",
+                    reportUnusedFunction = "information",
+                    reportUnusedVariable = "information",
                 },
             },
         },
