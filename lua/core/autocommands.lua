@@ -7,7 +7,7 @@ local create_command = vim.api.nvim_create_user_command
 --            BUILTIN            --
 -----------------------------------
 -- Netrw
-local netrw = vim.api.nvim_create_augroup("netrw", { clear = true })
+--[[ local netrw = vim.api.nvim_create_augroup("netrw", { clear = true })
 cmd({ "Filetype" }, {
     pattern = "netrw",
     callback = function()
@@ -16,14 +16,14 @@ cmd({ "Filetype" }, {
     desc = "Draw netrw icons",
     group = netrw,
 })
---[[ cmd({ "TextChanged" }, {
+cmd({ "TextChanged" }, {
     pattern = "*",
     callback = function()
         require("lua.custom.netrw").draw_icons()
     end,
     desc = "Draw netrw icons",
     group = netrw,
-}) ]]
+})
 cmd({ "Filetype" }, {
     pattern = "netrw",
     callback = function()
@@ -32,7 +32,7 @@ cmd({ "Filetype" }, {
     desc = "Define netrw mappings",
     group = netrw,
 })
-
+]]
 -- Disable autocommenting
 cmd("BufEnter", {
     desc = "Disable autocommenting in new lines",
