@@ -193,7 +193,7 @@ local function search_count()
 
     if res.total ~= nil and res.total > 0 then
         return string.format(
-            "  %s/%d %s ",
+            " 爵 %s/%d %s ",
             -- ' %s/%d %s ',
             res.current,
             res.total,
