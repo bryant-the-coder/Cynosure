@@ -70,7 +70,7 @@ end ]]
 o.guifont = "MonoLisaNerdFontComplete Nerd Font:h9"
 
 -- Conceal
-o.conceallevel = 0
+o.conceallevel = 2
 
 -- See :h fillchars
 o.fillchars = {
