@@ -536,9 +536,9 @@ return require("packer").startup {
             end,
         }
 
-        -- Colors the word
+        -- Hex colours
         use {
-            "norcalli/nvim-colorizer.lua",
+            "NvChad/nvim-colorizer.lua",
             opt = true,
             setup = function()
                 require("custom.load").colorizer()
