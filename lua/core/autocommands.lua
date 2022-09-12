@@ -108,7 +108,7 @@ cmd("TextYankPost", {
     desc = "Highlight while yanking",
     group = "_buffer",
     callback = function()
-        vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
+        vim.highlight.on_yank { higroup = "IncSearch", timeout = 40 }
     end,
 })
 
