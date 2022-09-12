@@ -13,7 +13,23 @@ null_ls.setup {
         formatting.stylua,
         formatting.rustfmt,
         formatting.clang_format,
-        -- diagnostics.flake8,
+        formatting.black.with {
+            extra_args = function(_)
+                return {
+                    "--fast",
+                    "--quiet",
+                    "--target-version",
+                    "py310",
+                    "-l",
+                    vim.opt_local.colorcolumn:get()[1] or "88",
+                }
+            end,
+        },
+        diagnostics.flake8.with {
+            extra_args = function(_)
+                return { "--max-line-lenth", vim.opt_local.colorcolumn:get()[1] or "88" }
+            end,
+        },
         -- formatting.yapf,
     },
 
