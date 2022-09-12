@@ -16,6 +16,11 @@ vim.cmd [[
 -- Code from NvChad
 bufferline.setup {
     options = {
+        hover = {
+            enabled = true,
+            delay = 0,
+            reveal = { "close" },
+        },
         numbers = "none",
         themable = true,
         close_command = "bdelete! %d",

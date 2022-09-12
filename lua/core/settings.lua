@@ -13,6 +13,7 @@ o.cursorlineopt = { "number" } -- Highlighting the number where the cursor is on
 -- Mappings
 g.mapleader = ","
 o.mouse = "a"
+o.mousemoveevent = true
 
 -- Theme
 o.termguicolors = true
