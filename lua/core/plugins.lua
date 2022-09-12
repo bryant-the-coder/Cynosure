@@ -328,6 +328,7 @@ return require("packer").startup {
             "nvim-treesitter/nvim-treesitter",
             ft = {
                 "lua",
+                "md",
                 "rust",
                 "c",
                 "cpp",
@@ -459,7 +460,6 @@ return require("packer").startup {
         -- Setting up inlay hints
         use {
             "lvimuser/lsp-inlayhints.nvim",
-            branch = "readme",
             after = "nvim-lspconfig",
             disable = plugins.inlay,
             config = function()
@@ -476,6 +476,8 @@ return require("packer").startup {
 
         use {
             "p00f/clangd_extensions.nvim",
+            ft = { "c", "cpp" },
+            requires = "nvim-lspconfig",
             disable = plugins.clangd_ext,
         }
 

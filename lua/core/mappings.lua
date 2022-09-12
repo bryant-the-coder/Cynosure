@@ -174,6 +174,8 @@ end)
 -- Nvim-tree
 -- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 
+-- Inlay-hints
+
 -- Neo-tree
 map("n", "<leader>nr", "<cmd>NeoTreeFocusToggle<CR>")
 map("n", "<leader>nf", "<cmd>Neotree float<CR>")
@@ -196,7 +198,7 @@ map("n", "sk", "<Plug>(CybuPrev)")
 map("n", "sj", "<Plug>(CybuNext)")
 
 -- Lsp-Inlayhints
-map("n", "<space>ih", function()
+map("n", "<space>lh", function()
     require("lsp-inlayhints").toggle()
 end)
 
