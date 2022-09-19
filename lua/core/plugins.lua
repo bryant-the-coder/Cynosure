@@ -440,7 +440,7 @@ return require("packer").startup {
         -- Much like lspisntaller, but better
         use {
             "williamboman/mason.nvim",
-            ft = {
+            --[[ ft = {
                 "lua",
                 "python",
                 "vim",
@@ -454,7 +454,7 @@ return require("packer").startup {
                 "tex",
                 "json",
             },
-            after = "mason-lspconfig.nvim",
+            after = "mason-lspconfig.nvim", ]]
         }
 
         -- Setting up inlay hints
