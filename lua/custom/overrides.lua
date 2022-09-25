@@ -86,7 +86,7 @@ end
 
 -- Toggle transparent / ui right here :D
 local ui = {
-    transparency = false,
+    transparency = true,
     italic = true,
 }
 
