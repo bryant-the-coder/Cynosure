@@ -11,10 +11,7 @@ neorg.setup {
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
-                    home = "F:/neorg",
-                    notes = "F:/neorg/notes",
-                    homework = "F:/neorg/homework",
-                    quotes = "F:/neorg/quotes",
+                    notes = "~/dev/notes",
                 },
                 open_last_workspace = false,
             },
@@ -37,8 +34,7 @@ neorg.setup {
         },
         ["core.gtd.base"] = {
             config = {
-                workspace = "homework",
-                exclude = { "notes/", "quotes/", "journal" },
+                workspace = "notes",
             },
         },
         ["core.norg.concealer"] = {
