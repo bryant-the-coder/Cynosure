@@ -7,7 +7,7 @@ local base16 = require "base16"
 -- D) mocha
 
 -- TODO: might add a timer for theme
-_G.theme = "onedark"
+_G.theme = "everblush"
 
 local theme = _G.theme
 
