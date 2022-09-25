@@ -130,6 +130,7 @@ custom_telescope.find_files = function()
         layout_config = {
             prompt_position = "top",
         },
+        hidden = true
     }
     require("telescope.builtin").find_files(opts)
 end
