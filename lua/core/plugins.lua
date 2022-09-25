@@ -476,7 +476,7 @@ return require("packer").startup {
 
         use {
             "p00f/clangd_extensions.nvim",
-            ft = { "c", "cpp" },
+            -- ft = { "c", "cpp" },
             requires = "nvim-lspconfig",
             disable = plugins.clangd_ext,
         }
@@ -508,7 +508,7 @@ return require("packer").startup {
             config = function()
                 require "modules.tools.dapui"
             end,
-            disable = plugins.dap,
+            disable = plugins.dapui,
         }
 
         use {
@@ -516,7 +516,12 @@ return require("packer").startup {
             config = function()
                 require "modules.tools.dap"
             end,
-            disable = plugins.dapui,
+            disable = plugins.dap,
+        }
+
+        use {
+            "mfussenegger/nvim-dap-python",
+            disable = plugins.dap_python,
         }
 
         -- Quickly move around tabs
