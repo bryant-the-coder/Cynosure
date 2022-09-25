@@ -30,16 +30,15 @@ null_ls.setup {
                 return { "--max-line-lenth", vim.opt_local.colorcolumn:get()[1] or "88" }
             end,
         },
-        -- formatting.yapf,
-    },
 
-    -- Format on save (laggy)
-    on_attach = function(client, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            callback = function()
-                vim.lsp.buf.format()
-            end,
-        })
-    end,
+        -- Format on save (laggy)
+        on_attach = function(client, bufnr)
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                buffer = bufnr,
+                callback = function()
+                    vim.lsp.buf.format()
+                end,
+            })
+        end,
+    },
 }
