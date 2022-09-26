@@ -11,7 +11,9 @@ neorg.setup {
         ["core.norg.dirman"] = {
             config = {
                 workspaces = {
-                    notes = "~/dev/notes",
+                    home = "~/dev/neorg",
+                    notes = "~/dev/neorg/notes",
+                    task = "~/dev/neorg/task",
                 },
                 open_last_workspace = false,
             },
@@ -34,7 +36,7 @@ neorg.setup {
         },
         ["core.gtd.base"] = {
             config = {
-                workspace = "notes",
+                workspace = "task",
             },
         },
         ["core.norg.concealer"] = {
@@ -115,7 +117,9 @@ neorg.setup {
             config = {
                 workspace = "home",
                 journal_folder = "journal",
-                strategy = "flat", -- nested
+                use_folders = false,
+                strategy = "flat",
+                toc_format = "{dd, mm, yy}",
             },
         },
         -- ["external.kanban"] = {},

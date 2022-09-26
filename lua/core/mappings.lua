@@ -174,7 +174,8 @@ end)
 -- Nvim-tree
 -- map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>")
 
--- Inlay-hints
+-- Noerg
+map("n", "<leader>jt", "<cmd>Neorg journal today<CR>")
 
 -- Neo-tree
 map("n", "<leader>nr", "<cmd>NeoTreeFocusToggle<CR>")
